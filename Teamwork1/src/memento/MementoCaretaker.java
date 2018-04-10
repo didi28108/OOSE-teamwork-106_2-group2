@@ -1,5 +1,6 @@
 package memento;
 
+import mediator.Mediator;
 import java.util.*;
 
 public class MementoCaretaker{

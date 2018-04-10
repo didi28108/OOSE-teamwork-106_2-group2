@@ -1,5 +1,6 @@
 package memento;
 
+import color.Color;
 import statediagram.Component;
 import java.util.*;
 

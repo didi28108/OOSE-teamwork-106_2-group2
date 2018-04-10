@@ -1,5 +1,6 @@
 package memento;
 
+import color.Color;
 import java.util.*;
 
 public class ObjectStatusMemento{
