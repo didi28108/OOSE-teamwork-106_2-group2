@@ -1,16 +1,19 @@
+package memento;
+
 import java.util.*;
 
-class MementoCaretaker{
-    private List<ObjectStatusMemento> HistoryStatus = new arrays<ObjectStatusMemento>();
+public class MementoCaretaker{
+    private ArrayList<ObjectStatusMemento> historyStatus = new ArrayList<ObjectStatusMemento>();
 
-    private static mediator Mediator{
+    private Mediator mediator;
+
+    public void addMemento(ObjectStatusMemento memento) {
+        this.historyStatus.add(memento);
     }
 
-    public static void addMemento(ObjectStatusMemento memento){
-        this.HistoryStatus.add(memento);
-    }
-
-    public static ObjectStatusMemento getMemento(){
-        return this.HistoryStatus;
+    public ObjectStatusMemento getMemento() {
+        ObjectStatusMemento re = this.historyStatus.get(this.historyStatus.size() - 1);
+        this.historyStatus.remove(re);
+        return re;
     }
 }

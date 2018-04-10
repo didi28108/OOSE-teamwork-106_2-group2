@@ -1,9 +1,18 @@
+package memento;
+
+import statediagram.Component;
 import java.util.*;
 
-class StateDiagramStatusMemento{
-    private List componentList<component> = new arrays<component>();
+public class StateDiagramStatusMemento extends ObjectStatusMemento {
+    private ArrayList<Component> componentList;
 
-    public void StateDiagramStatusMemento(int id, Color color, float size, String text, float x, float y, List componentList){
+    public StateDiagramStatusMemento (int id, Color color, float size, String text,
+        int x, int y, ArrayList<Component> componentList) {
+        super(id, color, size, text, x, y);
+        this.componentList = componentList;
+    }
 
+    public ArrayList<Component> getComponentList() {
+        return this.componentList;
     }
 }
