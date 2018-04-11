@@ -1,0 +1,10 @@
+/controller/
+/flyweight/
+/listeners/
+/observer/
+/state/
+/strategy/
+/view/
+/mediator/
+/statediagram/
+/Application.class

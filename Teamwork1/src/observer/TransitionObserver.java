@@ -1,16 +1,19 @@
 package observer;
 
-class TransitionObserver implements Observer{ //Æ[¹îªÌªº¹ê§@¤è¦¡Ãþ§O¡A¥Î¨Ó±µ¦¬¥Ø¼Ð¡A§ó·s¦Û¤vªºª¬ºA¥H«O«ù©M¥Ø¼Ðª¬ºA¤@­P
+class TransitionObserver implements Observer { //ï¿½[ï¿½ï¿½Ìªï¿½ï¿½ï¿½@ï¿½è¦¡ï¿½ï¿½ï¿½Oï¿½Aï¿½Î¨Ó±ï¿½ï¿½ï¿½ï¿½Ø¼Ð¡Aï¿½ï¿½sï¿½Û¤vï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Hï¿½Oï¿½ï¿½ï¿½Mï¿½Ø¼Ðªï¿½ï¿½Aï¿½@ï¿½P
 	private String color;
 	private String name;
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	public void setName(String name){
-		this.name=name;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void update(Subject subject){
-		color=((TransitionSubject)subject).getSubject();
-		System.out.println(name+"'s color is "+color);
+
+	public void update(Subject subject) {
+		color = ((TransitionSubject) subject).getSubject();
+		System.out.println(name + "'s color is " + color);
 	}
 }
