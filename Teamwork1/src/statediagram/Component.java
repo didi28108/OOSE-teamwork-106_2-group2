@@ -1,9 +1,12 @@
 package statediagram;
 
-import color.Color;
 import mediator.Mediator;
 import memento.ObjectStatusMemento;
+
+import java.awt.Color;
 import java.util.Date;
+
+import flyweight.ColorFactory;
 
 /**
  * Component
@@ -18,12 +21,14 @@ public abstract class Component {
     private int x;
     private int y;
     private Mediator mediator;
+    private ColorFactory colorFactory;
 
     public Component() {
         //以時間來當作ID
 		Date now = new Date();
         this.id = now.hashCode();
         this.mediator = new Mediator();
+        this.colorFactory = new ColorFactory();
     }
 
     public int getId() {
@@ -72,7 +77,7 @@ public abstract class Component {
      * @param color =指定的顏色
      */
     public void changeColor(String color) {
-        this.color = this.mediator.getColorFromFactory(color);
+        this.color = colorFactory.getColor(color);
     }
 
     /**

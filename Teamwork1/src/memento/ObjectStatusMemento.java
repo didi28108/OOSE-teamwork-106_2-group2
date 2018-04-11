@@ -1,7 +1,9 @@
 package memento;
 
-import color.Color;
+import java.awt.Color;
 import java.util.*;
+
+import flyweight.ColorFactory;
 
 public class ObjectStatusMemento{
     private int id;
