@@ -6,6 +6,8 @@ import java.util.List;
 public abstract class Subject {
 	private List<Observer> idList = new ArrayList<Observer>();
 
+	public abstract String getSubject();
+
 	public void attach(Observer observer) { //�����[��̵��U
 		idList.add(observer);
 	}

@@ -2,17 +2,19 @@ package statediagram;
 
 import mediator.Mediator;
 import memento.ObjectStatusMemento;
+import observer.Observer;
+import observer.Subject;
+import flyweight.ColorFactory;
 
 import java.awt.Color;
 import java.util.Date;
 
-import flyweight.ColorFactory;
 
 /**
  * Component
  * State, Transition, StateDiagram的上層物件
  */
-public abstract class Component {
+public abstract class Component implements Observer {
     private int id;
     private Color color;
     private float size;
@@ -114,5 +116,13 @@ public abstract class Component {
      */
     public Component getComponent(int id) {
         return null;
+    }
+
+    /**
+     * 訂閱subject發來update訊息
+     * @param subject =訂閱的subject
+     */
+    public void update(Subject subject) {
+        this.changeColor(subject.getSubject());
     }
 }

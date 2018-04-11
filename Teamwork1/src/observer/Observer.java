@@ -1,7 +1,5 @@
 package observer;
 
-interface Observer{
-	public void setName(String name);
-	public String getName();
+public interface Observer{
 	public void update(Subject subject);
 }
