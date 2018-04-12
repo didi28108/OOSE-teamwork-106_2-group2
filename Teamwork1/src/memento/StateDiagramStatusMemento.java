@@ -5,7 +5,6 @@ import statediagram.Component;
 import java.awt.Color;
 import java.util.*;
 
-import flyweight.ColorFactory;
 
 public class StateDiagramStatusMemento extends ObjectStatusMemento {
     private ArrayList<Component> componentList;
