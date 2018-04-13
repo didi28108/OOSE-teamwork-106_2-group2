@@ -11,6 +11,8 @@ public class MementoCaretaker{
     public MementoCaretaker() {
         this.historyStatus = new ArrayList<ObjectStatusMemento>();
         this.nowIndex = -1;
+
+        this.mediator = Mediator.getInstance();
     }
 
     public void addMemento(ObjectStatusMemento memento) {
@@ -23,7 +25,7 @@ public class MementoCaretaker{
         this.nowIndex += 1;
     }
 
-    protected ObjectStatusMemento getMemento(int index) {
+    private ObjectStatusMemento getMemento(int index) {
         return this.historyStatus.get(index);
     }
 

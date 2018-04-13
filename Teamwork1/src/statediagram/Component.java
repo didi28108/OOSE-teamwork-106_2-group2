@@ -4,7 +4,6 @@ import mediator.Mediator;
 import memento.ObjectStatusMemento;
 import observer.Observer;
 import observer.Subject;
-import flyweight.ColorFactory;
 
 import java.awt.Color;
 import java.util.Date;
@@ -23,16 +22,14 @@ public abstract class Component implements Observer {
     //x, y值還不確定需不需要浮點數, 先用int
     private int x;
     private int y;
-    private Mediator mediator;
-    private ColorFactory colorFactory;
+    protected Mediator mediator;
 
     public Component() {
         //以時間來當作ID
 		Date now = new Date();
         this.id = now.hashCode();
         this.group = 0; //default 0
-        this.mediator = new Mediator();
-        this.colorFactory = new ColorFactory();
+        this.mediator = Mediator.getInstance();
     }
 
     public int getId() {
@@ -87,7 +84,7 @@ public abstract class Component implements Observer {
      * @param color =指定的顏色
      */
     public void changeColor(String color) {
-        this.color = colorFactory.getColor(color);
+        this.color = mediator.getColorFromFactory(color);
     }
 
     /**
