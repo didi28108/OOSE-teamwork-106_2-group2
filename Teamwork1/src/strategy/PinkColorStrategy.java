@@ -2,11 +2,11 @@ package strategy;
 
 import java.awt.Color;
 
-public class BlackColorStrategy implements ColorStrategy{
+public class PinkColorStrategy implements ColorStrategy{
 
-	private int r = 40;
-	private int g = 40;
-	private int b = 40;
+	private int r = 255;
+	private int g = 192;
+	private int b = 203;
 	
 	@Override
 	public Color handle() {
