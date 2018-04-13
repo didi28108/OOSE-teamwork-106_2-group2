@@ -23,8 +23,8 @@ public class StateDiagram extends Component {
 
 	@Override
 	public ObjectStatusMemento save() {
-		return new StateDiagramStatusMemento(this.getId(), this.getColor(), this.getSize(), this.getText(),
-			this.getX(), this.getY(), this.componentList);
+		return new StateDiagramStatusMemento(this.getId(), this.getGroup(), this.getColor(),
+			this.getSize(), this.getText(), this.getX(), this.getY(), this.componentList);
 	}
 	
 	@Override
@@ -42,7 +42,8 @@ public class StateDiagram extends Component {
      * @param previousMemento =先前儲存的Memento
      */
 	public void restore(StateDiagramStatusMemento previousMemento) {
-        this.setId(previousMemento.getId());
+		this.setId(previousMemento.getId());
+		this.setGroup(previousMemento.getGroup());
         this.setColor(previousMemento.getColor());
         this.setSize(previousMemento.getSize());
         this.setText(previousMemento.getText());
@@ -84,5 +85,21 @@ public class StateDiagram extends Component {
 		}
 
 		return reC;
+	}
+
+	@Override
+	/**
+	 * 回傳第一個找到的符合指定組別的Component
+	 * @param group =目標的組別代碼
+	 * @return 目標的組別 / 找不到時為null
+	 */
+	public Component getGroup(int group) {
+		for (Component c: this.componentList) {
+			if (c.getGroup() == group) {
+				return c;
+			}
+		}
+
+		return null;
 	}
 }

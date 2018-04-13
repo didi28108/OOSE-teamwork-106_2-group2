@@ -16,6 +16,7 @@ import java.util.Date;
  */
 public abstract class Component implements Observer {
     private int id;
+    private int group;
     private Color color;
     private float size;
     private String text;
@@ -29,6 +30,7 @@ public abstract class Component implements Observer {
         //以時間來當作ID
 		Date now = new Date();
         this.id = now.hashCode();
+        this.group = 0; //default 0
         this.mediator = new Mediator();
         this.colorFactory = new ColorFactory();
     }
@@ -38,6 +40,12 @@ public abstract class Component implements Observer {
     }
     public void setId(int id) {
         this.id = id;
+    }
+    public int getGroup() {
+        return this.group;
+    }
+    public void setGroup(int group) {
+        this.group = group;
     }
 
     public Color getColor() {
@@ -87,7 +95,7 @@ public abstract class Component implements Observer {
      * @return Memento
      */
     public ObjectStatusMemento save() {
-        return new ObjectStatusMemento(this.id, this.color, this.size, this.text, this.x, this.y);
+        return new ObjectStatusMemento(this.id, this.group, this.color, this.size, this.text, this.x, this.y);
     }
     /**
      * 使用Memento物件來恢復狀態
@@ -115,6 +123,13 @@ public abstract class Component implements Observer {
      * do nothing
      */
     public Component getComponent(int id) {
+        return null;
+    }
+
+    /**
+     * do nothing
+     */
+    public Component getGroup(int group) {
         return null;
     }
 

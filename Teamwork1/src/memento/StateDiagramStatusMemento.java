@@ -9,9 +9,9 @@ import java.util.*;
 public class StateDiagramStatusMemento extends ObjectStatusMemento {
     private ArrayList<Component> componentList;
 
-    public StateDiagramStatusMemento (int id, Color color, float size, String text,
+    public StateDiagramStatusMemento (int id, int group, Color color, float size, String text,
         int x, int y, ArrayList<Component> componentList) {
-        super(id, color, size, text, x, y);
+        super(id, group, color, size, text, x, y);
         this.componentList = componentList;
     }
 
