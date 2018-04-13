@@ -89,6 +89,10 @@ public class Mediator {
 		this.mementoCaretaker.addMemento(memento);
 	}
 
+
+	public boolean canUndo() {
+        return this.mementoCaretaker.canUndo();
+    }
 	/**
      * 回傳上一步的Memento, 不存在時會回傳最初的 (list[0])
      * @return 上一步的Memento
@@ -96,6 +100,11 @@ public class Mediator {
 	public ObjectStatusMemento undo() {
 		return this.mementoCaretaker.undo();
 	}
+
+
+	public boolean canRedo() {
+        return this.mementoCaretaker.canRedo();
+    }
 	/**
      * 回傳下一步的Memento, 不存在時會回傳現在的 (list[size()-1])
      * @return 下一步的Memento

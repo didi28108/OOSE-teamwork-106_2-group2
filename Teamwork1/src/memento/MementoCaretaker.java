@@ -29,24 +29,41 @@ public class MementoCaretaker{
         return this.historyStatus.get(index);
     }
 
+    public boolean canUndo() {
+        if (this.nowIndex > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     /**
      * 回傳上一步的Memento, 不存在時會回傳最初的 (list[0])
      * @return 上一步的Memento
      */
     public ObjectStatusMemento undo() {
-        if (this.nowIndex > 0) {
+        if (this.canUndo()) {
             this.nowIndex -= 1;
         }
 
         return this.getMemento(this.nowIndex);
     }
 
+
+    public boolean canRedo() {
+        if (this.nowIndex < (this.historyStatus.size() - 1)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     /**
      * 回傳下一步的Memento, 不存在時會回傳現在的 (list[size()-1])
      * @return 下一步的Memento
      */
     public ObjectStatusMemento redo() {
-        if (this.nowIndex < (this.historyStatus.size() - 1)) {
+        if (this.canRedo()) {
             this.nowIndex += 1;
         }
 
