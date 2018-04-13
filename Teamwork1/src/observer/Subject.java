@@ -16,6 +16,10 @@ public abstract class Subject {
 		idList.remove(observer);
 	}
 
+	public void detachAll() {
+		idList.clear();
+	}
+
 	protected void notifyObserver() { //�q��
 		for (int i = 0; i < idList.size(); i++) {
 			Observer observer = idList.get(i);

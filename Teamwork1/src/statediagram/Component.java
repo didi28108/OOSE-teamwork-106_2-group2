@@ -32,6 +32,8 @@ public abstract class Component implements Observer {
         this.mediator = Mediator.getInstance();
     }
 
+    public abstract String getClassName();
+
     public int getId() {
         return this.id;
     }
@@ -88,11 +90,17 @@ public abstract class Component implements Observer {
     }
 
     /**
+     * 訂閱特定Subject
+     */
+    public abstract void attachSubject();
+    
+
+    /**
      * 將目前的狀態存成一個Memento
      * @return Memento
      */
     public ObjectStatusMemento save() {
-        return new ObjectStatusMemento(this.id, this.group, this.color, this.size, this.text, this.x, this.y);
+        return new ObjectStatusMemento(this.getClassName(), this.id, this.group, this.color, this.size, this.text, this.x, this.y);
     }
     /**
      * 使用Memento物件來恢復狀態
@@ -100,6 +108,7 @@ public abstract class Component implements Observer {
      */
     public void restore(ObjectStatusMemento previousMemento) {
         this.id = previousMemento.getId();
+        this.group = previousMemento.getGroup();
         this.color = previousMemento.getColor();
         this.size = previousMemento.getSize();
         this.text = previousMemento.getText();

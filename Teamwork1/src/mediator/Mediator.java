@@ -72,6 +72,17 @@ public class Mediator {
 		this.stateDiagram = stateDiagram;
 	}
 
+	public ObjectStatusMemento saveStateDiagram() {
+		return this.stateDiagram.save();
+	}
+	public void restoreStateDiagram(ObjectStatusMemento previousMemento) {
+		this.stateDiagram.restore(previousMemento);
+	}
+
+	public void stateDiagramAttachSubject() {
+		this.stateDiagram.attachSubject();
+	}
+
 	/****************************************/
 
 	public void addMemento(ObjectStatusMemento memento) {
@@ -101,11 +112,17 @@ public class Mediator {
 	public void detachStateSubject(Observer observer) {
 		this.stateSubject.detach(observer);
 	}
+	public void detachAllStateSubject() {
+		this.stateSubject.detachAll();
+	}
 
 	public void attachTransitionSubject(Observer observer) {
 		this.transitionSubject.attach(observer);
 	}
 	public void detachTransitionSubject(Observer observer) {
 		this.transitionSubject.detach(observer);
+	}
+	public void detachAllTransitionSubject() {
+		this.transitionSubject.detachAll();
 	}
 }

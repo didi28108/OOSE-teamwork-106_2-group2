@@ -5,6 +5,7 @@ import java.util.*;
 
 
 public class ObjectStatusMemento{
+    private String className;
     private int id;
     private int group;
     private Color color;
@@ -13,7 +14,9 @@ public class ObjectStatusMemento{
     private int x;
     private int y;
 
-    public ObjectStatusMemento(int id, int group, Color color, float size, String text, int x, int y){
+    public ObjectStatusMemento(String className, int id, int group,
+        Color color, float size, String text, int x, int y) {
+        this.className = className;
         this.id = id;
         this.group = group;
         this.color = color;
@@ -21,6 +24,10 @@ public class ObjectStatusMemento{
         this.text = text;
         this.x = x;
         this.y = y;
+    }
+
+    public String getClassName() {
+        return this.className;
     }
 
     public int getId(){
@@ -49,5 +56,9 @@ public class ObjectStatusMemento{
 
     public int getY() {
         return this.y;
+    }
+
+    public ArrayList<ObjectStatusMemento> getComponentList() {
+        return null;
     }
 }

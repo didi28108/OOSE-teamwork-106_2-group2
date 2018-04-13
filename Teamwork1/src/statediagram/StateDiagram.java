@@ -3,7 +3,7 @@ package statediagram;
 import memento.ObjectStatusMemento;
 import memento.StateDiagramStatusMemento;
 import java.util.ArrayList;
-import java.lang.Error;
+
 
 public class StateDiagram extends Component {
 	private ArrayList<Component> componentList;
@@ -11,6 +11,11 @@ public class StateDiagram extends Component {
 	public StateDiagram() {
 		super();
 		this.componentList = new ArrayList<Component>();
+	}
+
+	@Override
+	public String getClassName() {
+		return "StateDiagram";
 	}
 
 	@Override
@@ -22,26 +27,30 @@ public class StateDiagram extends Component {
 	}
 
 	@Override
+	public void attachSubject() {
+		for (Component c: this.componentList) {
+			c.attachSubject();
+		}
+	}
+
+	@Override
 	public ObjectStatusMemento save() {
-		return new StateDiagramStatusMemento(this.getId(), this.getGroup(), this.getColor(),
-			this.getSize(), this.getText(), this.getX(), this.getY(), this.componentList);
+		ArrayList<ObjectStatusMemento> saveList = new ArrayList<ObjectStatusMemento>();
+		for (Component c: this.componentList) {
+			saveList.add(c.save());
+		}
+
+		return new StateDiagramStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
+			this.getSize(), this.getText(), this.getX(), this.getY(),
+			saveList);
 	}
 	
 	@Override
 	/**
-     * StateDiagram can not restore with ObjectStatusMemento
-	 * please use restore(StateDiagramStatusMemento previousMemento)
-     * @param previousMemento =先前儲存的Memento
-     */
-	public void restore(ObjectStatusMemento previousMemento) {
-		throw new Error("StateDiagram can not restore with ObjectStatusMemento");
-	}
-
-	/**
      * 使用Memento物件來恢復狀態
      * @param previousMemento =先前儲存的Memento
      */
-	public void restore(StateDiagramStatusMemento previousMemento) {
+	public void restore(ObjectStatusMemento previousMemento) {
 		this.setId(previousMemento.getId());
 		this.setGroup(previousMemento.getGroup());
         this.setColor(previousMemento.getColor());
@@ -49,7 +58,22 @@ public class StateDiagram extends Component {
         this.setText(previousMemento.getText());
         this.setX(previousMemento.getX());
 		this.setY(previousMemento.getY());
-		this.componentList = previousMemento.getComponentList();
+
+		this.componentList = new ArrayList<Component>();
+		for (ObjectStatusMemento m: previousMemento.getComponentList()) {
+			Component re;
+			if (m.getClassName().equals("State")) {
+				re = new State();
+			}
+			else if (m.getClassName().equals("Transition")) {
+				re = new Transition();
+			}
+			else {
+				re = new StateDiagram();
+			}
+			re.restore(m);
+			this.componentList.add(re);
+		}
 	}
 	
 	@Override
