@@ -8,11 +8,11 @@ public abstract class Subject {
 
 	public abstract String getSubject();
 
-	public void attach(Observer observer) { //ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½Ìµï¿½ï¿½U
+	public void attach(Observer observer) { //´£¨ÑÆ[¹îªÌµù¥U
 		idList.add(observer);
 	}
 
-	public void detach(Observer observer) { //ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½Ì°hï¿½q
+	public void detach(Observer observer) {//´£¨ÑÆ[¹îªÌ°h­q
 		idList.remove(observer);
 	}
 
@@ -20,7 +20,7 @@ public abstract class Subject {
 		idList.clear();
 	}
 
-	protected void notifyObserver() { //ï¿½qï¿½ï¿½
+	protected void notifyObserver() { //³qª¾
 		for (int i = 0; i < idList.size(); i++) {
 			Observer observer = idList.get(i);
 			observer.update(this);

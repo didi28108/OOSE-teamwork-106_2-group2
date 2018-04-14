@@ -2,13 +2,12 @@ package view;
 
 import javax.swing.JButton;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class ButtonTransition extends JButton{
-	MainMediator guiMdtr;
-	public ButtonTransition(String name, MainMediator mdtr){
+	ViewMediator mdtr = ViewMediator.getGuiMediator();
+	public ButtonTransition(String name){
 		super(name);
-		this.guiMdtr = mdtr;
 		mdtr.registerButtonTransition(this);
 	}
 }

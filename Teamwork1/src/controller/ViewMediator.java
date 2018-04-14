@@ -1,32 +1,38 @@
 package controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 
 import listeners.BtnDeleteListener;
 import listeners.BtnEditListener;
 import listeners.BtnSelectListener;
 import listeners.BtnStateListener;
 import listeners.BtnTransListener;
+import listeners.MousePositionsListener;
+import listeners.MyMouseListener;
 import state.ChosenSelect;
 import state.ChosenState;
 import state.ChosenTransition;
 import state.MouseState;
+import statediagram.Component;
+import statediagram.StateDiagram;
 import view.ButtonDelete;
 import view.ButtonEdit;
 import view.ButtonSelect;
 import view.ButtonState;
 import view.ButtonTransition;
 import view.DrawCanvas;
+import view.StatusPanel;
 
 // combining facade and mediator
-public class MainMediator {
+public class ViewMediator {
 
 	//Singleton with Eager initialization 
-	private static MainMediator mdtr = new MainMediator();
+	private static ViewMediator mdtr = new ViewMediator();
 	
-	private MainMediator() {}
+	private ViewMediator() {}
 	
-	public static MainMediator getGuiMediator() {
+	public static ViewMediator getGuiMediator() {
 		return mdtr;
 	}
 	
@@ -37,7 +43,9 @@ public class MainMediator {
 	private ButtonDelete buttonDelete;
 	private ButtonEdit buttonEdit;
 	private DrawCanvas drawCanvas;
-	private MouseState currentState;
+	private MouseState currentState = ChosenSelect.getInstance();
+	private StatusPanel statusPanel;
+	private Component stateDiagram;
 	
 	//Register
 	public void registerButtonState(ButtonState bState) {
@@ -72,6 +80,17 @@ public class MainMediator {
 	public void registerDrawCanvas(DrawCanvas drawCanvas) {
 		// TODO Auto-generated method stub
 		this.drawCanvas = drawCanvas;
+		this.drawCanvas.addMouseMotionListener(new MousePositionsListener(this));
+		this.drawCanvas.addMouseListener(new MyMouseListener(this));
+	}
+	
+	public void registerStatusPanel(StatusPanel sp) {
+		// TODO Auto-generated method stub
+		statusPanel = sp;
+	}
+	
+	public void registerStateDiagrame(StateDiagram sd) {
+		stateDiagram = sd;
 	}
 	
 	
@@ -102,23 +121,52 @@ public class MainMediator {
 	public void changeState(MouseState newState) {
 		currentState = newState;
 	}
-	/*
-	public ButtonState getButtonState() {
-		return buttonState;
-	}
 
-	public ButtonSelect getButtonSelect() {
-		return buttonSelect;
+	public void setCoordinates(MouseEvent e) {
+		// TODO Auto-generated method stub
+		statusPanel.setCoordinates(e.getX(), e.getY());
 	}
 	
-	public ButtonTransition getButtonTransition() {
-		return buttonTransition;
+	public MouseState getCurrentState() {
+		return currentState;
 	}
 
-	public DrawCanvas getDrawCanvas() {
-		return drawCanvas;
-	}
-	*/
 
+	public StateDiagram getStateDiagram() {
+		// TODO Auto-generated method stub
+		return (StateDiagram)this.stateDiagram;
+	}
+	
+	//call drawCanvas to State
+	public void addState(MouseEvent e) {
+		drawCanvas.addState(e.getPoint());
+	}
+	
+	public void addTranstion(MouseEvent e, Component s1, Component s2) {
+		drawCanvas.addTrans(e.getPoint(), s1, s2);
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		currentState.mouseClicked(this, e);
+	}
+	
+	public void mouseDragged(MouseEvent e) {
+		currentState.mouseDragged(this, e);
+	}
+
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		currentState.mousePressed(this, e);
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		currentState.mouseReleased(this, e);
+	}
+
+	public void changePoint(MouseEvent e, Component comp) {
+		// TODO Auto-generated method stub
+		drawCanvas.changePoint(e, comp);
+	}
 	
 }

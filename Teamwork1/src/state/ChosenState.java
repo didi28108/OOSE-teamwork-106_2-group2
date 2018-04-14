@@ -2,7 +2,10 @@ package state;
 
 import java.awt.event.MouseEvent;
 
+import controller.ViewMediator;
 import memento.MementoCaretaker;
+import statediagram.Component;
+import statediagram.State;
 import statediagram.StateDiagram;
 
 public class ChosenState implements MouseState{
@@ -12,19 +15,36 @@ public class ChosenState implements MouseState{
 	public ChosenState() {}
 
 	public static ChosenState getInstance() {
-
+		System.out.println("Curernt Mouse State: state");
 		if (instance == null) {
-
 			return new ChosenState();
 		}
-
 		return instance;
-
 	}
 
 	@Override
-	public MouseState mouseClicked(MouseEvent e, StateDiagram sd, MementoCaretaker ct) {
+	public void mouseClicked(ViewMediator vMdtr, MouseEvent e) {
 		// TODO Auto-generated method stub
-		return null;
+		vMdtr.addState(e);
+		vMdtr.changeState(ChosenSelect.getInstance());
 	}
+
+	@Override
+	public void mousePressed(ViewMediator vMdtr, MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(ViewMediator vMdtr, MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseDragged(ViewMediator vMdtr, MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

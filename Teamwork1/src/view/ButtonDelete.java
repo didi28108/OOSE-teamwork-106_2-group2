@@ -2,14 +2,13 @@ package view;
 
 import javax.swing.JButton;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class ButtonDelete extends JButton{
-	MainMediator guiMdtr;
+	ViewMediator mdtr = ViewMediator.getGuiMediator();
 	
-	public ButtonDelete(String name, MainMediator mdtr){
+	public ButtonDelete(String name){
 		super(name);
-		this.guiMdtr = mdtr;
 		mdtr.registerButtonDelete(this);
 	}
 }

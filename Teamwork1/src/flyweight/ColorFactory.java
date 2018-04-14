@@ -28,16 +28,13 @@ public class ColorFactory {
 	}
 
 	public Color createNewColor(String color) {
-		ColorStrategy colorStrategy = new BlackColorStrategy();
+		ColorStrategy colorStrategy;
 		switch (color.toLowerCase()) {
 			case "black":
 				colorStrategy = new BlackColorStrategy();
 				break;
 			case "mikugreen":
 				colorStrategy = new MikuGreenColorStrategy();
-				break;
-			case "orange":
-				colorStrategy = new OrangeColorStrategy();
 				break;
 			case "yellow":
 				colorStrategy = new YellowColorStrategy();
@@ -50,6 +47,9 @@ public class ColorFactory {
 				break;
 			case "blue":
 				colorStrategy = new BlueColorStrategy();
+				break;
+			case "orange":
+				colorStrategy = new OrangeColorStrategy();
 				break;
 			default:
 				colorStrategy = new BlackColorStrategy();

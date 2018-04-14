@@ -2,13 +2,12 @@ package view;
 
 import javax.swing.JButton;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class ButtonSelect extends JButton{
-	MainMediator guiMdtr;
-	public ButtonSelect(String name, MainMediator mdtr){
+	ViewMediator mdtr = ViewMediator.getGuiMediator();
+	public ButtonSelect(String name){
 		super(name);
-		this.guiMdtr = mdtr;
 		mdtr.registerButtonSelect(this);
 	}
 }

@@ -3,12 +3,12 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class BtnStateListener implements ActionListener{
-	private MainMediator mainMtr;
+	private ViewMediator mainMtr;
 	
-	public BtnStateListener(MainMediator mainMtr) {
+	public BtnStateListener(ViewMediator mainMtr) {
 		this.mainMtr = mainMtr;
 	}
 

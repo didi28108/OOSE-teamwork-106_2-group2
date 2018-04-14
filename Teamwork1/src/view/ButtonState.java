@@ -2,13 +2,12 @@ package view;
 
 import javax.swing.JButton;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class ButtonState extends JButton{
-	MainMediator guiMdtr;
-	public ButtonState(String name, MainMediator mdtr){
+	ViewMediator mdtr = ViewMediator.getGuiMediator();
+	public ButtonState(String name){
 		super(name);
-		this.guiMdtr = mdtr;
 		mdtr.registerButtonState(this);
 	}
 }

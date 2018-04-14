@@ -7,16 +7,16 @@ public class ObserverTest {
 		StateSubject statesubject = new StateSubject();
 		TransitionSubject transitionsubject = new TransitionSubject();
 		
-		StateObserver s1 = new StateObserver();		
+		Observer s1 = new StateObserver();		
 		s1.setName("State_1");
-		StateObserver s2 = new StateObserver();
+		Observer s2 = new StateObserver();
 		s2.setName("State_2");
-		StateObserver s3 = new StateObserver();
+		Observer s3 = new StateObserver();
 		s3.setName("State_3");
 
-		TransitionObserver t1 = new TransitionObserver();
+		Observer t1 = new TransitionObserver();
 		t1.setName("Transition_1");
-		TransitionObserver t2 = new TransitionObserver();
+		Observer t2 = new TransitionObserver();
 		t2.setName("Transition_2");
 		
 		statesubject.attach(s1);

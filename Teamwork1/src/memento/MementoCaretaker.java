@@ -1,18 +1,18 @@
 package memento;
 
-import mediator.Mediator;
+import mediator.ModelMediator;
 import java.util.*;
 
 public class MementoCaretaker{
     private ArrayList<ObjectStatusMemento> historyStatus;
     private int nowIndex;
-    private Mediator mediator;
+    private ModelMediator mediator;
 
     public MementoCaretaker() {
         this.historyStatus = new ArrayList<ObjectStatusMemento>();
         this.nowIndex = -1;
 
-        this.mediator = Mediator.getInstance();
+        this.mediator = ModelMediator.getInstance();
     }
 
     public void addMemento(ObjectStatusMemento memento) {

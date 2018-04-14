@@ -1,12 +1,17 @@
 package statediagram;
 
-import mediator.Mediator;
 import memento.ObjectStatusMemento;
 import observer.Observer;
 import observer.Subject;
+import flyweight.ColorFactory;
+import mediator.ModelMediator;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
 import java.util.Date;
+
+import controller.ViewMediator;
 
 
 /**
@@ -22,24 +27,30 @@ public abstract class Component implements Observer {
     //x, y值還不確定需不需要浮點數, 先用int
     private int x;
     private int y;
-    protected Mediator mediator;
+    private Point point;
+    
+    protected ModelMediator mediator;
+
 
     public Component() {
         //以時間來當作ID
 		Date now = new Date();
         this.id = now.hashCode();
         this.group = 0; //default 0
-        this.mediator = Mediator.getInstance();
+        this.mediator = ModelMediator.getInstance();
     }
 
-    public abstract String getClassName();
 
+    public abstract String getClassName();
+    
     public int getId() {
         return this.id;
     }
     public void setId(int id) {
         this.id = id;
     }
+    
+
     public int getGroup() {
         return this.group;
     }
@@ -81,19 +92,21 @@ public abstract class Component implements Observer {
         this.y = y;
     }
 
+    public Point getPoint() {
+		return point;
+	}
+	
+	public void setPoint(Point p) {
+		this.point = p;
+	}
+    
     /**
      * 透過輸入指定顏色(ex: "red")來改變顏色
      * @param color =指定的顏色
      */
     public void changeColor(String color) {
-        this.color = mediator.getColorFromFactory(color);
+        this.setColor(mediator.getColorFromFactory(color));
     }
-
-    /**
-     * 訂閱特定Subject
-     */
-    public abstract void attachSubject();
-    
 
     /**
      * 將目前的狀態存成一個Memento
@@ -108,6 +121,7 @@ public abstract class Component implements Observer {
      */
     public void restore(ObjectStatusMemento previousMemento) {
         this.id = previousMemento.getId();
+
         this.group = previousMemento.getGroup();
         this.color = previousMemento.getColor();
         this.size = previousMemento.getSize();
@@ -138,7 +152,7 @@ public abstract class Component implements Observer {
     public Component getGroup(int group) {
         return null;
     }
-
+    
     /**
      * 訂閱subject發來update訊息
      * @param subject =訂閱的subject
@@ -146,4 +160,14 @@ public abstract class Component implements Observer {
     public void update(Subject subject) {
         this.changeColor(subject.getSubject());
     }
+
+    /**
+     * 訂閱特定Subject
+     */
+    public abstract void attachSubject();
+    
+    public abstract void draw(Graphics g);
+	public abstract boolean checkPoint(Point p);					//為了分辨是使用line還是State，這是State
+	public abstract boolean checkLinePoint(Point p);				//使用line
+	public abstract void changePoint(Point p);
 }

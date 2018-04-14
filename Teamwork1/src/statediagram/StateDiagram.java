@@ -4,15 +4,26 @@ import memento.ObjectStatusMemento;
 import memento.StateDiagramStatusMemento;
 import java.util.ArrayList;
 
+import controller.ViewMediator;
+
+import java.awt.Graphics;
+import java.awt.Point;
+import java.lang.Error;
 
 public class StateDiagram extends Component {
 	private ArrayList<Component> componentList;
-
+    private ViewMediator mdtr = ViewMediator.getGuiMediator();
+    
 	public StateDiagram() {
 		super();
 		this.componentList = new ArrayList<Component>();
+		mdtr.registerStateDiagrame(this);
 	}
-
+	
+	public ArrayList<Component> getComponentList() {
+		return componentList;
+	}
+	
 	@Override
 	public String getClassName() {
 		return "StateDiagram";
@@ -20,7 +31,6 @@ public class StateDiagram extends Component {
 
 	@Override
 	public void changeColor(String color) {
-		super.changeColor(color);
 		for (Component c: this.componentList) {
 			c.changeColor(color);
 		}
@@ -32,7 +42,7 @@ public class StateDiagram extends Component {
 			c.attachSubject();
 		}
 	}
-
+	
 	@Override
 	public ObjectStatusMemento save() {
 		ArrayList<ObjectStatusMemento> saveList = new ArrayList<ObjectStatusMemento>();
@@ -75,6 +85,7 @@ public class StateDiagram extends Component {
 			this.componentList.add(re);
 		}
 	}
+
 	
 	@Override
 	/**
@@ -110,13 +121,14 @@ public class StateDiagram extends Component {
 
 		return reC;
 	}
-
+	
 	@Override
 	/**
 	 * 回傳第一個找到的符合指定組別的Component
 	 * @param group =目標的組別代碼
 	 * @return 目標的組別 / 找不到時為null
 	 */
+
 	public Component getGroup(int group) {
 		for (Component c: this.componentList) {
 			if (c.getGroup() == group) {
@@ -125,5 +137,23 @@ public class StateDiagram extends Component {
 		}
 
 		return null;
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		for(Component c:componentList) {
+			c.draw(g);
+		}
+	}
+	
+	public boolean checkPoint(Point p) {return false;}
+	public boolean checkLinePoint(Point p) {return false;}
+	public Point getPoint() {return null;}
+
+	@Override
+	public void changePoint(Point p) {
+		// TODO Auto-generated method stub
+		
 	}
 }

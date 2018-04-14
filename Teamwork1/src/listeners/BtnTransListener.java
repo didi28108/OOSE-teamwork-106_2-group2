@@ -3,13 +3,13 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.MainMediator;
+import controller.ViewMediator;
 
 public class BtnTransListener implements ActionListener{
 
-	private MainMediator mainMtr;
+	private ViewMediator mainMtr;
 	
-	public BtnTransListener(MainMediator mainMtr) {
+	public BtnTransListener(ViewMediator mainMtr) {
 		this.mainMtr = mainMtr;
 	}
 	
