@@ -57,9 +57,11 @@ public class StateDiagram extends Component {
 	
 	@Override
 	/**
-     * 使用Memento物件來恢復狀態
-     * @param previousMemento =先前儲存的Memento
+     * StateDiagram can not restore with ObjectStatusMemento
+	 * please use restore(StateDiagramStatusMemento previousMemento)
+     * @param previousMemento =���摮�emento
      */
+
 	public void restore(ObjectStatusMemento previousMemento) {
 		this.setId(previousMemento.getId());
 		this.setGroup(previousMemento.getGroup());

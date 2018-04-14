@@ -1,6 +1,6 @@
 package observer;
 
-public class StateSubject extends Subject { //ï¿½ï¿½Úªï¿½ï¿½Ø¼Ð¹ï¿½{ï¿½ï¿½ï¿½Oï¿½Aï¿½Î¨Óºï¿½ï¿½@ï¿½Ø¼Ðªï¿½ï¿½Aï¿½Aï¿½ï¿½ï¿½Aï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡Aï¿½Kï¿½ï¿½ï¿½qï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½
+public class StateSubject extends Subject{  //¹ê»Úªº¥Ø¼Ð¹ê²{Ãþ§O¡A¥Î¨ÓºûÅ@¥Ø¼Ðª¬ºA¡A·íª¬ºA¤@¦³§ïÅÜ¡A«K¶·³qª¾¦U­ÓÆ[¹îªÌ
 	private String statesubject;
 
 	public String getSubject() {
