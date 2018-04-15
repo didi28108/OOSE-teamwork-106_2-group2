@@ -12,7 +12,7 @@ public class UndoListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		vMdtr.undoClick(e);
 	}
 
 }

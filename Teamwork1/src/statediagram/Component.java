@@ -37,7 +37,6 @@ public abstract class Component implements Observer {
         this.id = now.hashCode();
         this.group = 1; //default 0
         this.mediator = ModelMediator.getInstance();
-        this.changeColor("black");
     }
 
 

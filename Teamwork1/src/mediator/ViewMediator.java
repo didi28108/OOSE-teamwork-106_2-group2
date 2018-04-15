@@ -215,35 +215,16 @@ public class ViewMediator {
 	//draw State
 	public void addState(MouseEvent e) {
 		controller.addState(e);
-		/*
-		Component state = new State("", e.getPoint());
-		stateDiagram.add(state);
-		selectedItemID = state.getId();
-		showDialog();
-		drawCanvas.repaint();*/
 	}
 	
 	// draw transition
 	public void addTranstion(MouseEvent e, Component s1, Component s2) {
 		controller.addTranstion(e, s1, s2);
-		/*
-		Component trans = new Transition("", s1, s2);
-		stateDiagram.add(trans);
-		selectedItemID = trans.getId();
-		showDialog();
-		drawCanvas.repaint();
-		*/
 	}
 	
 	//Set Selected Component Text
 	public void setComponentText(String text) {
 		controller.setComponentText(text);
-		/*
-		Component comp = stateDiagram.getComponent(selectedItemID);
-		comp.setText(text);
-		setSelectedItemText();
-		drawCanvas.repaint();
-		*/
 	}
 
 	//Get Selected Component Text
@@ -271,12 +252,8 @@ public class ViewMediator {
 		return controller.getStateDiagram();
 	}
 	
-	/*
-	public void changeColor(String color) {
-		mMdtr.changeColor(color, getStateDiagram(), getSelectedItemID());
-		drawCanvas.repaint();
-	}
-	*/
+	
+	
 	
 	//**************Mouse Event***********//
 	public void mouseClicked(MouseEvent e) {
@@ -301,7 +278,7 @@ public class ViewMediator {
 	public void changePoint(MouseEvent e, Component comp) {
 		// TODO Auto-generated method stub
 		comp.changePoint(e.getPoint());
-		drawCanvas.repaint();
+		repaint();
 	}
 	
 	
@@ -331,7 +308,25 @@ public class ViewMediator {
 	public void repaint() {
 		// TODO Auto-generated method stub
 		drawCanvas.repaint();
+		controller.saveAction();
+	}
+
+	public void undoClick(ActionEvent e) {
+		// TODO Auto-generated method stub
+		controller.undoAction();
+	}
+
+	public void setComponentColor(Object selectedItem) {
+		// TODO Auto-generated method stub
+		controller.changeColor(selectedItem.toString());
 	}
 	
+	public void setStateSubject(String color) {
+		controller.setStateSubject(color);
+	}
+	public void setTransitionSubject(String color) {
+		controller.setTransitionSubject(color);
+	}
+
 	
 }

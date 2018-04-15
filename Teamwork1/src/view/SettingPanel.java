@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -15,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import listeners.ChangeColorListener;
+import mediator.ViewMediator;
 
 public class SettingPanel extends JPanel{
 
@@ -28,6 +33,8 @@ public class SettingPanel extends JPanel{
 	JPanel panelTransition = new JPanel();
 	JLabel lblTransitionColor = new JLabel("Color");
 	JComboBox comboTransitionColor = new JComboBox();
+	
+	ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	JLabel mouseXY = new JLabel("");
 	JPanel panel_1 = new JPanel();
@@ -48,8 +55,15 @@ public class SettingPanel extends JPanel{
 		this.add(panelState);
 		panelState.add(lblStateColor);
 		
+		comboStateColor.addItem("red");
+		comboStateColor.addItem("black");
 		panelState.add(comboStateColor);
 		comboStateColor.setEditable(true);
+		comboStateColor.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        vMdtr.setStateSubject(comboStateColor.getSelectedItem().toString());
+		    }
+		});
 		
 		panelState.add(lblStateSize);
 		

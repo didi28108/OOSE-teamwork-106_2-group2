@@ -64,4 +64,44 @@ public class Controller {
 		return mMdtr.getStateDiagram();
 	}
 	
+	public void addNewGroup(int group) {
+        StateDiagram newGroup = mMdtr.newStateDiagram();
+        newGroup.setGroup(group);
+        mMdtr.addComponent(newGroup);
+    }
+
+
+    public void saveAction() {
+        mMdtr.addMemento(mMdtr.saveStateDiagram());
+    }
+
+    public void detachAllSubject() {
+        mMdtr.detachAllStateSubject();
+        mMdtr.detachAllTransitionSubject();
+    }
+    public void undoAction() {
+        this.detachAllSubject();
+        mMdtr.restoreStateDiagram(mMdtr.undo());
+        vMdtr.repaint();
+    }
+    public void redoAction() {
+        this.detachAllSubject();
+        mMdtr.restoreStateDiagram(mMdtr.redo());
+    }
+
+	public void changeColor(String color) {
+		// TODO Auto-generated method stub
+		int id = vMdtr.getSelectedItemID();
+		mMdtr.changeColor(color, id);
+
+		System.out.println(color + "   " + id);
+	}
+
+	public void setStateSubject(String color) {
+		mMdtr.setStateSubject(color);
+		vMdtr.repaint();
+	}
+	public void setTransitionSubject(String color) {
+		mMdtr.setTransitionSubject(color);
+	}
 }

@@ -3,33 +3,57 @@ package flyweight;
 import java.awt.Color;
 import java.util.HashMap;
 
+import mediator.ModelMediator;
 import strategy.*;
 
 // Color Strategy is flyweight
 public class ColorFactory {
+	private static ColorFactory instance = null;
 	private HashMap<String, Color> ColorList = new HashMap<>();
 	private Color result = null;
 
-	//	private Mediator mediator = new Mediator();
-	//	
-	//	public ColorFactory(Mediator mediator) {
-	//		this.mediator = mediator;
-	//	}
+	private ModelMediator mMdtr = ModelMediator.getInstance();
+	
+	private ArrayList<String> colorStringList = new ArrayList<String>();
+
+	public ColorFactory() {
+		this.colorStringList.add("Black");
+		this.colorStringList.add("MikuGreen");
+		this.colorStringList.add("Yellow");
+		this.colorStringList.add("Pink");
+		this.colorStringList.add("Red");
+		this.colorStringList.add("Blue");
+		this.colorStringList.add("Orange");
+	}
+
+	public ArrayList<String> getColorStringList() {
+		return this.colorStringList;
+	}
+	
+	public static ColorFactory getInstance() {
+		if(instance == null) {
+			instance = new ColorFactory();
+		}
+		
+		return instance;
+	}
 
 	public Color getColor(String color) {
+		result = null;
 		result = ColorList.get(color);
 
 		if (result == null) {
+			System.out.println( "asdasd");
 			result = createNewColor(color);
 			ColorList.put(color, result);
 		}
-
+		System.out.println(result.toString());
 		return result;
 	}
 
 	public Color createNewColor(String color) {
-		ColorStrategy colorStrategy;
-		switch (color.toLowerCase()) {
+		ColorStrategy colorStrategy = null;
+		switch (color.toLowerCase().trim()) {
 			case "black":
 				colorStrategy = new BlackColorStrategy();
 				break;
