@@ -47,20 +47,18 @@ public class State extends Component implements Serializable{
 		double textWidth = fm.getStringBounds(getText(), g).getWidth();
 		
 		((Graphics2D)g).setStroke(new BasicStroke(line));
-		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,		//¨Ï¥Î¨¾¿÷¾¦§ïµ½Åã¥Ü½è¶q
+		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,		//ï¿½Ï¥Î¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ïµ½ï¿½ï¿½Ü½ï¿½q
                 RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g.drawOval(b.x, b.y, b.width, b.height);		//µe¶ê
+		g.drawOval(b.x, b.y, b.width, b.height);		//ï¿½eï¿½ï¿½
 		 
-		g.drawString(getText(), (int)(b.getCenterX()-textWidth/2), (int)(b.getCenterY() + fm.getMaxAscent() /2));//µe¤å¦ron middle
+		g.drawString(getText(), (int)(b.getCenterX()-textWidth/2), (int)(b.getCenterY() + fm.getMaxAscent() /2));//ï¿½eï¿½ï¿½ron middle
 		
-		g.setColor(new Color(0,0,0,0));								//¤T­ì¦â©M³z©ú«×
+		g.setColor(new Color(0,0,0,0));								//ï¿½Tï¿½ï¿½ï¿½Mï¿½zï¿½ï¿½ï¿½ï¿½
 		 
-        g.drawRect(b.x, b.y, b.width, b.height);					//µe¿ï¨ú½d³ò¡A¥¿¤è§Î
+        g.drawRect(b.x, b.y, b.width, b.height);					//ï¿½eï¿½ï¿½ï¿½ï¿½dï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½
         
 
-
-        
 	}
 	
 	public void setBoundary() {
@@ -70,7 +68,7 @@ public class State extends Component implements Serializable{
 	
 	
 	
-	public boolean checkPoint(Point p) {		//½T»{·Æ¹«ÂIÀ»³B¬O§_¦b¹Ï¤ù½d³ò¤º
+	public boolean checkPoint(Point p) {		//ï¿½Tï¿½{ï¿½Æ¹ï¿½ï¿½Iï¿½ï¿½ï¿½Bï¿½Oï¿½_ï¿½bï¿½Ï¤ï¿½ï¿½dï¿½ï¿½
 		return this.b.contains(p);
 	}
 	

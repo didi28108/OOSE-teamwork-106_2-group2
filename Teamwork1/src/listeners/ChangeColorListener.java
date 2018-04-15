@@ -3,16 +3,16 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
-public class MenuUndoListener implements ActionListener{
-	
-	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+public class ChangeColorListener implements ActionListener{
+
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		vMdtr.changeColor(color);
 	}
 
 }

@@ -56,7 +56,6 @@ public class SettingPanel extends JPanel{
 		panelState.add(guiStateSize);
 		guiStateSize.setColumns(10);
 		
-		
 		panelTransition.setBorder(new TitledBorder(null, "Transition", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		this.add(panelTransition);
 		

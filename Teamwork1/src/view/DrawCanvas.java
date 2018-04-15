@@ -8,23 +8,25 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import controller.ViewMediator;
 import listeners.MousePositionsListener;
 import listeners.MyMouseListener;
+import mediator.ModelMediator;
+import mediator.ViewMediator;
 import statediagram.Component;
 import statediagram.State;
 import statediagram.StateDiagram;
 import statediagram.Transition;
 
 public class DrawCanvas extends JPanel{
-	ViewMediator mdtr = ViewMediator.getGuiMediator();
+	ViewMediator vMdtr = ViewMediator.getInstance();
+	ModelMediator mMdtr = ModelMediator.getInstance();
 	private Component components;
 	private float radius = 10;
 	
 	public DrawCanvas() {
-		components = new StateDiagram();
+		components = mMdtr.getStateDiagram();
 		this.setBackground(Color.white);
-		mdtr.registerDrawCanvas(this);
+		vMdtr.registerDrawCanvas(this);
 		
 
 		this.addMouseMotionListener(new MousePositionsListener());

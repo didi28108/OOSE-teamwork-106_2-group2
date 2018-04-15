@@ -2,7 +2,7 @@ package state;
 
 import java.awt.event.MouseEvent;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 import memento.MementoCaretaker;
 import statediagram.Component;
 import statediagram.StateDiagram;
@@ -10,7 +10,7 @@ import statediagram.StateDiagram;
 public class ChosenSelect implements MouseState{
 	//singleton
 	private static ChosenSelect instance = null;
-	private boolean check = false;		//¬°¤F§P§O¨Ï¥Î­þ­Ó¥\¯à¡AÁ×§K¦P®ÉÄ²µo
+	private boolean check = false;		//ï¿½ï¿½ï¿½Fï¿½Pï¿½Oï¿½Ï¥Î­ï¿½ï¿½Ó¥\ï¿½ï¿½Aï¿½×§Kï¿½Pï¿½ï¿½Ä²ï¿½o
 	private Component deCheck = null;
 	private String text = "Select";
 			
@@ -37,7 +37,7 @@ public class ChosenSelect implements MouseState{
 			if(de.checkPoint(e.getPoint()) || de.checkLinePoint(e.getPoint())) {
 				if(deCheck == null) {
 					deCheck = de;
-					System.out.println("Pressed item¡G " + deCheck.getClassName() + deCheck.getId());
+					System.out.println("Pressed itemï¿½G " + deCheck.getClassName() + deCheck.getId());
 				}
 				vMdtr.setSelectedItemID(de.getId());
 			}
@@ -61,7 +61,7 @@ public class ChosenSelect implements MouseState{
 		for(Component de : sd.getComponentList()) {
 			if(!check) {
 				if(de.checkPoint(e.getPoint())){
-					check = true; //¥u§PÂ_²Ä¤@¦¸©ì©Ô¦ì¸m¡A±µ¤U¨Ó¥u­n¤£©ñ¶}·Æ¹«³£¥i¥H·Æ°Êª«¥ó¡A¶¶ºZ«Ü¦h
+					check = true; //ï¿½uï¿½Pï¿½_ï¿½Ä¤@ï¿½ï¿½ï¿½ï¿½Ô¦ï¿½mï¿½Aï¿½ï¿½ï¿½Uï¿½Ó¥uï¿½nï¿½ï¿½ï¿½ï¿½}ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½iï¿½Hï¿½Æ°Êªï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Zï¿½Ü¦h
 				}
 			}
 			if(deCheck == de) {

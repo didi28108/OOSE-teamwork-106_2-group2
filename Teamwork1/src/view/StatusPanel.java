@@ -7,20 +7,20 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 public class StatusPanel extends JPanel{
 	private JLabel posText = new JLabel("Position: ");
 	private JLabel coordX = new JLabel("0", JLabel.RIGHT);
 	private JLabel coordY = new JLabel("0", JLabel.RIGHT);
-	private JLabel wall = new JLabel("   ||   "); //∞œπj•Œ
+	private JLabel wall = new JLabel("   ||   "); //ÂçÄÈöîÁî®
 	private JLabel itemText = new JLabel("Selected Item: ");
 	private JLabel selectedItem = new JLabel("None", JLabel.LEFT);
-	private JLabel wall2 = new JLabel("   ||   "); //∞œπj•Œ
+	private JLabel wall2 = new JLabel("   ||   "); //ÂçÄÈöîÁî®
 	private JLabel stateText = new JLabel("Mouse State: ");
 	private JLabel selectedState = new JLabel("Select", JLabel.LEFT);
 	
-	private ViewMediator mdtr = ViewMediator.getGuiMediator();
+	private ViewMediator mdtr = ViewMediator.getInstance();
 
 	public StatusPanel() {
 		this.setLayout(new FlowLayout());
@@ -32,6 +32,7 @@ public class StatusPanel extends JPanel{
 		this.add(selectedItem);
 		this.add(wall2);
 		this.add(stateText);
+		selectedState.setForeground(Color.red);
 		this.add(selectedState);
 		this.setBackground(Color.LIGHT_GRAY);
 		mdtr.registerStatusPanel(this);

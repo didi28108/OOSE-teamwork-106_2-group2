@@ -1,10 +1,11 @@
-package controller;
+package mediator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JMenuItem;
 
+import controller.Controller;
 import state.ChosenSelect;
 import state.ChosenState;
 import state.ChosenTransition;
@@ -27,12 +28,17 @@ import view.StatusPanel;
 public class ViewMediator {
 
 	//Singleton with Eager initialization 
-	private static ViewMediator mdtr = new ViewMediator();
+	private static ViewMediator vMdtr = new ViewMediator();
+	private Controller controller;
 	
 	private ViewMediator() {}
 	
-	public static ViewMediator getGuiMediator() {
-		return mdtr;
+	public static ViewMediator getInstance() {
+		return vMdtr;
+	}
+	
+	public void setController(Controller ctrl) {
+		this.controller = ctrl;
 	}
 	
 	//Declare
@@ -56,8 +62,8 @@ public class ViewMediator {
 	private JMenuItem menuUndo;
 	private JMenuItem menuRedo;
 
-	private Component stateDiagram;
 	private int selectedItemID = -1;
+	
 	
 	//**************Register****************//
 	public void registerButtonState(ButtonState bState) {
@@ -92,10 +98,6 @@ public class ViewMediator {
 	public void registerStatusPanel(StatusPanel sp) {
 		// TODO Auto-generated method stub
 		this.statusPanel = sp;
-	}
-	
-	public void registerStateDiagrame(StateDiagram sd) {
-		this.stateDiagram = sd;
 	}
 
 	public void registerEditStateDialog(EditDialog editStateDialog) {
@@ -198,8 +200,7 @@ public class ViewMediator {
 	public void setSelectedItemText() {
 		String Text = "None";
 		if(selectedItemID != -1) {
-			Component component = stateDiagram.getComponent(selectedItemID);
-			Text = component.getText();
+			Text = this.getSelectedItemText();
 		}
 		statusPanel.setSelectedItem(Text);
 	}
@@ -211,42 +212,43 @@ public class ViewMediator {
 	
 	//*********************Diagram*********************//
 	
-	//return State Diagram (Composite)
-	public StateDiagram getStateDiagram() {
-		// TODO Auto-generated method stub
-		return (StateDiagram)this.stateDiagram;
-	}
-	
 	//draw State
 	public void addState(MouseEvent e) {
+		controller.addState(e);
+		/*
 		Component state = new State("", e.getPoint());
 		stateDiagram.add(state);
 		selectedItemID = state.getId();
 		showDialog();
-		drawCanvas.repaint();
+		drawCanvas.repaint();*/
 	}
 	
 	// draw transition
 	public void addTranstion(MouseEvent e, Component s1, Component s2) {
+		controller.addTranstion(e, s1, s2);
+		/*
 		Component trans = new Transition("", s1, s2);
 		stateDiagram.add(trans);
 		selectedItemID = trans.getId();
 		showDialog();
 		drawCanvas.repaint();
+		*/
 	}
 	
 	//Set Selected Component Text
 	public void setComponentText(String text) {
+		controller.setComponentText(text);
+		/*
 		Component comp = stateDiagram.getComponent(selectedItemID);
 		comp.setText(text);
 		setSelectedItemText();
 		drawCanvas.repaint();
+		*/
 	}
 
 	//Get Selected Component Text
 	public String getSelectedItemText() {
-		Component comp = stateDiagram.getComponent(selectedItemID);
-		return comp.getText();
+		return controller.getSelectedItemText();
 	}
 
 	//record selected(clicked) component ID
@@ -262,13 +264,19 @@ public class ViewMediator {
 
 	//remove component from state diagram by ID
 	public void removeComponent() {
-		if(selectedItemID != -1) {
-			stateDiagram.remove(selectedItemID);
-			System.out.println("deleted item" + selectedItemID);
-			this.setSelectedItemID(-1);
-		}
+		controller.removeComponent();
+	}
+	
+	public StateDiagram getStateDiagram() {
+		return controller.getStateDiagram();
+	}
+	
+	/*
+	public void changeColor(String color) {
+		mMdtr.changeColor(color, getStateDiagram(), getSelectedItemID());
 		drawCanvas.repaint();
 	}
+	*/
 	
 	//**************Mouse Event***********//
 	public void mouseClicked(MouseEvent e) {
@@ -310,6 +318,20 @@ public class ViewMediator {
 		mainFrame.dispose();
 	}
 
+	//***************BUTTON****************//
+	public void setDeleteUnable() {
+		this.buttonDelete.setEnabled(false);
+	}
+	
+	public void setDeleteAble() {
+		this.buttonDelete.setEnabled(true);
+	}
 
-
+	//*********Draw Canvas****************//
+	public void repaint() {
+		// TODO Auto-generated method stub
+		drawCanvas.repaint();
+	}
+	
+	
 }

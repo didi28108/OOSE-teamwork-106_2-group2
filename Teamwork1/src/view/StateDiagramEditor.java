@@ -28,13 +28,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 import net.miginfocom.swing.MigLayout;
 import java.awt.SystemColor;
 
 public class StateDiagramEditor extends JFrame{
 	
-	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	//private GridBagLayout gbl = new GridBagLayout();
     

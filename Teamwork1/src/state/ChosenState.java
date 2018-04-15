@@ -2,7 +2,7 @@ package state;
 
 import java.awt.event.MouseEvent;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 import memento.MementoCaretaker;
 import statediagram.Component;
 import statediagram.State;

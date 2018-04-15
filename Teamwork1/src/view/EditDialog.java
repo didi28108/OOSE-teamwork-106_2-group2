@@ -7,7 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -38,7 +38,7 @@ public class EditDialog extends JDialog implements ActionListener{
 	private JButton okButton;
 	private JButton cancelButton;
 	
-	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 
 	/**
 	 * Create the dialog.
@@ -82,7 +82,7 @@ public class EditDialog extends JDialog implements ActionListener{
 		contentPanel.add(lblColor);
 		
 		cbColor = new JComboBox();
-		cbColor.setEditable(true);
+		cbColor.addItem("red");
 		cbColor.setBounds(116, 77, 219, 21);
 		contentPanel.add(cbColor);
 		

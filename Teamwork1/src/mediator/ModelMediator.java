@@ -1,20 +1,20 @@
 package mediator;
 
-import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 
+import controller.Controller;
 import flyweight.ColorFactory;
 import observer.Observer;
 import statediagram.*;
 import memento.*;
 import observer.StateSubject;
 import observer.TransitionSubject;
-import view.StateDiagramEditor;
-
-//I think this mediator is over
 
 public class ModelMediator {
-	private static final ModelMediator instance = new ModelMediator();
+	private static ModelMediator instance = new ModelMediator();
+	private Controller controller;
 	private ModelMediator() {
 		this.stateDiagram = new StateDiagram();
 		this.stateDiagram.setGroup(0);
@@ -23,8 +23,11 @@ public class ModelMediator {
 	public static ModelMediator getInstance() {
 		return instance;
 	}
+	
+	public void setController(Controller ctrl) {
+		this.controller = ctrl;
+	}
 
-	private StateDiagramEditor gui = new StateDiagramEditor();
 	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
 	private StateDiagram stateDiagram;
 	private StateSubject stateSubject = new StateSubject();
@@ -39,6 +42,7 @@ public class ModelMediator {
 
 	/****************************************/
 	
+    
 	/**
 	 * 創建新的 StateDiagram
 	 * @return new StateDiagram()
@@ -70,17 +74,19 @@ public class ModelMediator {
 		return this.stateDiagram.getGroup(group);
 	}
 
-	public StateDiagram getStateDiagram() {
+    public StateDiagram getStateDiagram() {
 		return this.stateDiagram;
 	}
+	
 	public void setStateDiagram(StateDiagram stateDiagram) {
 		this.stateDiagram = stateDiagram;
 	}
 
+	
 	public void addComponent(Component newComponent) {
 		this.stateDiagram.add(newComponent);
 	}
-
+	
 	public ObjectStatusMemento saveStateDiagram() {
 		return this.stateDiagram.save();
 	}
@@ -142,5 +148,43 @@ public class ModelMediator {
 	}
 	public void detachAllTransitionSubject() {
 		this.transitionSubject.detachAll();
+	}
+	
+	public void changeColor(String color, StateDiagram sd, int id) {
+		// TODO Auto-generated method stub
+		Component comp = sd.getComponent(id);
+		comp.changeColor(color);
+	}
+	
+	/*******State Diagram*******/
+	public int addState(Point p) {
+		Component state = new State("", p);
+		stateDiagram.add(state);
+		return state.getId();
+	}
+	
+	// draw transition
+	public int addTranstion(Point p, Component s1, Component s2) {
+		Component trans = new Transition("", s1, s2);
+		stateDiagram.add(trans);
+		return trans.getId();
+	}
+	
+	//Set Selected Component Text
+	public void setComponentText(String text, int selectedItemID) {
+		Component comp = stateDiagram.getComponent(selectedItemID);
+		comp.setText(text);
+	}
+	
+	//Get Selected Component Text
+	public String getSelectedItemText(int selectedItemID) {
+		Component comp = stateDiagram.getComponent(selectedItemID);
+		return comp.getText();
+	}
+	
+	//remove component from state diagram by ID
+	public void removeComponent(int selectedItemID) {
+		stateDiagram.remove(selectedItemID);
+		System.out.println("deleted item" + selectedItemID);
 	}
 }

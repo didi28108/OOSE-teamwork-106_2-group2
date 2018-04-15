@@ -5,13 +5,12 @@ import observer.Observer;
 import observer.Subject;
 import flyweight.ColorFactory;
 import mediator.ModelMediator;
+import mediator.ViewMediator;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Date;
-
-import controller.ViewMediator;
 
 
 /**

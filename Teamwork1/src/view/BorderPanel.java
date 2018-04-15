@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 public class BorderPanel extends JPanel{
 	

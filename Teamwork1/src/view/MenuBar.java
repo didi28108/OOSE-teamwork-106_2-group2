@@ -4,17 +4,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import controller.ViewMediator;
-import listeners.MenuDeleteListener;
+import listeners.DeleteListener;
+import listeners.EditListener;
 import listeners.MenuExitListener;
-import listeners.MenuModifyListener;
 import listeners.MenuOpenListener;
-import listeners.MenuRedoListener;
+import listeners.RedoListener;
 import listeners.MenuSaveListener;
-import listeners.MenuUndoListener;
+import listeners.UndoListener;
+import mediator.ViewMediator;
 
 public class MenuBar extends JMenuBar{
-	ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	public MenuBar() {
 		setToolTipText("");
@@ -61,9 +61,9 @@ public class MenuBar extends JMenuBar{
 		menuItemOpen.addActionListener(new MenuOpenListener());
 		menuItemSave.addActionListener(new MenuSaveListener());
 		menuItemExit.addActionListener(new MenuExitListener());
-		menuItemDelete.addActionListener(new MenuDeleteListener());
-		menuItemModify.addActionListener(new MenuModifyListener());
-		menuItemUndo.addActionListener(new MenuUndoListener());
-		menuItemRedo.addActionListener(new MenuRedoListener());
+		menuItemDelete.addActionListener(new DeleteListener());
+		menuItemModify.addActionListener(new EditListener());
+		menuItemUndo.addActionListener(new UndoListener());
+		menuItemRedo.addActionListener(new RedoListener());
 	}
 }

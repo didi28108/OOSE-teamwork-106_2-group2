@@ -3,14 +3,14 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
-public class BtnEditListener implements ActionListener{
+public class EditListener implements ActionListener{
 
-	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 
 	
-	public BtnEditListener() {
+	public EditListener() {
 		// TODO Auto-generated constructor stub
 	}
 

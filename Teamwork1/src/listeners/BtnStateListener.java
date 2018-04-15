@@ -3,10 +3,10 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 public class BtnStateListener implements ActionListener{
-	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 
 	public BtnStateListener() {
 		// TODO Auto-generated constructor stub

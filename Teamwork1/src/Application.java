@@ -2,6 +2,7 @@ import java.awt.Dimension;
 
 import javax.swing.SwingUtilities;
 
+import controller.Controller;
 import view.StateDiagramEditor;
 
 public class Application {
@@ -22,7 +23,9 @@ public class Application {
         StateDiagramEditor view = new StateDiagramEditor();
         view.pack();
         view.setLocationRelativeTo(null);
+        Controller ctrl = new Controller();
         //view.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         view.setVisible(true);
     }
 }

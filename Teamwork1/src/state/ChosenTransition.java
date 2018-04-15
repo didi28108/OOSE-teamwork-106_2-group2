@@ -2,7 +2,7 @@ package state;
 
 import java.awt.event.MouseEvent;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 import memento.MementoCaretaker;
 import statediagram.Component;
 import statediagram.StateDiagram;
@@ -11,8 +11,8 @@ public class ChosenTransition implements MouseState{
 	//singleton
 	private static ChosenTransition instance = null;
 	private boolean PointCheck = false;
-	private Component s1;		//°_©l®y¼Ð(s¥NªíStateDiagram¤~¦³¥Î)
-	private Component s2;		//µ²§ô®y¼Ð
+	private Component s1;		//ï¿½_ï¿½lï¿½yï¿½ï¿½(sï¿½Nï¿½ï¿½StateDiagramï¿½~ï¿½ï¿½ï¿½ï¿½)
+	private Component s2;		//ï¿½ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½
 	private String text = "Transition";
 	
 	public ChosenTransition() {}

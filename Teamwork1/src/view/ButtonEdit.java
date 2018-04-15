@@ -2,10 +2,10 @@ package view;
 
 import javax.swing.JButton;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 public class ButtonEdit extends JButton{
-	ViewMediator mdtr = ViewMediator.getGuiMediator();
+	ViewMediator mdtr = ViewMediator.getInstance();
 	public ButtonEdit(String name){
 		super(name);
 		mdtr.registerButtonEdit(this);

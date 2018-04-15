@@ -4,7 +4,7 @@ import memento.ObjectStatusMemento;
 import memento.StateDiagramStatusMemento;
 import java.util.ArrayList;
 
-import controller.ViewMediator;
+import mediator.ViewMediator;
 
 import java.awt.Graphics;
 import java.awt.Point;
@@ -12,12 +12,11 @@ import java.lang.Error;
 
 public class StateDiagram extends Component {
 	private ArrayList<Component> componentList;
-    private ViewMediator mdtr = ViewMediator.getGuiMediator();
+    private ViewMediator mdtr = ViewMediator.getInstance();
     
 	public StateDiagram() {
 		super();
 		this.componentList = new ArrayList<Component>();
-		mdtr.registerStateDiagrame(this);
 	}
 	
 	public ArrayList<Component> getComponentList() {

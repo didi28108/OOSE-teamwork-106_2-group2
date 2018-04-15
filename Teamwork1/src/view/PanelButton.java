@@ -12,8 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import listeners.BtnDeleteListener;
-import listeners.BtnEditListener;
+import listeners.DeleteListener;
+import listeners.EditListener;
 import listeners.BtnSelectListener;
 import listeners.BtnStateListener;
 import listeners.BtnTransListener;
@@ -45,7 +45,7 @@ public class PanelButton extends JPanel{
 		btnState.addActionListener(new BtnStateListener());
 		btnTransition.addActionListener(new BtnTransListener());
 		btnSelect.addActionListener(new BtnSelectListener());
-		btnDelete.addActionListener(new BtnDeleteListener());
-		btnEdit.addActionListener(new BtnEditListener());
+		btnDelete.addActionListener(new DeleteListener());
+		btnEdit.addActionListener(new EditListener());
 	}
 }
