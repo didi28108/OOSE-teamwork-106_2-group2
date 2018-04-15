@@ -1,6 +1,7 @@
 package flyweight;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import strategy.*;
@@ -9,12 +10,17 @@ import strategy.*;
 public class ColorFactory {
 	private HashMap<String, Color> ColorList = new HashMap<>();
 	private Color result = null;
+	private ArrayList<String> colorStringList = new ArrayList<String>();
 
-	//	private Mediator mediator = new Mediator();
-	//	
-	//	public ColorFactory(Mediator mediator) {
-	//		this.mediator = mediator;
-	//	}
+	public ColorFactory() {
+		this.colorStringList.add("Black");
+		this.colorStringList.add("MikuGreen");
+		this.colorStringList.add("Yellow");
+		this.colorStringList.add("Pink");
+		this.colorStringList.add("Red");
+		this.colorStringList.add("Blue");
+		this.colorStringList.add("Orange");
+	}
 
 	public Color getColor(String color) {
 		result = ColorList.get(color);

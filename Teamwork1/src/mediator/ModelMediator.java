@@ -32,7 +32,7 @@ public class ModelMediator {
 	private StateDiagram stateDiagram;
 	private StateSubject stateSubject = new StateSubject();
 	private TransitionSubject transitionSubject = new TransitionSubject();
-	private ColorFactory colorFactory;
+	private ColorFactory colorFactory = new ColorFactory();
 
 	/****************************************/
 	
