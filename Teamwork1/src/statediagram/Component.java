@@ -36,7 +36,7 @@ public abstract class Component implements Observer {
         //以時間來當作ID
 		Date now = new Date();
         this.id = now.hashCode();
-        this.group = 0; //default 0
+        this.group = 1; //default 0
         this.mediator = ModelMediator.getInstance();
     }
 

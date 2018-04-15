@@ -16,7 +16,9 @@ import view.StateDiagramEditor;
 public class ModelMediator {
 	private static final ModelMediator instance = new ModelMediator();
 	private ModelMediator() {
-
+		this.stateDiagram = new StateDiagram();
+		this.stateDiagram.setGroup(0);
+		this.addComponent(this.newStateDiagram());
 	}
 	public static ModelMediator getInstance() {
 		return instance;
@@ -24,7 +26,7 @@ public class ModelMediator {
 
 	private StateDiagramEditor gui = new StateDiagramEditor();
 	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
-	private StateDiagram stateDiagram = new StateDiagram();
+	private StateDiagram stateDiagram;
 	private StateSubject stateSubject = new StateSubject();
 	private TransitionSubject transitionSubject = new TransitionSubject();
 	private ColorFactory colorFactory;
@@ -68,8 +70,15 @@ public class ModelMediator {
 		return this.stateDiagram.getGroup(group);
 	}
 
+	public StateDiagram getStateDiagram() {
+		return this.stateDiagram;
+	}
 	public void setStateDiagram(StateDiagram stateDiagram) {
 		this.stateDiagram = stateDiagram;
+	}
+
+	public void addComponent(Component newComponent) {
+		this.stateDiagram.add(newComponent);
 	}
 
 	public ObjectStatusMemento saveStateDiagram() {
