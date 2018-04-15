@@ -111,15 +111,19 @@ public class StateDiagram extends Component {
 	 * @param id =要尋找的component的id
 	 */
 	public Component getComponent(int id) {
-		Component reC = null;
 		for (Component c: this.componentList) {
 			if (c.getId() == id) {
-				reC = c;
-				break;
+				return c;
+			}
+			else {
+				int cc = c.getComponent(id);
+				if (cc != null) {
+					return cc;
+				}
 			}
 		}
 
-		return reC;
+		return null;
 	}
 	
 	@Override
