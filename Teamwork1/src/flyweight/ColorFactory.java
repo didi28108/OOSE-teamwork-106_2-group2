@@ -22,6 +22,10 @@ public class ColorFactory {
 		this.colorStringList.add("Orange");
 	}
 
+	public ArrayList<String> getColorStringList() {
+		return this.colorStringList;
+	}
+
 	public Color getColor(String color) {
 		result = ColorList.get(color);
 

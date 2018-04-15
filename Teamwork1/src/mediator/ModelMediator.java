@@ -3,6 +3,7 @@ package mediator;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import controller.Controller;
 import flyweight.ColorFactory;
@@ -38,6 +39,10 @@ public class ModelMediator {
 	
     public Color getColorFromFactory(String color) {
         return this.colorFactory.getColor(color);
+	}
+
+	public ArrayList<String> getColorStringList() {
+		return this.colorFactory.getColorStringList();
 	}
 
 	/****************************************/
