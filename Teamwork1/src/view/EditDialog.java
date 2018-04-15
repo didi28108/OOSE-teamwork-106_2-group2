@@ -83,6 +83,8 @@ public class EditDialog extends JDialog implements ActionListener{
 		
 		cbColor = new JComboBox();
 		cbColor.addItem("red");
+		cbColor.addItem("black");
+		cbColor.setSelectedIndex(0);
 		cbColor.setBounds(116, 77, 219, 21);
 		contentPanel.add(cbColor);
 		
@@ -121,6 +123,7 @@ public class EditDialog extends JDialog implements ActionListener{
 			closeDialog();
 		}else if(cmd == "OK") {
 			vMdtr.setComponentText(textFieldName.getText());
+			vMdtr.setComponentColor(cbColor.getSelectedItem());
 			closeDialog();
 		}
 	}

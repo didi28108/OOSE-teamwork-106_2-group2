@@ -34,6 +34,14 @@ public class ModelMediator {
 		this.controller = ctrl;
 	}
 
+<<<<<<< HEAD
+=======
+	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
+	private StateDiagram stateDiagram;
+	private StateSubject stateSubject = new StateSubject();
+	private TransitionSubject transitionSubject = new TransitionSubject();
+	private ColorFactory colorFactory = ColorFactory.getInstance();
+>>>>>>> master
 
 	/****************************************/
 	
@@ -155,9 +163,16 @@ public class ModelMediator {
 		this.transitionSubject.detachAll();
 	}
 	
-	public void changeColor(String color, StateDiagram sd, int id) {
+	public void setStateSubject(String color) {
+		this.stateSubject.setSubject(color);
+	}
+	public void setTransitionSubject(String color) {
+		this.transitionSubject.setSubject(color);
+	}
+	
+	public void changeColor(String color, int id) {
 		// TODO Auto-generated method stub
-		Component comp = sd.getComponent(id);
+		Component comp = stateDiagram.getComponent(id);
 		comp.changeColor(color);
 	}
 	

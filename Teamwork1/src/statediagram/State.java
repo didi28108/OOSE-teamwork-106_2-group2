@@ -42,7 +42,7 @@ public class State extends Component implements Serializable{
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.black);
+		g.setColor(getColor());
 		FontMetrics fm = g.getFontMetrics();
 		double textWidth = fm.getStringBounds(getText(), g).getWidth();
 		

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class BlackColorStrategy implements ColorStrategy{
 
-	private int r = 240;
+	private int r = 0;
 	private int g = 40;
 	private int b = 40;
 	

@@ -35,7 +35,6 @@ public class StateDiagram extends Component {
 
 	@Override
 	public void changeColor(String color) {
-		super.changeColor(color);
 		for (Component c: this.componentList) {
 			c.changeColor(color);
 		}
@@ -62,9 +61,11 @@ public class StateDiagram extends Component {
 	
 	@Override
 	/**
-     * 使用Memento物件來恢復狀態
-     * @param previousMemento =先前儲存的Memento
+     * StateDiagram can not restore with ObjectStatusMemento
+	 * please use restore(StateDiagramStatusMemento previousMemento)
+     * @param previousMemento =���摮�emento
      */
+
 	public void restore(ObjectStatusMemento previousMemento) {
 		this.setId(previousMemento.getId());
 		this.setGroup(previousMemento.getGroup());
@@ -116,19 +117,15 @@ public class StateDiagram extends Component {
 	 * @param id =要尋找的component的id
 	 */
 	public Component getComponent(int id) {
+		Component reC = null;
 		for (Component c: this.componentList) {
 			if (c.getId() == id) {
-				return c;
-			}
-			else {
-				Component cc = c.getComponent(id);
-				if (cc != null) {
-					return cc;
-				}
+				reC = c;
+				break;
 			}
 		}
 
-		return null;
+		return reC;
 	}
 	
 	@Override
