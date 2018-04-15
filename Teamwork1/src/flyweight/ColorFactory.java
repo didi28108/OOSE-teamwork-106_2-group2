@@ -14,13 +14,8 @@ public class ColorFactory {
 	private Color result = null;
 	private ArrayList<String> colorStringList = new ArrayList<String>();
 
-<<<<<<< HEAD
-=======
 	private ModelMediator mMdtr = ModelMediator.getInstance();
-	
-	private ArrayList<String> colorStringList = new ArrayList<String>();
 
->>>>>>> master
 	public ColorFactory() {
 		this.colorStringList.add("Black");
 		this.colorStringList.add("MikuGreen");
@@ -34,8 +29,6 @@ public class ColorFactory {
 	public ArrayList<String> getColorStringList() {
 		return this.colorStringList;
 	}
-<<<<<<< HEAD
-=======
 	
 	public static ColorFactory getInstance() {
 		if(instance == null) {
@@ -44,7 +37,6 @@ public class ColorFactory {
 		
 		return instance;
 	}
->>>>>>> master
 
 	public Color getColor(String color) {
 		result = null;

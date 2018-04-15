@@ -18,7 +18,7 @@ public class ModelMediator {
 	private StateDiagram stateDiagram;
 	private StateSubject stateSubject = new StateSubject();
 	private TransitionSubject transitionSubject = new TransitionSubject();
-	private ColorFactory colorFactory = new ColorFactory();
+	private ColorFactory colorFactory = ColorFactory.getInstance();
 	private static final ModelMediator instance = new ModelMediator();
 	private Controller controller;
 	private ModelMediator() {
@@ -34,14 +34,6 @@ public class ModelMediator {
 		this.controller = ctrl;
 	}
 
-<<<<<<< HEAD
-=======
-	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
-	private StateDiagram stateDiagram;
-	private StateSubject stateSubject = new StateSubject();
-	private TransitionSubject transitionSubject = new TransitionSubject();
-	private ColorFactory colorFactory = ColorFactory.getInstance();
->>>>>>> master
 
 	/****************************************/
 	

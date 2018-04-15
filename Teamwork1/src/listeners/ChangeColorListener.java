@@ -12,10 +12,6 @@ public class ChangeColorListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-=======
-		vMdtr.changeColor();
->>>>>>> master
 	}
 
 }

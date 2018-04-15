@@ -1,7 +1,13 @@
+/Application$1.class
+/Application.class
+/controller/
 /facadeExample/
 /flyweight/
+/listeners/
 /mediator/
+/memento/
+/observer/
+/state/
 /statediagram/
 /strategy/
-/observer/
-/listeners/
+/view/
