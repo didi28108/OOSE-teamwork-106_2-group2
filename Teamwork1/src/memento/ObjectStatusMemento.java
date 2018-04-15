@@ -1,18 +1,24 @@
 package memento;
 
-import color.Color;
+import java.awt.Color;
 import java.util.*;
 
+
 public class ObjectStatusMemento{
+    private String className;
     private int id;
+    private int group;
     private Color color;
     private float size;
     private String text;
     private int x;
     private int y;
 
-    public ObjectStatusMemento(int id, Color color, float size, String text, int x, int y){
+    public ObjectStatusMemento(String className, int id, int group,
+        Color color, float size, String text, int x, int y) {
+        this.className = className;
         this.id = id;
+        this.group = group;
         this.color = color;
         this.size = size;
         this.text = text;
@@ -20,8 +26,16 @@ public class ObjectStatusMemento{
         this.y = y;
     }
 
+    public String getClassName() {
+        return this.className;
+    }
+
     public int getId(){
         return this.id;
+    }
+
+    public int getGroup() {
+        return this.group;
     }
 
     public Color getColor() {
@@ -42,5 +56,9 @@ public class ObjectStatusMemento{
 
     public int getY() {
         return this.y;
+    }
+
+    public ArrayList<ObjectStatusMemento> getComponentList() {
+        return null;
     }
 }

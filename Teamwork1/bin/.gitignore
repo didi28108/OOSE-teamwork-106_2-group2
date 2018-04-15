@@ -1,4 +1,6 @@
-/statediagram/
-/memento/
-/color/
+/view/
+/controller/
+/listeners/
 /mediator/
+/state/
+/statediagram/
