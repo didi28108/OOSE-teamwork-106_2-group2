@@ -16,7 +16,7 @@ public class MementoCaretaker{
     }
 
     public void addMemento(ObjectStatusMemento memento) {
-        //å°‡é€™å€‹å‹•ä½œå¾Œçš„Mementoæ¸…ç©º
+        //±N³o­Ó°Ê§@«áªºMemento²MªÅ
         for (int i = (this.historyStatus.size() - 1); i > this.nowIndex; i -= 1) {
             this.historyStatus.remove(i);
         }
@@ -38,8 +38,8 @@ public class MementoCaretaker{
         }
     }
     /**
-     * å›å‚³ä¸Šä¸€æ­¥çš„Memento, ä¸å­˜åœ¨æ™‚æœƒå›å‚³æœ€åˆçš„ (list[0])
-     * @return ä¸Šä¸€æ­¥çš„Memento
+     * ¦^¶Ç¤W¤@¨BªºMemento, ¤£¦s¦b®É·|¦^¶Ç³Ìªìªº (list[0])
+     * @return ¤W¤@¨BªºMemento
      */
     public ObjectStatusMemento undo() {
         if (this.canUndo()) {
@@ -59,8 +59,8 @@ public class MementoCaretaker{
         }
     }
     /**
-     * å›å‚³ä¸‹ä¸€æ­¥çš„Memento, ä¸å­˜åœ¨æ™‚æœƒå›å‚³ç¾åœ¨çš„ (list[size()-1])
-     * @return ä¸‹ä¸€æ­¥çš„Memento
+     * ¦^¶Ç¤U¤@¨BªºMemento, ¤£¦s¦b®É·|¦^¶Ç²{¦bªº (list[size()-1])
+     * @return ¤U¤@¨BªºMemento
      */
     public ObjectStatusMemento redo() {
         if (this.canRedo()) {

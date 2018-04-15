@@ -38,21 +38,21 @@ public class ModelMediator {
 	/****************************************/
 	
 	/**
-	 * å‰µå»ºæ–°çš„ StateDiagram
+	 * ³Ğ«Ø·sªº StateDiagram
 	 * @return new StateDiagram()
 	 */
 	public StateDiagram newStateDiagram() {
 		return new StateDiagram();
 	}
 	/**
-	 * å‰µå»ºæ–°çš„ State
+	 * ³Ğ«Ø·sªº State
 	 * @return new State()
 	 */
 	public State newState() {
 		return new State();
 	}
 	/**
-	 * å‰µå»ºæ–°çš„ Transition
+	 * ³Ğ«Ø·sªº Transition
 	 * @return new Transition()
 	 */
 	public Transition newTransition() {
@@ -60,7 +60,7 @@ public class ModelMediator {
 	}
 
 	/**
-	 * å–å¾—æŒ‡å®šçš„group
+	 * ¨ú±o«ü©wªºgroup
 	 * @param group =group's number
 	 * @return the group
 	 */
@@ -94,8 +94,8 @@ public class ModelMediator {
         return this.mementoCaretaker.canUndo();
     }
 	/**
-     * å›å‚³ä¸Šä¸€æ­¥çš„Memento, ä¸å­˜åœ¨æ™‚æœƒå›å‚³æœ€åˆçš„ (list[0])
-     * @return ä¸Šä¸€æ­¥çš„Memento
+     * ¦^¶Ç¤W¤@¨BªºMemento, ¤£¦s¦b®É·|¦^¶Ç³Ìªìªº (list[0])
+     * @return ¤W¤@¨BªºMemento
      */
 	public ObjectStatusMemento undo() {
 		return this.mementoCaretaker.undo();
@@ -106,8 +106,8 @@ public class ModelMediator {
         return this.mementoCaretaker.canRedo();
     }
 	/**
-     * å›å‚³ä¸‹ä¸€æ­¥çš„Memento, ä¸å­˜åœ¨æ™‚æœƒå›å‚³ç¾åœ¨çš„ (list[size()-1])
-     * @return ä¸‹ä¸€æ­¥çš„Memento
+     * ¦^¶Ç¤U¤@¨BªºMemento, ¤£¦s¦b®É·|¦^¶Ç²{¦bªº (list[size()-1])
+     * @return ¤U¤@¨BªºMemento
      */
     public ObjectStatusMemento redo() {
 		return this.mementoCaretaker.redo();
