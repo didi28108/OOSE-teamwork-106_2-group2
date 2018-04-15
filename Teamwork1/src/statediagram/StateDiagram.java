@@ -116,7 +116,7 @@ public class StateDiagram extends Component {
 				return c;
 			}
 			else {
-				int cc = c.getComponent(id);
+				Component cc = c.getComponent(id);
 				if (cc != null) {
 					return cc;
 				}

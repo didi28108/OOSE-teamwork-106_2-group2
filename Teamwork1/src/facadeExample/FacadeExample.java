@@ -43,7 +43,7 @@ public class FacadeExample {
      * @return new Transition
      */
     public Component addNewTransition() {
-        Component newTransition = modelMediator.Transition();
+        Component newTransition = modelMediator.newTransition();
         Component group1 = modelMediator.getGroup(1);
         group1.add(newTransition);
         
@@ -52,14 +52,14 @@ public class FacadeExample {
 
     /**
      * change group
-     * @param id =要更改的Component的id
-     * @param newGroupNumber =新的組別代號
+     * @param id =component's id which you want change group
+     * @param newGroupNumber =it's new group number
      */
     public void changeGroup(int id, int newGroupNumber) {
         Component c = this.getComponent(id);
         int oldGroupNumber = c.getGroup();
-        StateDiagram oldGroup = modelMediator.getGroup(oldGroup);
-        StateDiagram newGroup = modelMediator.getGroup(newGroupNumber);
+        Component oldGroup = modelMediator.getGroup(oldGroupNumber);
+        Component newGroup = modelMediator.getGroup(newGroupNumber);
         if (newGroup == null) {
             this.addNewGroup(newGroupNumber);
             newGroup = modelMediator.getGroup(newGroupNumber);
