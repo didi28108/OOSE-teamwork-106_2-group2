@@ -3,9 +3,8 @@ package statediagram;
 import memento.ObjectStatusMemento;
 import observer.Observer;
 import observer.Subject;
-import flyweight.ColorFactory;
+import strategy.ColorStrategy;
 import mediator.ModelMediator;
-import mediator.ViewMediator;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -37,6 +36,13 @@ public abstract class Component implements Observer {
         this.id = now.hashCode();
         this.group = 1; //default 0
         this.mediator = ModelMediator.getInstance();
+    }
+    public Component(Color color) {
+        //以時間來當作ID
+		Date now = new Date();
+        this.id = now.hashCode();
+        this.group = 1; //default 0
+        this.setColor(color);   
     }
 
 

@@ -1,6 +1,7 @@
 package flyweight;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import mediator.ModelMediator;
@@ -11,10 +12,10 @@ public class ColorFactory {
 	private static ColorFactory instance = null;
 	private HashMap<String, Color> ColorList = new HashMap<>();
 	private Color result = null;
+	private ArrayList<String> colorStringList = new ArrayList<String>();
 
 	private ModelMediator mMdtr = ModelMediator.getInstance();
 	
-	private ArrayList<String> colorStringList = new ArrayList<String>();
 
 	public ColorFactory() {
 		this.colorStringList.add("Black");
