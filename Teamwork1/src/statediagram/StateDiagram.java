@@ -151,7 +151,7 @@ public class StateDiagram extends Component {
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		for(Component c:componentList) {
+		for(Component c: this.componentList) {
 			c.draw(g);
 		}
 	}
