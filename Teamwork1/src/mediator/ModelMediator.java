@@ -14,12 +14,17 @@ import observer.StateSubject;
 import observer.TransitionSubject;
 
 public class ModelMediator {
-	private static ModelMediator instance = new ModelMediator();
+	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
+	private StateDiagram stateDiagram;
+	private StateSubject stateSubject = new StateSubject();
+	private TransitionSubject transitionSubject = new TransitionSubject();
+	private ColorFactory colorFactory = new ColorFactory();
+	private static final ModelMediator instance = new ModelMediator();
 	private Controller controller;
 	private ModelMediator() {
-		this.stateDiagram = new StateDiagram();
+		this.stateDiagram = new StateDiagram(this.getColorFromFactory("black"));
 		this.stateDiagram.setGroup(0);
-		this.addComponent(this.newStateDiagram());
+		this.addComponent(new StateDiagram(this.getColorFromFactory("black")));
 	}
 	public static ModelMediator getInstance() {
 		return instance;
@@ -29,11 +34,6 @@ public class ModelMediator {
 		this.controller = ctrl;
 	}
 
-	private MementoCaretaker mementoCaretaker = new MementoCaretaker();
-	private StateDiagram stateDiagram;
-	private StateSubject stateSubject = new StateSubject();
-	private TransitionSubject transitionSubject = new TransitionSubject();
-	private ColorFactory colorFactory = new ColorFactory();
 
 	/****************************************/
 	

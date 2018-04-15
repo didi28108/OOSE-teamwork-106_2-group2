@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import mediator.ViewMediator;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.lang.Error;
@@ -16,6 +17,10 @@ public class StateDiagram extends Component {
     
 	public StateDiagram() {
 		super();
+		this.componentList = new ArrayList<Component>();
+	}
+	public StateDiagram(Color color) {
+		super(color);
 		this.componentList = new ArrayList<Component>();
 	}
 	
