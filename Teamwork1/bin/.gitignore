@@ -1,10 +1,6 @@
-/facadeExample/
-/flyweight/
-/mediator/
-/statediagram/
-/strategy/
-/observer/
-/listeners/
-/controller/
-/memento/
 /view/
+/controller/
+/listeners/
+/mediator/
+/state/
+/statediagram/
