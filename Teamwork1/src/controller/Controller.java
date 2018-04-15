@@ -69,6 +69,7 @@ public class Controller {
 
     public void saveAction() {
         mMdtr.addMemento(mMdtr.saveStateDiagram());
+        System.out.println("saveAction()");
     }
 
     public void detachAllSubject() {
@@ -76,9 +77,9 @@ public class Controller {
         mMdtr.detachAllTransitionSubject();
     }
     public void undoAction() {
+        System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
-        vMdtr.repaint();
     }
     public void redoAction() {
         this.detachAllSubject();

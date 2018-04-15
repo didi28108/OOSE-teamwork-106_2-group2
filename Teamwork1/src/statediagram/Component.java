@@ -9,6 +9,7 @@ import mediator.ModelMediator;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -36,7 +37,7 @@ public abstract class Component implements Observer {
         this.id = now.hashCode();
         this.group = 1; //default 0
         this.mediator = ModelMediator.getInstance();
-        this.changeColor("black");
+        this.setColor(mediator.getColorFromFactory("black"));
     }
     public Component(Color color) {
         //以時間來當作ID
@@ -151,6 +152,9 @@ public abstract class Component implements Observer {
     public Component getComponent(int id) {
         return null;
     }
+    public ArrayList<Component> getComponentList() {
+		return null;
+	}
 
     /**
      * do nothing
