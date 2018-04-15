@@ -7,16 +7,13 @@ import controller.ViewMediator;
 
 public class BtnDeleteListener implements ActionListener{
 
-	private ViewMediator mainMtr;
+	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
 	
-	public BtnDeleteListener(ViewMediator mainMtr) {
-		this.mainMtr = mainMtr;
-	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		mainMtr.btnDeleteClick(e);
+		vMdtr.deleteClick(e);
 	}
 
 }

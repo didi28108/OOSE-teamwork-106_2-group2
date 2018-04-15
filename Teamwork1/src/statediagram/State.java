@@ -2,6 +2,7 @@ package statediagram;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -14,7 +15,6 @@ public class State extends Component implements Serializable{
 	private float line;
 	
 	public State() {
-		super();
 		setBoundary();
 	}
 	
@@ -24,7 +24,7 @@ public class State extends Component implements Serializable{
 		setPoint(p);
 		setX(p.x);
 		setY(p.y);
-		setSize(60);
+		setSize(50);
 		line = 2;
 		setBoundary();
 	}
@@ -43,18 +43,23 @@ public class State extends Component implements Serializable{
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.black);
+		FontMetrics fm = g.getFontMetrics();
+		double textWidth = fm.getStringBounds(getText(), g).getWidth();
 		
 		((Graphics2D)g).setStroke(new BasicStroke(line));
-		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,		//ï¿½Ï¥Î¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ïµ½ï¿½ï¿½Ü½ï¿½q
+		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,		//¨Ï¥Î¨¾¿÷¾¦§ïµ½Åã¥Ü½è¶q
                 RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g.drawOval(b.x, b.y, b.width, b.height);		//ï¿½eï¿½ï¿½
+		g.drawOval(b.x, b.y, b.width, b.height);		//µe¶ê
 		 
-		g.drawString(getText(), (int)(getX()-getSize()/2), getY());						//ï¿½eï¿½ï¿½r(stateï¿½Wï¿½ï¿½)
+		g.drawString(getText(), (int)(b.getCenterX()-textWidth/2), (int)(b.getCenterY() + fm.getMaxAscent() /2));//µe¤å¦ron middle
 		
-		g.setColor(new Color(0,0,0,0));								//ï¿½Tï¿½ï¿½ï¿½Mï¿½zï¿½ï¿½ï¿½ï¿½
+		g.setColor(new Color(0,0,0,0));								//¤T­ì¦â©M³z©ú«×
 		 
-        g.drawRect(b.x, b.y, b.width, b.height);					//ï¿½eï¿½ï¿½ï¿½ï¿½dï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½
+        g.drawRect(b.x, b.y, b.width, b.height);					//µe¿ï¨ú½d³ò¡A¥¿¤è§Î
+        
+
+
         
 	}
 	
@@ -65,16 +70,25 @@ public class State extends Component implements Serializable{
 	
 	
 	
-	public boolean checkPoint(Point p) {		//ï¿½Tï¿½{ï¿½Æ¹ï¿½ï¿½Iï¿½ï¿½ï¿½Bï¿½Oï¿½_ï¿½bï¿½Ï¤ï¿½ï¿½dï¿½ï¿½
+	public boolean checkPoint(Point p) {		//½T»{·Æ¹«ÂIÀ»³B¬O§_¦b¹Ï¤ù½d³ò¤º
 		return this.b.contains(p);
 	}
 	
 	public boolean checkLinePoint(Point p) {return false;}
 
+	public void setCenteredText(String s, int w, int h, Graphics g) {
+		FontMetrics fm = g.getFontMetrics();
+		int x = (w - fm.stringWidth(s)) / 2;
+		int y = (fm.getAscent() + (h - (fm.getAscent() + fm.getDescent())) / 2);
+		g.drawString(s, x, y);
+	}
+	
 	@Override
 	public void changePoint(Point p) {
 		// TODO Auto-generated method stub
-		setPoint(p);
+		this.setPoint(p);
+		this.setX((int)p.getX());
+		this.setY((int)p.getY());
 		setBoundary();
 	}
 }

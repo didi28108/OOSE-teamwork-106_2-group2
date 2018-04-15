@@ -12,7 +12,6 @@ import java.io.Serializable;
 
 public class Transition extends Component implements Serializable{
 	
-	private String name;
 	private Component s1;		//起始點(StateDiagram(State)才有用到)，為了讓State變更時跟著變更
 	private Component s2;		//結束點
 	private Line2D line;			//線的範圍
@@ -22,10 +21,10 @@ public class Transition extends Component implements Serializable{
 		this.attachSubject();
 	}
 	
-	public Transition(String name, Component s1, Component s2) {
+	public Transition(String text, Component s1, Component s2) {
 		super();
 		this.attachSubject();
-		this.name = name;
+		this.setText(text);
 		this.s1 = s1;
 		this.s2 = s2;
 	}
@@ -37,7 +36,7 @@ public class Transition extends Component implements Serializable{
 		Point p2 = s2.getPoint();
 		
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke(new BasicStroke(1));							//線的粗細
+		g2.setStroke(new BasicStroke(2));							//線的粗細
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);		//使用防鋸齒改善顯示質量
   
@@ -65,7 +64,7 @@ public class Transition extends Component implements Serializable{
         int xm = (int)((x + x2) / 2);
         int ym = (int)((y + y2) / 2);
         g2.setPaint(Color.black);
-        g2.drawString(name, xm, ym);		//線的名稱
+        g2.drawString(this.getText(), xm, ym);		//線的名稱
         
 	}
 	
@@ -105,14 +104,11 @@ public class Transition extends Component implements Serializable{
 	    return angle;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-public boolean checkPoint(Point p) {return false;}
+	public boolean checkPoint(Point p) {return false;}
 	
 	public boolean checkLinePoint(Point p) {
-		return this.line.intersects(p.getX(), p.getY(), 5, 5);		//寬,高
+		return this.line.intersects(p.getX(), p.getY(), 10, 10);		//寬,高
 	}
 	
 	public Point getPoint() {return null;}

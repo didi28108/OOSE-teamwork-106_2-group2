@@ -33,9 +33,10 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.SystemColor;
 
 public class StateDiagramEditor extends JFrame{
-	//define private Components
-	private ViewMediator guiMdtr = ViewMediator.getGuiMediator();
-	private GridBagLayout gbl = new GridBagLayout();
+	
+	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+	
+	//private GridBagLayout gbl = new GridBagLayout();
     
 	/**
 	 * Create the application.
@@ -51,8 +52,7 @@ public class StateDiagramEditor extends JFrame{
 		setTitle("State Diagram Editor");
 		getContentPane().setBackground(SystemColor.controlShadow);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//getContentPane().setLayout(gbl);
+        setMinimumSize(new Dimension(800, 500));
 		
 		JPanel left = new JPanel(new BorderLayout(5, 5));
 		PanelButton panelButton = new PanelButton();
@@ -68,40 +68,24 @@ public class StateDiagramEditor extends JFrame{
 		left.add(panelButton, BorderLayout.NORTH);
 		left.add(settingPanel, BorderLayout.CENTER);
 		getContentPane().add(left, BorderLayout.WEST);
+		
+		//Menu Bar
+		MenuBar menuBar = new MenuBar();
+		this.setJMenuBar(menuBar);
+		
+		vMdtr.registerMainFrame(this);
 
-		/*
+		/* GridBagLayout
+		getContentPane().setLayout(gbl);
 		easyConstraints(gbl, panelButton, 1, 1, 0, 0, 0.1, 0.1);
 		easyConstraints(gbl, canvas, 1, 2, 1, 0, 1.0, 1.0);
 		easyConstraints(gbl, settingPanel, 1, 1, 0, 1, 0.1, 0.1);
 		*/
 		
-		//Menu Bar
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setToolTipText("");
-		this.setJMenuBar(menuBar);
-		
-		JMenu file = new JMenu("File");
-		menuBar.add(file);
-		
-		JMenuItem menuItemOpen = new JMenuItem("Open");
-		file.add(menuItemOpen);
-		
-		JMenuItem menuItemSave = new JMenuItem("Save");
-		file.add(menuItemSave);
-		
-		JMenu menuEdit = new JMenu("Edit");
-		menuBar.add(menuEdit);
-		
-		JMenuItem menuItemDelete = new JMenuItem("Delete");
-		menuEdit.add(menuItemDelete);
-		
-		JMenuItem menuItemModify = new JMenuItem("Modify");
-		menuEdit.add(menuItemModify);
-		
-		JMenuItem menuItemAdd = new JMenuItem("Add");
-		menuEdit.add(menuItemAdd);
 	}
 	
+	
+	/*
 	private void easyConstraints(GridBagLayout GLB, JComponent Comp, int w, int h, int x, int y, double wx, double wy) {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BOTH;
@@ -113,4 +97,5 @@ public class StateDiagramEditor extends JFrame{
 		constraints.weighty = wy;
 		gbl.setConstraints(Comp, constraints);
 	}
+	*/
 }

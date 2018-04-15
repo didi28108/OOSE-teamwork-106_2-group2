@@ -7,16 +7,12 @@ import controller.ViewMediator;
 
 public class BtnTransListener implements ActionListener{
 
-	private ViewMediator mainMtr;
-	
-	public BtnTransListener(ViewMediator mainMtr) {
-		this.mainMtr = mainMtr;
-	}
+	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		mainMtr.btnTransClick(e);
+		vMdtr.transClick(e);
 	}
 	
 }

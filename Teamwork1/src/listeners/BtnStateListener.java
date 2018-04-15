@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 import controller.ViewMediator;
 
 public class BtnStateListener implements ActionListener{
-	private ViewMediator mainMtr;
-	
-	public BtnStateListener(ViewMediator mainMtr) {
-		this.mainMtr = mainMtr;
+	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+
+	public BtnStateListener() {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		mainMtr.btnStateClick(e);
+		vMdtr.stateClick(e);
 	}
 
 }

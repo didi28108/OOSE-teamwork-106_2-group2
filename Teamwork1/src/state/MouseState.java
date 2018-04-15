@@ -9,7 +9,7 @@ import statediagram.Component;
 import statediagram.StateDiagram;
 
 public interface MouseState {
-
+	public String getMouseStateText();
 	public void mousePressed(ViewMediator vMdtr, MouseEvent e);
 	public void mouseReleased(ViewMediator vMdtr, MouseEvent e);
 	//public void mouseReleased(MouseEvent e, DrawDiagram d, AbstractFactory f, Caretaker c);

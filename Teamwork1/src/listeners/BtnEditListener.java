@@ -7,14 +7,17 @@ import controller.ViewMediator;
 
 public class BtnEditListener implements ActionListener{
 
-	private ViewMediator mainMtr;
-	public BtnEditListener(ViewMediator mainMtr) {
-		this.mainMtr = mainMtr;
-	}
+	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
+
 	
+	public BtnEditListener() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		mainMtr.btnEditClick(e);
+		vMdtr.editClick(e);
 	}
 }

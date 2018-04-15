@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import controller.ViewMediator;
+import listeners.MousePositionsListener;
+import listeners.MyMouseListener;
 import statediagram.Component;
 import statediagram.State;
 import statediagram.StateDiagram;
@@ -23,6 +25,10 @@ public class DrawCanvas extends JPanel{
 		components = new StateDiagram();
 		this.setBackground(Color.white);
 		mdtr.registerDrawCanvas(this);
+		
+
+		this.addMouseMotionListener(new MousePositionsListener());
+		this.addMouseListener(new MyMouseListener());
 	}
 	public void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -31,21 +37,4 @@ public class DrawCanvas extends JPanel{
 		components.draw(g);
 	}
 	
-	public void addState(Point point) {
-		// TODO Auto-generated method stub
-		Component state = new State("testing", point);
-		components.add(state);
-		repaint();
-	}
-	public void addTrans(Point point, Component s1, Component s2) {
-		// TODO Auto-generated method stub
-		Component trans = new Transition("Line", s1, s2);
-		components.add(trans);
-		repaint();
-	}
-	public void changePoint(MouseEvent e, Component comp) {
-		// TODO Auto-generated method stub
-		comp.changePoint(e.getPoint());
-		repaint();
-	}
 }

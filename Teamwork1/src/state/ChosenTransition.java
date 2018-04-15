@@ -13,6 +13,7 @@ public class ChosenTransition implements MouseState{
 	private boolean PointCheck = false;
 	private Component s1;		//起始座標(s代表StateDiagram才有用)
 	private Component s2;		//結束座標
+	private String text = "Transition";
 	
 	public ChosenTransition() {}
 
@@ -70,6 +71,12 @@ public class ChosenTransition implements MouseState{
 	public void mouseDragged(ViewMediator vMdtr, MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getMouseStateText() {
+		// TODO Auto-generated method stub
+		return text;
 	}
 	
 }

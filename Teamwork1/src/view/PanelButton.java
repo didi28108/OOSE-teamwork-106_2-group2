@@ -12,21 +12,40 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import listeners.BtnDeleteListener;
+import listeners.BtnEditListener;
+import listeners.BtnSelectListener;
+import listeners.BtnStateListener;
+import listeners.BtnTransListener;
+
 public class PanelButton extends JPanel{
-	private ButtonState btnState = new ButtonState("State");
-	private ButtonTransition btnTransition = new ButtonTransition("Transition");
-	private ButtonSelect btnSelect = new ButtonSelect("Select");
-	private ButtonDelete btnDelete = new ButtonDelete("Delete");
-	private ButtonEdit btnEdit = new ButtonEdit("Edit");
+	private ButtonState btnState;
+	private ButtonTransition btnTransition;
+	private ButtonSelect btnSelect;
+	private ButtonDelete btnDelete;
+	private ButtonEdit btnEdit;
 	
 	private GridBagLayout gbl = new GridBagLayout();
 	
 	public PanelButton(){
 		this.setLayout(new GridLayout(0, 1, 5, 5));
+		
+		btnState = new ButtonState("State");
+		btnTransition = new ButtonTransition("Transition");
+		btnSelect = new ButtonSelect("Select");
+		btnDelete = new ButtonDelete("Delete");
+		btnEdit = new ButtonEdit("Edit");
+		
 		this.add(btnState);
 		this.add(btnTransition);
 		this.add(btnSelect);
 		this.add(btnDelete);
 		this.add(btnEdit);
+		
+		btnState.addActionListener(new BtnStateListener());
+		btnTransition.addActionListener(new BtnTransListener());
+		btnSelect.addActionListener(new BtnSelectListener());
+		btnDelete.addActionListener(new BtnDeleteListener());
+		btnEdit.addActionListener(new BtnEditListener());
 	}
 }

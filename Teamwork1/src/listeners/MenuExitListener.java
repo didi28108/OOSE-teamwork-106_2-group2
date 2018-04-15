@@ -5,20 +5,12 @@ import java.awt.event.ActionListener;
 
 import controller.ViewMediator;
 
-public class BtnSelectListener implements ActionListener{
-
+public class MenuExitListener implements ActionListener{
 	private ViewMediator vMdtr = ViewMediator.getGuiMediator();
-	
-	
-	public BtnSelectListener() {
-		// TODO Auto-generated constructor stub
-	}
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		vMdtr.selectClick(e);
+		vMdtr.closeMainFrame();
 	}
 
 }

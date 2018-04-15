@@ -11,7 +11,7 @@ import statediagram.StateDiagram;
 public class ChosenState implements MouseState{
 	//singleton
 	private static ChosenState instance = null;
-
+	private String text = "State";
 	public ChosenState() {}
 
 	public static ChosenState getInstance() {
@@ -45,6 +45,12 @@ public class ChosenState implements MouseState{
 	public void mouseDragged(ViewMediator vMdtr, MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getMouseStateText() {
+		// TODO Auto-generated method stub
+		return text;
 	}
 
 }
