@@ -439,7 +439,7 @@ public class ViewMediator {
 	}
 	
 	public int getGroupByID() {
-		System.out.println("qweqweqweqwe" +controller.getGroupByID());
+		System.out.println("Group ID: " +controller.getGroupByID());
 		return controller.getGroupByID();
 	}
 

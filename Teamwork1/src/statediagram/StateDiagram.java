@@ -35,6 +35,7 @@ public class StateDiagram extends Component {
 
 	@Override
 	public void changeColor(String color) {
+		System.out.println("stateDiagram.changeColor  " + color);
 		super.changeColor(color);
 		for (Component c: this.componentList) {
 			c.changeColor(color);

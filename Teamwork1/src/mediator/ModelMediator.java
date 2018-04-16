@@ -171,6 +171,7 @@ public class ModelMediator {
 	public void changeColor(String color, int id) {
 		// TODO Auto-generated method stub
 		Component comp = stateDiagram.getComponent(id);
+		System.out.println("mMdtr.changeColor : " + color);
 		comp.changeColor(color);
 	}
 	
