@@ -184,8 +184,11 @@ public class Controller {
      * @param color =new color
      */
     public void changeGroupColor(int groupNumber, String color) {
+    	System.out.println("controller.changeGroupColor");
         Component group = mMdtr.getGroup(groupNumber);
-        group.changeColor(color);
+        for(Component c:group.getComponentList()) {
+        	c.changeColor(color);
+        }
     }
 
 	public void settingColor() {
@@ -199,7 +202,7 @@ public class Controller {
 	}
 	
 	public void vMdtrRefresh() {
-		vMdtr.refresh();
+		vMdtr.buttonRefresh();
 	}
     
     /**
@@ -215,5 +218,9 @@ public class Controller {
 
         return list;
     }
+    
+    public int getGroupByID() {
+		return mMdtr.getGroupByID(vMdtr.getSelectedItemID());
+	}
 }
 

@@ -210,4 +210,9 @@ public class ModelMediator {
 		Component comp = stateDiagram.getComponent(selectedItemID);
 		comp.setSize(size);
 	}
+	
+	public int getGroupByID(int selectedItemID) {
+		Component comp = stateDiagram.getComponent(selectedItemID);
+		return comp.getGroup();
+	}
 }

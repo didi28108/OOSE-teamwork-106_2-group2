@@ -1,12 +1,5 @@
-/controller/
-/facadeExample/
-/flyweight/
-/listeners/
-/mediator/
-/memento/
-/observer/
-/state/
-/statediagram/
-/strategy/
 /view/
-/guiStrategy/
+/mediator/
+/controller/
+/listeners/
+/statediagram/

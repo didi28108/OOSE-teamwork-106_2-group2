@@ -1,5 +1,3 @@
-import java.awt.Dimension;
-
 import javax.swing.SwingUtilities;
 
 import controller.Controller;

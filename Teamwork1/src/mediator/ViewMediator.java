@@ -3,7 +3,6 @@ package mediator;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
@@ -17,9 +16,7 @@ import state.ChosenState;
 import state.ChosenTransition;
 import state.MouseState;
 import statediagram.Component;
-import statediagram.State;
 import statediagram.StateDiagram;
-import statediagram.Transition;
 import view.ButtonDelete;
 import view.ButtonEdit;
 import view.ButtonSelect;
@@ -274,7 +271,7 @@ public class ViewMediator {
 		this.selectedItemID = id;
 		setSelectedItemText();
 
-		refresh();
+		buttonRefresh();
 	}
 	
 	//get selected(clicked) component ID
@@ -326,30 +323,16 @@ public class ViewMediator {
 	public void showDialog() {
 		if(eDialog == null) {
 			eDialog = new EditDialog();
-			eDialogInit();
+			this.refreshColorComboBoxItem(eDialogCbColor, getColorStringList());
 		}
 		this.eDialogTextFieldName.setText(getSelectedItemText());
+		this.refreshGroupComboBoxItem(eDialogCbGroup, getGroupList());
+		this.eDialogCbGroup.setSelectedItem((Integer)getGroupByID());
 		eDialog.showDialog();
 	}
 	
 	public void closeMainFrame() {
 		mainFrame.dispose();
-	}
-	
-	public void eDialogInit() {
-		ArrayList<String> ar = getColorStringList();
-		for(int i =0; i < ar.size();i++) {
-			this.eDialogCbColor.addItem(ar.get(i));
-		}
-	}
-
-	//***************BUTTON****************//
-	public void setDeleteUnable() {
-		this.buttonDelete.setEnabled(false);
-	}
-	
-	public void setDeleteAble() {
-		this.buttonDelete.setEnabled(true);
 	}
 
 	//*********Draw Canvas****************//
@@ -393,19 +376,66 @@ public class ViewMediator {
 	public void changeStateSize(int size) {
 		// TODO Auto-generated method stub
 		controller.changeStateSize(size);
+		repaint();
 	}
 
-	public void refresh() {
+	public void buttonRefresh() {
 		// TODO Auto-generated method stub
 		if(this.selectedItemID != -1) {
 			this.buttonDelete.setEnabled(true);
 			this.buttonEdit.setEnabled(true);
+			this.menuDelete.setEnabled(true);
+			this.menuModify.setEnabled(true);
 		}
 		else {
 			this.buttonDelete.setEnabled(false);
 			this.buttonEdit.setEnabled(false);
+			this.menuDelete.setEnabled(false);
+			this.menuModify.setEnabled(false);
+		}
+	}
+
+	public ArrayList<Integer> getGroupList() {
+		// TODO Auto-generated method stub
+		return controller.getGroupList();
+	}
+
+	public void addNewGroup() {
+		// TODO Auto-generated method stub
+		controller.addNewGroup(getGroupList().size()+1);
+		settingPanel.groupRefresh();
+	}
+	
+	public void refreshGroupComboBoxItem(JComboBox cb, ArrayList<Integer> list) {
+		cb.removeAllItems();
+		for(int i =0; i < list.size();i++) {
+			this.eDialogCbGroup.addItem(list.get(i));
 		}
 	}
 	
+	public void refreshColorComboBoxItem(JComboBox cb, ArrayList<String> list) {
+		cb.removeAllItems();
+		for(int i =0; i < list.size();i++) {
+			this.eDialogCbColor.addItem(list.get(i));
+		}
+	}
 	
+	public int getGroupByID() {
+		System.out.println("qweqweqweqwe" +controller.getGroupByID());
+		return controller.getGroupByID();
+	}
+
+	public void setComponentGroup(Object selectedGroup) {
+		// TODO Auto-generated method stub
+		controller.changeGroup(getSelectedItemID(), Integer.parseInt(selectedGroup.toString()));
+	}
+	 private int i = 0;
+	public void changeGroupColor() {
+		// TODO Auto-generated method stub
+		int group = settingPanel.getSelectedGroupText();
+		String color = settingPanel.getGroupSelectedColorText();
+		System.out.println("vMdtr.changeGroupColor  " + group + color);
+		controller.changeGroupColor(group, color);
+		repaint();
+	}
 }
