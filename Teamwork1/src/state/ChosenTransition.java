@@ -39,9 +39,11 @@ public class ChosenTransition implements MouseState{
 				
 				if(s1 == null) {
 					s1 = de;
+					System.out.println("Clicked state 1: " + s1.getClassName());
 				}
 				else if(s1.getPoint() != de.getPoint()) {
 					s2 = de;
+					System.out.println("Clicked state 2: " + s2.getClassName());
 					PointCheck = true;
 				}
 			}

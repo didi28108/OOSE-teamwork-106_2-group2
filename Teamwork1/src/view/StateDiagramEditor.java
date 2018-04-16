@@ -72,7 +72,7 @@ public class StateDiagramEditor extends JFrame{
 		//Menu Bar
 		MenuBar menuBar = new MenuBar();
 		this.setJMenuBar(menuBar);
-		
+
 		vMdtr.registerMainFrame(this);
 
 		/* GridBagLayout

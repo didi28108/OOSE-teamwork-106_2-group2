@@ -1,6 +1,8 @@
 package controller;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import mediator.ModelMediator;
 import mediator.ViewMediator;
@@ -63,16 +65,11 @@ public class Controller {
 		// TODO Auto-generated method stub
 		return mMdtr.getStateDiagram();
 	}
-	
-	public void addNewGroup(int group) {
-        StateDiagram newGroup = mMdtr.newStateDiagram();
-        newGroup.setGroup(group);
-        mMdtr.addComponent(newGroup);
-    }
 
 
     public void saveAction() {
         mMdtr.addMemento(mMdtr.saveStateDiagram());
+        System.out.println("saveAction()");
     }
 
     public void detachAllSubject() {
@@ -80,6 +77,7 @@ public class Controller {
         mMdtr.detachAllTransitionSubject();
     }
     public void undoAction() {
+    	 System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
         vMdtr.repaint();
@@ -103,5 +101,94 @@ public class Controller {
 	}
 	public void setTransitionSubject(String color) {
 		mMdtr.setTransitionSubject(color);
+		vMdtr.repaint();
+	}
+
+	public ArrayList<String> getColorStringList() {
+		return mMdtr.getColorStringList();
+	}
+	
+	public Component getComponent(int id) {
+        StateDiagram stateDiagram = mMdtr.getStateDiagram();
+        return stateDiagram.getComponent(id);
+    }
+    /**
+     * change a Component's color with another Component's color
+     * @param changeC =which will change color
+     * @param colorSource =color will same as this
+     */
+    public void changeComponentToSameColor(Component changeC, Component colorSource) {
+        changeC.setColor(colorSource.getColor());
+    }
+    /**
+     * create a new group
+     * @param group =組別代號
+     * @return new group
+     */
+    public Component addNewGroup(int group) {
+        Component newGroup = mMdtr.newStateDiagram();
+        newGroup.setGroup(group);
+        mMdtr.addComponent(newGroup);
+
+        return newGroup;
+    }
+    /**
+     * create a new State
+     * @return new State
+     */
+    public int addNewState(Point p) {
+        Component newState = new State("", p);
+        Component group1 = mMdtr.getGroup(1);
+        group1.add(newState);
+        this.changeComponentToSameColor(newState, group1);
+
+        return newState.getId();
+    }
+    /**
+     * create a new Transition
+     * @return new Transition
+     */
+    public int addNewTransition(Point p, Component s1, Component s2) {
+        Component newTransition = new Transition("", s1, s2);
+        Component group1 = mMdtr.getGroup(1);
+        group1.add(newTransition);
+        this.changeComponentToSameColor(newTransition, group1);
+
+        return newTransition.getId();
+    }
+
+    /**
+     * change group
+     * @param id =component's id which you want change group
+     * @param newGroupNumber =it's new group number
+     */
+    public void changeGroup(int id, int newGroupNumber) {
+        Component c = this.getComponent(id);
+        int oldGroupNumber = c.getGroup();
+        Component oldGroup = mMdtr.getGroup(oldGroupNumber);
+        Component newGroup = mMdtr.getGroup(newGroupNumber);
+        if (newGroup == null) {
+            this.addNewGroup(newGroupNumber);
+            newGroup = mMdtr.getGroup(newGroupNumber);
+        }
+        oldGroup.remove(id);
+        newGroup.add(c);
+        this.changeComponentToSameColor(c, newGroup);
+        c.setGroup(newGroupNumber);
+    }
+    /**
+     * change group's color
+     * @param groupNumber =group's number
+     * @param color =new color
+     */
+    public void changeGroupColor(int groupNumber, String color) {
+        Component group = mMdtr.getGroup(groupNumber);
+        group.changeColor(color);
+    }
+
+	public void settingColor() {
+		// TODO Auto-generated method stub
+		vMdtr.settingColor();
 	}
 }
+

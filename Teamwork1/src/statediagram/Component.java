@@ -9,6 +9,7 @@ import mediator.ModelMediator;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -36,6 +37,7 @@ public abstract class Component implements Observer {
         this.id = now.hashCode();
         this.group = 1; //default 0
         this.mediator = ModelMediator.getInstance();
+        this.setColor(mediator.getColorFromFactory("black"));
     }
     public Component(Color color) {
         //以時間來當作ID
@@ -118,7 +120,8 @@ public abstract class Component implements Observer {
      * @return Memento
      */
     public ObjectStatusMemento save() {
-        return new ObjectStatusMemento(this.getClassName(), this.id, this.group, this.color, this.size, this.text, this.x, this.y);
+        return new ObjectStatusMemento(this.getClassName(), this.id, this.group,
+            this.color, this.size, this.text, this.x, this.y, this.point);
     }
     /**
      * 使用Memento物件來恢復狀態
@@ -133,6 +136,7 @@ public abstract class Component implements Observer {
         this.text = previousMemento.getText();
         this.x = previousMemento.getX();
         this.y = previousMemento.getY();
+        this.point = previousMemento.getPoint();
     }
 
     /**
@@ -151,6 +155,10 @@ public abstract class Component implements Observer {
         return null;
     }
 
+    public ArrayList<Component> getComponentList() {
+		return null;
+	}
+    
     /**
      * do nothing
      */

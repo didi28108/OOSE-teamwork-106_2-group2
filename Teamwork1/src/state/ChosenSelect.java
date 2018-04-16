@@ -37,7 +37,7 @@ public class ChosenSelect implements MouseState{
 			if(de.checkPoint(e.getPoint()) || de.checkLinePoint(e.getPoint())) {
 				if(deCheck == null) {
 					deCheck = de;
-					System.out.println("Pressed item�G " + deCheck.getClassName() + deCheck.getId());
+					System.out.println("Pressed item: " + deCheck.getClassName() + deCheck.getId());
 				}
 				vMdtr.setSelectedItemID(de.getId());
 			}

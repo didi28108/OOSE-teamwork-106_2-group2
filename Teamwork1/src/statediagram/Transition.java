@@ -12,9 +12,9 @@ import java.io.Serializable;
 
 public class Transition extends Component implements Serializable{
 	
-	private Component s1;		//°_©lÂI(StateDiagram(State)¤~¦³¥Î¨ì)¡A¬°¤FÅýStateÅÜ§ó®É¸òµÛÅÜ§ó
-	private Component s2;		//µ²§ôÂI
-	private Line2D line;			//½uªº½d³ò
+	private Component s1;		//ï¿½_ï¿½lï¿½I(StateDiagram(State)ï¿½~ï¿½ï¿½ï¿½Î¨ï¿½)ï¿½Aï¿½ï¿½ï¿½Fï¿½ï¿½Stateï¿½Ü§ï¿½É¸ï¿½ï¿½ï¿½Ü§ï¿½
+	private Component s2;		//ï¿½ï¿½ï¿½ï¿½ï¿½I
+	private Line2D line;			//ï¿½uï¿½ï¿½ï¿½dï¿½ï¿½
 	
 	public Transition() {
 		super();
@@ -36,13 +36,13 @@ public class Transition extends Component implements Serializable{
 		Point p2 = s2.getPoint();
 		
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke(new BasicStroke(2));							//½uªº²Ê²Ó
+		g2.setStroke(new BasicStroke(2));							//ï¿½uï¿½ï¿½ï¿½Ê²ï¿½
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_ON);		//¨Ï¥Î¨¾¿÷¾¦§ïµ½Åã¥Ü½è¶q
+                            RenderingHints.VALUE_ANTIALIAS_ON);		//ï¿½Ï¥Î¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ïµ½ï¿½ï¿½Ü½ï¿½q
   
-        g2.setPaint(Color.black);
+        g2.setPaint(getColor());
         
-        double x;													//±N¨¤«×Âà¦¨§¨«×¦A¶i¦æ­pºâ¡Ap1©Mp2­pºâ¬Û¤Ï¡A¨ú³Ìµu¶ZÂ÷
+        double x;													//ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½à¦¨ï¿½ï¿½ï¿½×¦Aï¿½iï¿½ï¿½pï¿½ï¿½Ap1ï¿½Mp2ï¿½pï¿½ï¿½Û¤Ï¡Aï¿½ï¿½ï¿½Ìµuï¿½Zï¿½ï¿½
         double y = p1.y + 30 *  Math.sin(Math.toRadians(getangles()));		
         double x2;
         double y2 = p2.y - 30 *  Math.sin(Math.toRadians(getangles()));
@@ -64,11 +64,11 @@ public class Transition extends Component implements Serializable{
         int xm = (int)((x + x2) / 2);
         int ym = (int)((y + y2) / 2);
         g2.setPaint(Color.black);
-        g2.drawString(this.getText(), xm, ym);		//½uªº¦WºÙ
+        g2.drawString(this.getText(), xm, ym);		//ï¿½uï¿½ï¿½ï¿½Wï¿½ï¿½
         
 	}
 	
-	public void drawArrow(Graphics2D g2, double x, double y)		//µe½bÀY¡A¨â±ø½u
+	public void drawArrow(Graphics2D g2, double x, double y)		//ï¿½eï¿½bï¿½Yï¿½Aï¿½ï¿½ï¿½ï¿½u
     {
 		Point p1 = s1.getPoint();
 		Point p2 = s2.getPoint();
@@ -91,7 +91,7 @@ public class Transition extends Component implements Serializable{
         g2.draw(new Line2D.Double(x, y, x3, y3));
     }
 
-	public double getangles()		//­pºâ¨âÂI¤§¶¡¨¤«×
+	public double getangles()		//ï¿½pï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		Point p1 = s1.getPoint();
 		Point p2 = s2.getPoint();
@@ -108,7 +108,7 @@ public class Transition extends Component implements Serializable{
 	public boolean checkPoint(Point p) {return false;}
 	
 	public boolean checkLinePoint(Point p) {
-		return this.line.intersects(p.getX(), p.getY(), 10, 10);		//¼e,°ª
+		return this.line.intersects(p.getX(), p.getY(), 10, 10);		//ï¿½e,ï¿½ï¿½
 	}
 	
 	public Point getPoint() {return null;}

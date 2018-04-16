@@ -35,6 +35,7 @@ public class StateDiagram extends Component {
 
 	@Override
 	public void changeColor(String color) {
+		super.changeColor(color);
 		for (Component c: this.componentList) {
 			c.changeColor(color);
 		}
@@ -55,33 +56,28 @@ public class StateDiagram extends Component {
 		}
 
 		return new StateDiagramStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
-			this.getSize(), this.getText(), this.getX(), this.getY(),
-			saveList);
+				this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
+				saveList);
 	}
 	
 	@Override
 	/**
-     * StateDiagram can not restore with ObjectStatusMemento
-	 * please use restore(StateDiagramStatusMemento previousMemento)
-     * @param previousMemento =���摮�emento
+     * 使用Memento物件來恢復狀態
+     * @param previousMemento =先前儲存的Memento
      */
 
 	public void restore(ObjectStatusMemento previousMemento) {
-		this.setId(previousMemento.getId());
-		this.setGroup(previousMemento.getGroup());
-        this.setColor(previousMemento.getColor());
-        this.setSize(previousMemento.getSize());
-        this.setText(previousMemento.getText());
-        this.setX(previousMemento.getX());
-		this.setY(previousMemento.getY());
+		super.restore(previousMemento);
 
 		this.componentList = new ArrayList<Component>();
 		for (ObjectStatusMemento m: previousMemento.getComponentList()) {
 			Component re;
 			if (m.getClassName().equals("State")) {
+				System.out.println("restore State");
 				re = new State();
 			}
 			else if (m.getClassName().equals("Transition")) {
+				System.out.println("restore Transition");
 				re = new Transition();
 			}
 			else {
@@ -108,7 +104,13 @@ public class StateDiagram extends Component {
 	 * @param id =要移除的component的id
 	 */
 	public void remove(int id) {
-		this.componentList.remove(this.getComponent(id));
+		Component removeC = this.getComponent(id);
+		boolean success = this.componentList.remove(removeC);
+		if ((! success) && (removeC != null)) {
+			for (Component c: this.componentList) {
+				c.remove(id);
+			}
+		}
 	}
 
 	@Override
@@ -117,15 +119,19 @@ public class StateDiagram extends Component {
 	 * @param id =要尋找的component的id
 	 */
 	public Component getComponent(int id) {
-		Component reC = null;
 		for (Component c: this.componentList) {
 			if (c.getId() == id) {
-				reC = c;
-				break;
+				return c;
+			}
+			else {
+				Component cc = c.getComponent(id);
+				if (cc != null) {
+					return cc;
+				}
 			}
 		}
 
-		return reC;
+		return null;
 	}
 	
 	@Override
@@ -148,7 +154,7 @@ public class StateDiagram extends Component {
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		for(Component c:componentList) {
+		for(Component c: this.componentList) {
 			c.draw(g);
 		}
 	}

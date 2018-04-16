@@ -1,6 +1,7 @@
 package memento;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.util.*;
 
 
@@ -13,9 +14,10 @@ public class ObjectStatusMemento{
     private String text;
     private int x;
     private int y;
+    private Point point;
 
     public ObjectStatusMemento(String className, int id, int group,
-        Color color, float size, String text, int x, int y) {
+            Color color, float size, String text, int x, int y, Point p) {
         this.className = className;
         this.id = id;
         this.group = group;
@@ -24,6 +26,8 @@ public class ObjectStatusMemento{
         this.text = text;
         this.x = x;
         this.y = y;
+
+        this.point = p;
     }
 
     public String getClassName() {
@@ -58,6 +62,10 @@ public class ObjectStatusMemento{
         return this.y;
     }
 
+    public Point getPoint() {
+        return this.point;
+    }
+    
     public ArrayList<ObjectStatusMemento> getComponentList() {
         return null;
     }

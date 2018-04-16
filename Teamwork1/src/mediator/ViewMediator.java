@@ -2,6 +2,7 @@ package mediator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 
@@ -21,6 +22,7 @@ import view.ButtonState;
 import view.ButtonTransition;
 import view.DrawCanvas;
 import view.EditDialog;
+import view.SettingPanel;
 import view.StateDiagramEditor;
 import view.StatusPanel;
 
@@ -63,6 +65,7 @@ public class ViewMediator {
 	private JMenuItem menuRedo;
 
 	private int selectedItemID = -1;
+	private SettingPanel settingPanel;
 	
 	
 	//**************Register****************//
@@ -143,6 +146,12 @@ public class ViewMediator {
 	public void registerMenuRedo(JMenuItem menuItemRedo) {
 		// TODO Auto-generated method stub
 		this.menuRedo = menuItemRedo;
+	}
+	
+
+	public void registerSettingPanel(SettingPanel settingPanel) {
+		// TODO Auto-generated method stub
+		this.settingPanel = settingPanel;
 	}
 	
 	/*****************/
@@ -328,5 +337,12 @@ public class ViewMediator {
 		controller.setTransitionSubject(color);
 	}
 
-	
+	public ArrayList<String> getColorStringList() {
+		return controller.getColorStringList();
+	}
+
+	public void settingColor() {
+		// TODO Auto-generated method stub
+		settingPanel.settingColor();
+	}
 }
