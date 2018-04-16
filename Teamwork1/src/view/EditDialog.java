@@ -74,7 +74,6 @@ public class EditDialog extends JDialog implements ActionListener{
 		contentPanel.add(lblGroup);
 		
 		cbGroup = new JComboBox();
-		cbGroup.setEditable(true);
 		cbGroup.setBounds(116, 108, 219, 21);
 		contentPanel.add(cbGroup);
 		vMdtr.registerEditStateDialogComboGroup(cbGroup);
@@ -122,6 +121,7 @@ public class EditDialog extends JDialog implements ActionListener{
 		}else if(cmd == "OK") {
 			vMdtr.setComponentText(textFieldName.getText());
 			vMdtr.setComponentColor(cbColor.getSelectedItem());
+			vMdtr.setComponentGroup(cbGroup.getSelectedItem());
 			closeDialog();
 		}
 	}
