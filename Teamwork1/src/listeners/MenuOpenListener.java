@@ -13,8 +13,7 @@ public class MenuOpenListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JFileChooser openFile = new JFileChooser();
-        openFile.showOpenDialog(null);
+		vMdtr.openFileBtnClicked();
 	}
 
 }

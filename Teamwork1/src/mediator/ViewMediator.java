@@ -9,6 +9,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import controller.Controller;
+import document.DocumentOperation;
+import document.SDEDocument;
 import guiStrategy.FlatUI;
 import guiStrategy.GuiStrategy;
 import state.ChosenSelect;
@@ -35,9 +37,11 @@ public class ViewMediator {
 	private static ViewMediator vMdtr = new ViewMediator();
 	private Controller controller;
 	private GuiStrategy guiStrategy;
+	private SDEDocument dc;
 	
 	private ViewMediator() {
 		guiStrategy = new FlatUI();
+		dc = new DocumentOperation();
 	}
 	
 	public static ViewMediator getInstance() {
@@ -210,6 +214,20 @@ public class ViewMediator {
 		System.out.println("Delete btn clicked");
 		this.removeComponent();
 	}
+	
+	public void openFileBtnClicked() {
+		//delegate SDEDocument to open document
+		dc.openDocument(getStateDiagram(), this.drawCanvas);
+		repaint();
+
+	}
+
+	public void saveFileBtnClicked() {
+		//delegate SDEDocument to save document
+		dc.saveDocument(getStateDiagram());
+
+	}
+	
 	/*********/
 	
 	//Change mouse state and update status
