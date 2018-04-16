@@ -7,8 +7,10 @@ public class MementoCaretaker{
     private ArrayList<ObjectStatusMemento> historyStatus;
     private int nowIndex;
     private ModelMediator mediator;
+    private Date lastSaveTime;
 
     public MementoCaretaker() {
+        this.lastSaveTime = new Date();
         this.historyStatus = new ArrayList<ObjectStatusMemento>();
         this.nowIndex = -1;
 
@@ -16,7 +18,15 @@ public class MementoCaretaker{
     }
 
     public void addMemento(ObjectStatusMemento memento) {
-        //將這個動作後的Memento清空
+        Date nowTime = new Date();
+        if ((nowTime.getTime() - this.lastSaveTime.getTime()) < 150) {
+            //時間太相近以新的為主
+            this.nowIndex -= 1;
+        }
+        this.saveMemento(memento);
+        this.lastSaveTime = nowTime;
+    }
+    private void saveMemento(ObjectStatusMemento memento) {
         for (int i = (this.historyStatus.size() - 1); i > this.nowIndex; i -= 1) {
             this.historyStatus.remove(i);
         }

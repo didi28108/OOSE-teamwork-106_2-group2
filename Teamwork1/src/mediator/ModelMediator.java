@@ -199,4 +199,9 @@ public class ModelMediator {
 		stateDiagram.remove(selectedItemID);
 		System.out.println("deleted item" + selectedItemID);
 	}
+
+
+	public void saveAction() {
+		this.controller.saveAction();
+	}
 }

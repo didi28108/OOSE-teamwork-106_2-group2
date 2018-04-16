@@ -35,10 +35,8 @@ public class ViewMediator {
 	//Singleton with Eager initialization 
 	private static ViewMediator vMdtr = new ViewMediator();
 	private Controller controller;
-	private Date lastSaveTime;
 	
 	private ViewMediator() {
-		lastSaveTime = new Date();
 	}
 	
 	public static ViewMediator getInstance() {
@@ -350,15 +348,8 @@ public class ViewMediator {
 
 	//*********Draw Canvas****************//
 	public void repaint() {
-		Date nowTime = new Date();
-		if ((nowTime.getTime() - lastSaveTime.getTime()) > 100) {
-			drawCanvas.repaint();
-			controller.saveAction();
-			this.lastSaveTime = nowTime;
-		}
-		else {
-			this.repaintWithoutSave();
-		}
+		drawCanvas.repaint();
+		controller.saveAction();
 	}
 	public void repaintWithoutSave() {
 		drawCanvas.repaint();
