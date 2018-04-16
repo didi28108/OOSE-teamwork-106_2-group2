@@ -13,11 +13,17 @@ import javax.swing.Box;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.AbstractDocument;
 
 import listeners.ChangeColorListener;
 import mediator.ViewMediator;
@@ -29,7 +35,7 @@ public class SettingPanel extends JPanel{
 	JLabel lblStateSize = new JLabel("Size");
 	JLabel lblTransitionColor = new JLabel("Color");
 
-	JTextField textFieldStateSize = new JTextField();
+	JTextField textFieldStateSize = new JTextField("0");
 	
 	JPanel panelGroup = new JPanel();
 	JPanel panelTransition = new JPanel();
@@ -65,12 +71,34 @@ public class SettingPanel extends JPanel{
 		panelState.add(lblStateSize);
 		panelState.add(textFieldStateSize);
 		textFieldStateSize.setColumns(10);
+		Document textDocOne = textFieldStateSize.getDocument();
+	    DocumentFilter filterOne = new IntegerRangeDocumentFilter();
+	    ((AbstractDocument) textDocOne).setDocumentFilter(filterOne);
+		
 		this.add(panelState);
 		comboStateColor.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        vMdtr.setStateSubject(getStateSelectedColorText());
 		    }
 		});
+		
+		textFieldStateSize.getDocument().addDocumentListener(new DocumentListener() {
+			  public void changedUpdate(DocumentEvent e) {
+				    warn();
+				  }
+				  public void removeUpdate(DocumentEvent e) {
+				    warn();
+				  }
+				  public void insertUpdate(DocumentEvent e) {
+				    warn();
+				  }
+
+				  public void warn() {
+			    	System.out.println("changed size: " + textFieldStateSize.getText());
+			    	int size = Integer.parseInt(textFieldStateSize.getText());
+			    	vMdtr.changeStateSize(size);
+				  }
+				});
 		
 		panelTransition.setBorder(new TitledBorder(null, "Transition", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelTransition.add(lblTransitionColor);

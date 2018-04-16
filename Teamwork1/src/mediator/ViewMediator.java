@@ -9,6 +9,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import controller.Controller;
+import guiStrategy.FlatUI;
+import guiStrategy.GuiStrategy;
 import state.ChosenSelect;
 import state.ChosenState;
 import state.ChosenTransition;
@@ -34,8 +36,11 @@ public class ViewMediator {
 	//Singleton with Eager initialization 
 	private static ViewMediator vMdtr = new ViewMediator();
 	private Controller controller;
+	private GuiStrategy guiStrategy;
 	
-	private ViewMediator() {}
+	private ViewMediator() {
+		guiStrategy = new FlatUI();
+	}
 	
 	public static ViewMediator getInstance() {
 		return vMdtr;
@@ -267,6 +272,8 @@ public class ViewMediator {
 	public void setSelectedItemID(int id) {
 		this.selectedItemID = id;
 		setSelectedItemText();
+
+		refresh();
 	}
 	
 	//get selected(clicked) component ID
@@ -372,9 +379,27 @@ public class ViewMediator {
 		return controller.getColorStringList();
 	}
 
-	public void settingColor() {
+	public void initSettingComboBox() {
 		// TODO Auto-generated method stub
 		settingPanel.settingInit();
 	}
 
+	public void changeStateSize(int size) {
+		// TODO Auto-generated method stub
+		controller.changeStateSize(size);
+	}
+
+	public void refresh() {
+		// TODO Auto-generated method stub
+		if(this.selectedItemID != -1) {
+			this.buttonDelete.setEnabled(true);
+			this.buttonEdit.setEnabled(true);
+		}
+		else {
+			this.buttonDelete.setEnabled(false);
+			this.buttonEdit.setEnabled(false);
+		}
+	}
+	
+	
 }

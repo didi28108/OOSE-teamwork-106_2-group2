@@ -188,7 +188,16 @@ public class Controller {
 
 	public void settingColor() {
 		// TODO Auto-generated method stub
-		vMdtr.settingColor();
+		vMdtr.initSettingComboBox();
+	}
+
+	public void changeStateSize(int size) {
+		// TODO Auto-generated method stub
+		mMdtr.changeSize(size, vMdtr.getSelectedItemID());
+	}
+	
+	public void vMdtrRefresh() {
+		vMdtr.refresh();
 	}
 }
 
