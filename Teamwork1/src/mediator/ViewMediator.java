@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
+import javax.swing.JTextField;
 
 import controller.Controller;
 import state.ChosenSelect;
@@ -54,7 +56,11 @@ public class ViewMediator {
 	private DrawCanvas drawCanvas;
 	private MouseState currentState = ChosenSelect.getInstance(); //singleton
 	private StatusPanel statusPanel;
+	
 	private EditDialog eDialog;
+	private JComboBox eDialogCbColor;
+	private JComboBox eDialogCbGroup;
+	private JTextField eDialogTextFieldName;
 
 	private JMenuItem menuOpen;
 	private JMenuItem menuSave;
@@ -152,6 +158,22 @@ public class ViewMediator {
 	public void registerSettingPanel(SettingPanel settingPanel) {
 		// TODO Auto-generated method stub
 		this.settingPanel = settingPanel;
+	}
+	
+
+	public void registerEditStateDialogComboColor(JComboBox cbColor) {
+		// TODO Auto-generated method stub
+		this.eDialogCbColor = cbColor;
+	}
+
+	public void registerEditStateDialogComboGroup(JComboBox cbGroup) {
+		// TODO Auto-generated method stub
+		this.eDialogCbGroup = cbGroup;
+	}
+
+	public void registerEditStateDialogTextFieldName(JTextField textFieldName) {
+		// TODO Auto-generated method stub
+		this.eDialogTextFieldName = textFieldName;
 	}
 	
 	/*****************/
@@ -296,12 +318,21 @@ public class ViewMediator {
 	public void showDialog() {
 		if(eDialog == null) {
 			eDialog = new EditDialog();
+			eDialogInit();
 		}
+		this.eDialogTextFieldName.setText(getSelectedItemText());
 		eDialog.showDialog();
 	}
 	
 	public void closeMainFrame() {
 		mainFrame.dispose();
+	}
+	
+	public void eDialogInit() {
+		ArrayList<String> ar = getColorStringList();
+		for(int i =0; i < ar.size();i++) {
+			this.eDialogCbColor.addItem(ar.get(i));
+		}
 	}
 
 	//***************BUTTON****************//
@@ -343,6 +374,7 @@ public class ViewMediator {
 
 	public void settingColor() {
 		// TODO Auto-generated method stub
-		settingPanel.settingColor();
+		settingPanel.settingInit();
 	}
+
 }
