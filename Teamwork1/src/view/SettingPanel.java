@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,11 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -150,6 +147,10 @@ public class SettingPanel extends JPanel{
 		this.add(Box.createVerticalGlue(), c);
 		
 		vMdtr.registerSettingPanel(this);
+		vMdtr.registerComboStateColor(comboStateColor);
+		vMdtr.registerComboTransColor(comboTransitionColor);
+		vMdtr.registerComboGroupColor(comboGroupColor);
+		vMdtr.registerComboComponentGroup(comboComponentGroup);
 	}
 	
 	private void easyConstraints(GridBagConstraints c, GridBagLayout gbl, JComponent comp, int w, int h, int x, int y, double wx, double wy) {
@@ -177,24 +178,6 @@ public class SettingPanel extends JPanel{
 		this.add(comp, c);
 	}
 	
-	public void settingInit() {
-		ArrayList<String> colorList = vMdtr.getColorStringList();
-		for(int i =0; i < colorList.size();i++) {
-			comboStateColor.addItem(colorList.get(i));
-			comboTransitionColor.addItem(colorList.get(i));
-			comboGroupColor.addItem(colorList.get(i));
-		}
-		groupRefresh();
-	}
-	
-	public void groupRefresh() {
-		comboComponentGroup.removeAllItems();
-		ArrayList<Integer> groupList = vMdtr.getGroupList();
-		System.out.println(groupList.size());
-		for(int i =0; i < groupList.size();i++) {
-			comboComponentGroup.addItem(groupList.get(i));
-		}
-	}
 	
 	public String getStateSelectedColorText() {
 		return this.getStateSelectedColor().toString();

@@ -66,6 +66,13 @@ public class Controller {
 		return mMdtr.getStateDiagram();
 	}
 
+	public Component getComponent(int id) {
+        StateDiagram stateDiagram = mMdtr.getStateDiagram();
+        return stateDiagram.getComponent(id);
+    }
+
+	
+	//****************Memento****************//
 
     public void saveAction() {
         mMdtr.addMemento(mMdtr.saveStateDiagram());
@@ -91,13 +98,6 @@ public class Controller {
         vMdtr.repaintWithoutSave();
     }
 
-	public void changeColor(String color) {
-		// TODO Auto-generated method stub
-		int id = vMdtr.getSelectedItemID();
-		mMdtr.changeColor(color, id);
-
-		System.out.println(color + "   " + id);
-	}
 
 	public void setStateSubject(String color) {
 		mMdtr.setStateSubject(color);
@@ -112,10 +112,15 @@ public class Controller {
 		return mMdtr.getColorStringList();
 	}
 	
-	public Component getComponent(int id) {
-        StateDiagram stateDiagram = mMdtr.getStateDiagram();
-        return stateDiagram.getComponent(id);
-    }
+
+	public void changeColor(String color) {
+		// TODO Auto-generated method stub
+		int id = vMdtr.getSelectedItemID();
+		mMdtr.changeColor(color, id);
+
+		System.out.println(color + "   " + id);
+	}
+	
     /**
      * change a Component's color with another Component's color
      * @param changeC =which will change color
@@ -124,6 +129,7 @@ public class Controller {
     public void changeComponentToSameColor(Component changeC, Component colorSource) {
         changeC.setColor(colorSource.getColor());
     }
+    
     /**
      * create a new group
      * @param group =組別代號

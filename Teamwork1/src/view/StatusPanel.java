@@ -29,6 +29,7 @@ public class StatusPanel extends JPanel{
 		this.add(coordY);
 		this.add(wall);
 		this.add(itemText);
+		selectedItem.setForeground(Color.red);
 		this.add(selectedItem);
 		this.add(wall2);
 		this.add(stateText);

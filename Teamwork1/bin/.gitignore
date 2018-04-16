@@ -1,6 +1,7 @@
 /Application$1.class
 /Application.class
 /controller/
+/document/
 /flyweight/
 /guiStrategy/
 /listeners/
@@ -9,10 +10,5 @@
 /observer/
 /state/
 /statediagram/
-<<<<<<< HEAD
-/Document/
-/document/
-=======
 /strategy/
 /view/
->>>>>>> d0f29272661c9c6d51c8fcf48c4427988c17b9f8

@@ -22,9 +22,9 @@ public class ModelMediator {
 	private static final ModelMediator instance = new ModelMediator();
 	private Controller controller;
 	private ModelMediator() {
-		this.stateDiagram = new StateDiagram(this.getColorFromFactory("black"));
+		this.stateDiagram = new StateDiagram(this.getColorFromFactory("Black"));
 		this.stateDiagram.setGroup(0);
-		this.addComponent(new StateDiagram(this.getColorFromFactory("black")));
+		this.addComponent(new StateDiagram(this.getColorFromFactory("Black")));
 	}
 	public static ModelMediator getInstance() {
 		return instance;
