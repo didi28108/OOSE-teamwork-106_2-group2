@@ -3,17 +3,17 @@ package listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFileChooser;
-
+import guiStrategy.FlatUI;
 import mediator.ViewMediator;
 
-public class MenuOpenListener implements ActionListener{
-	private ViewMediator vMdtr = ViewMediator.getInstance();
+public class ChangeFlatUIStyleListener implements ActionListener{
 
+	ViewMediator vMdtr = ViewMediator.getInstance();
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		vMdtr.openFileBtnClicked();
+		vMdtr.changeGuiStrategy(new FlatUI());
 	}
 
 }

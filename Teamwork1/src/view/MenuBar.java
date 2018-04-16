@@ -4,6 +4,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import listeners.ChangeDarkUIStyleListener;
+import listeners.ChangeFlatUIStyleListener;
 import listeners.DeleteListener;
 import listeners.EditListener;
 import listeners.MenuExitListener;
@@ -50,6 +52,15 @@ public class MenuBar extends JMenuBar{
 		JMenuItem menuItemRedo = new JMenuItem("Redo");
 		menuEdit.add(menuItemRedo);
 		
+		JMenu style = new JMenu("Style");
+		add(style);
+		
+		JMenuItem flatui = new JMenuItem("Flat UI");
+		style.add(flatui);
+		JMenuItem darkui = new JMenuItem("Dark UI");
+		style.add(darkui);
+		
+		
 		vMdtr.registerMenuOpen(menuItemOpen);
 		vMdtr.registerMenuSave(menuItemSave);
 		vMdtr.registerMenuExit(menuItemExit);
@@ -65,5 +76,7 @@ public class MenuBar extends JMenuBar{
 		menuItemModify.addActionListener(new EditListener());
 		menuItemUndo.addActionListener(new UndoListener());
 		menuItemRedo.addActionListener(new RedoListener());
+		flatui.addActionListener(new ChangeFlatUIStyleListener());
+		darkui.addActionListener(new ChangeDarkUIStyleListener());
 	}
 }

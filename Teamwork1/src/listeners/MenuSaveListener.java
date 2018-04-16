@@ -2,6 +2,7 @@ package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JFileChooser;
 
@@ -14,8 +15,7 @@ public class MenuSaveListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JFileChooser saveFile = new JFileChooser();
-        saveFile.showSaveDialog(null);
+		vMdtr.saveFileBtnClicked();
 	}
 
 }

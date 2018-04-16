@@ -22,9 +22,9 @@ public class ModelMediator {
 	private static final ModelMediator instance = new ModelMediator();
 	private Controller controller;
 	private ModelMediator() {
-		this.stateDiagram = new StateDiagram(this.getColorFromFactory("black"));
+		this.stateDiagram = new StateDiagram(this.getColorFromFactory("Black"));
 		this.stateDiagram.setGroup(0);
-		this.addComponent(new StateDiagram(this.getColorFromFactory("black")));
+		this.addComponent(new StateDiagram(this.getColorFromFactory("Black")));
 	}
 	public static ModelMediator getInstance() {
 		return instance;
@@ -171,6 +171,7 @@ public class ModelMediator {
 	public void changeColor(String color, int id) {
 		// TODO Auto-generated method stub
 		Component comp = stateDiagram.getComponent(id);
+		System.out.println("mMdtr.changeColor : " + color);
 		comp.changeColor(color);
 	}
 	
