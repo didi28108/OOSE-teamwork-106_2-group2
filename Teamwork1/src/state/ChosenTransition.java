@@ -33,27 +33,32 @@ public class ChosenTransition implements MouseState{
 	public void mouseClicked(ViewMediator vMdtr, MouseEvent e) {
 		// TODO Auto-generated method stub
 		StateDiagram sd = vMdtr.getStateDiagram();
-		for (Component de : sd.getComponentList()) {
-			
-			if (de.checkPoint(e.getPoint())) {		
-				
-				if(s1 == null) {
-					s1 = de;
-					System.out.println("Clicked state 1: " + s1.getClassName());
-				}
-				else if(s1.getPoint() != de.getPoint()) {
-					s2 = de;
-					System.out.println("Clicked state 2: " + s2.getClassName());
-					PointCheck = true;
-				}
-			}
-		}
+		this.clickedLoopCheck(vMdtr, sd, e);
 
 		if (PointCheck) {
 			vMdtr.addTranstion(e, s1, s2);
 			PointCheck = false;
 
 			vMdtr.changeState(ChosenSelect.getInstance());
+		}
+	}
+	private void clickedLoopCheck(ViewMediator vMdtr, Component sd, MouseEvent e) {
+		for(Component de : sd.getComponentList()) {
+			if (de instanceof StateDiagram) {
+				this.clickedLoopCheck(vMdtr, de, e);
+			}
+			else {
+				if (de.checkPoint(e.getPoint())) {		
+				
+					if(s1 == null) {
+						s1 = de;
+					}
+					else if(s1.getPoint() != de.getPoint()) {
+						s2 = de;
+						PointCheck = true;
+					}
+				}
+			}
 		}
 	}
 
