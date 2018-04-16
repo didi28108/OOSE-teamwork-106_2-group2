@@ -24,7 +24,7 @@ public class Controller {
 	
 	//draw State
 	public void addState(MouseEvent e) {
-		int id = mMdtr.addState(e.getPoint());
+		int id = addNewState(e.getPoint());
 		vMdtr.setSelectedItemID(id);
 		vMdtr.showDialog();
 		vMdtr.repaint();
@@ -32,7 +32,7 @@ public class Controller {
 	
 	// draw transition
 	public void addTranstion(MouseEvent e, Component s1, Component s2) {
-		int id = mMdtr.addTranstion(e.getPoint(), s1, s2);
+		int id = addNewTransition(e.getPoint(), s1, s2);
 		vMdtr.setSelectedItemID(id);
 		vMdtr.showDialog();
 		vMdtr.repaint();
