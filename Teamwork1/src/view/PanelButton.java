@@ -47,5 +47,7 @@ public class PanelButton extends JPanel{
 		btnSelect.addActionListener(new BtnSelectListener());
 		btnDelete.addActionListener(new DeleteListener());
 		btnEdit.addActionListener(new EditListener());
+		
+		
 	}
 }
