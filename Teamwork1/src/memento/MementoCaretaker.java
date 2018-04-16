@@ -22,10 +22,13 @@ public class MementoCaretaker{
         }
 
         this.historyStatus.add(memento);
-        this.nowIndex += 1;
+        this.nowIndex = this.historyStatus.size() -1;
     }
 
     private ObjectStatusMemento getMemento(int index) {
+        if (index < 0) {
+            return null;
+        }
         return this.historyStatus.get(index);
     }
 

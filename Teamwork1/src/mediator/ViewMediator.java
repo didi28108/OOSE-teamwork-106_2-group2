@@ -3,6 +3,7 @@ package mediator;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
@@ -34,8 +35,11 @@ public class ViewMediator {
 	//Singleton with Eager initialization 
 	private static ViewMediator vMdtr = new ViewMediator();
 	private Controller controller;
+	private Date lastSaveTime;
 	
-	private ViewMediator() {}
+	private ViewMediator() {
+		lastSaveTime = new Date();
+	}
 	
 	public static ViewMediator getInstance() {
 		return vMdtr;
@@ -346,9 +350,15 @@ public class ViewMediator {
 
 	//*********Draw Canvas****************//
 	public void repaint() {
-		// TODO Auto-generated method stub
-		drawCanvas.repaint();
-		controller.saveAction();
+		Date nowTime = new Date();
+		if ((nowTime.getTime() - lastSaveTime.getTime()) > 100) {
+			drawCanvas.repaint();
+			controller.saveAction();
+			this.lastSaveTime = nowTime;
+		}
+		else {
+			this.repaintWithoutSave();
+		}
 	}
 	public void repaintWithoutSave() {
 		drawCanvas.repaint();
