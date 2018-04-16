@@ -28,7 +28,9 @@ public class MementoCaretaker{
     }
     private void saveMemento(ObjectStatusMemento memento) {
         for (int i = (this.historyStatus.size() - 1); i > this.nowIndex; i -= 1) {
-            this.historyStatus.remove(i);
+            if (i > -1) {
+                this.historyStatus.remove(i);
+            }
         }
 
         this.historyStatus.add(memento);
