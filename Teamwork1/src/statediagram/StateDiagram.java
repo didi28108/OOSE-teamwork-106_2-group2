@@ -56,7 +56,7 @@ public class StateDiagram extends Component {
 		}
 
 		return new StateDiagramStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
-			this.getSize(), this.getText(), this.getX(), this.getY(),
+			this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
 			saveList);
 	}
 	
@@ -66,21 +66,17 @@ public class StateDiagram extends Component {
      * @param previousMemento =先前儲存的Memento
      */
 	public void restore(ObjectStatusMemento previousMemento) {
-		this.setId(previousMemento.getId());
-		this.setGroup(previousMemento.getGroup());
-        this.setColor(previousMemento.getColor());
-        this.setSize(previousMemento.getSize());
-        this.setText(previousMemento.getText());
-        this.setX(previousMemento.getX());
-		this.setY(previousMemento.getY());
+		super.restore(previousMemento);
 
 		this.componentList = new ArrayList<Component>();
 		for (ObjectStatusMemento m: previousMemento.getComponentList()) {
 			Component re;
 			if (m.getClassName().equals("State")) {
+				System.out.println("restore State");
 				re = new State();
 			}
 			else if (m.getClassName().equals("Transition")) {
+				System.out.println("restore Transition");
 				re = new Transition();
 			}
 			else {

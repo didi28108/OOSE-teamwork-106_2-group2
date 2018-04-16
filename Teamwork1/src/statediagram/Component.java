@@ -120,7 +120,8 @@ public abstract class Component implements Observer {
      * @return Memento
      */
     public ObjectStatusMemento save() {
-        return new ObjectStatusMemento(this.getClassName(), this.id, this.group, this.color, this.size, this.text, this.x, this.y);
+        return new ObjectStatusMemento(this.getClassName(), this.id, this.group,
+            this.color, this.size, this.text, this.x, this.y, this.point);
     }
     /**
      * 使用Memento物件來恢復狀態
@@ -135,6 +136,7 @@ public abstract class Component implements Observer {
         this.text = previousMemento.getText();
         this.x = previousMemento.getX();
         this.y = previousMemento.getY();
+        this.point = previousMemento.getPoint();
     }
 
     /**
