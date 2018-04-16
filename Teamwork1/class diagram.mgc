@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="listeners.MenuSaveListener" x="1453" y="1438">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="observer.TransitionObserver" x="-783" y="397">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="observer.Observer"/>
+        <Communication destinationClassName="observer.TransitionSubject"/>
+    </Class>
+    <Class name="listeners.MyMouseListener" x="1465" y="1280">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="listeners.BtnTransListener" x="1440" y="1117">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="view.MenuBar" x="1010" y="157">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="state.ChosenSelect" x="971" y="1809">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="state.MouseState"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="deCheck" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+        <Communication destinationClassName="statediagram.Component"/>
+    </Class>
+    <Class name="view.ButtonDelete" x="1235" y="225">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="statediagram.Transition" x="-1062" y="1346">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="statediagram.Component"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="s1" kind="Simple"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="s2" kind="Simple"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="controller.Controller" x="188" y="321">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ModelMediator"
+            endpointName="mMdtr" kind="Simple"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+        <Communication destinationClassName="statediagram.StateDiagram"/>
+    </Class>
+    <Class name="listeners.DeleteListener" x="1430" y="892">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="observer.StateObserver" x="-565" y="405">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="observer.Observer"/>
+        <Communication destinationClassName="observer.StateSubject"/>
+    </Class>
+    <Class name="strategy.BlueColorStrategy" x="-1451" y="78">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="memento.ObjectStatusMemento" x="574" y="773">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="observer.Subject" x="-113" y="166">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="observer.Observer"
+            endpointName="idList" kind="Simple"/>
+        <Communication destinationClassName="observer.Observer"/>
+    </Class>
+    <Class name="view.StateDiagramEditor" x="826" y="217">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="listeners.BtnStateListener" x="1418" y="537">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="listeners.UndoListener" x="1426" y="757">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="observer.Observer" x="-681" y="182">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="strategy.YellowColorStrategy" x="-1437" y="365">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="statediagram.State" x="-695" y="1352">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="strategy.BlackColorStrategy" x="-1434" y="926">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="listeners.EditListener" x="1429" y="821">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="view.StatusPanel" x="629" y="-62">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="observer.TransitionSubject" x="-6" y="315">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="observer.Subject"/>
+        <Communication destinationClassName="observer.Subject"/>
+    </Class>
+    <Class name="listeners.MenuExitListener" x="1425" y="685">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="Application" x="-363" y="-127">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controller.Controller"/>
+    </Class>
+    <Class name="state.ChosenState" x="582" y="1813">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="state.MouseState"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="mediator.ViewMediator" x="979" y="480">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="controller.Controller"
+            endpointName="controller" kind="Simple"/>
+        <Association destinationClassName="view.ButtonTransition"
+            endpointName="buttonTransition" kind="Simple"/>
+        <Association destinationClassName="view.ButtonEdit"
+            endpointName="buttonEdit" kind="Simple"/>
+        <Association destinationClassName="view.ButtonDelete"
+            endpointName="buttonDelete" kind="Simple"/>
+        <Association destinationClassName="view.SettingPanel"
+            endpointName="settingPanel" kind="Simple"/>
+        <Association destinationClassName="view.ButtonState"
+            endpointName="buttonState" kind="Simple"/>
+        <Association destinationClassName="view.StatusPanel"
+            endpointName="statusPanel" kind="Simple"/>
+        <Association destinationClassName="view.EditDialog"
+            endpointName="eDialog" kind="Simple"/>
+        <Association destinationClassName="view.ButtonSelect"
+            endpointName="buttonSelect" kind="Simple"/>
+        <Association destinationClassName="state.MouseState"
+            endpointName="currentState" kind="Simple"/>
+        <Association destinationClassName="view.DrawCanvas"
+            endpointName="drawCanvas" kind="Simple"/>
+        <Association destinationClassName="view.StateDiagramEditor"
+            endpointName="mainFrame" kind="Simple"/>
+        <Communication destinationClassName="controller.Controller"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="view.EditDialog"/>
+        <Communication destinationClassName="view.StatusPanel"/>
+        <Communication destinationClassName="state.ChosenSelect"/>
+        <Communication destinationClassName="state.MouseState"/>
+        <Communication destinationClassName="view.SettingPanel"/>
+    </Class>
+    <Class name="memento.MementoCaretaker" x="297" y="800">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="memento.ObjectStatusMemento"
+            endpointName="historyStatus" kind="Simple"/>
+        <Association destinationClassName="mediator.ModelMediator"
+            endpointName="mediator" kind="Simple"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="listeners.ChangeColorListener" x="1454" y="1207">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="view.ButtonEdit" x="1287" y="320">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="listeners.MousePositionsListener" x="1451" y="955">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="state.MouseState" x="960" y="1564">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="view.SettingPanel" x="1481" y="16">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="statediagram.Component" x="-735" y="813">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="observer.Observer"/>
+        <Association destinationClassName="mediator.ModelMediator"
+            endpointName="mediator" kind="Simple"/>
+        <Communication destinationClassName="memento.ObjectStatusMemento"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="view.EditDialog" x="797" y="-192">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="mediator.ModelMediator" x="-112" y="687">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="observer.TransitionSubject"
+            endpointName="transitionSubject" kind="Simple"/>
+        <Association destinationClassName="controller.Controller"
+            endpointName="controller" kind="Simple"/>
+        <Association destinationClassName="observer.StateSubject"
+            endpointName="stateSubject" kind="Simple"/>
+        <Association destinationClassName="statediagram.StateDiagram"
+            endpointName="stateDiagram" kind="Simple"/>
+        <Association destinationClassName="memento.MementoCaretaker"
+            endpointName="mementoCaretaker" kind="Simple"/>
+        <Association destinationClassName="flyweight.ColorFactory"
+            endpointName="colorFactory" kind="Simple"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="memento.MementoCaretaker"/>
+        <Communication destinationClassName="observer.Subject"/>
+        <Communication destinationClassName="flyweight.ColorFactory"/>
+        <Communication destinationClassName="observer.TransitionSubject"/>
+        <Communication destinationClassName="observer.StateSubject"/>
+        <Communication destinationClassName="statediagram.StateDiagram"/>
+    </Class>
+    <Class name="listeners.BtnSelectListener" x="1417" y="453">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="strategy.OrangeColorStrategy" x="-1442" y="213">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="listeners.RedoListener" x="1420" y="616">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="statediagram.StateDiagram" x="-369" y="1379">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="statediagram.Component"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="componentList" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="memento.ObjectStatusMemento"/>
+    </Class>
+    <Class name="view.ButtonState" x="1372" y="245">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="listeners.MenuOpenListener" x="1437" y="1042">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="view.PanelButton" x="1307" y="133">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="view.ButtonSelect"
+            endpointName="btnSelect" kind="Simple"/>
+        <Association destinationClassName="view.ButtonDelete"
+            endpointName="btnDelete" kind="Simple"/>
+        <Association destinationClassName="view.ButtonEdit"
+            endpointName="btnEdit" kind="Simple"/>
+        <Association destinationClassName="view.ButtonState"
+            endpointName="btnState" kind="Simple"/>
+        <Association destinationClassName="view.ButtonTransition"
+            endpointName="btnTransition" kind="Simple"/>
+    </Class>
+    <Class name="memento.StateDiagramStatusMemento" x="411" y="1045">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="memento.ObjectStatusMemento"/>
+        <Association destinationClassName="memento.ObjectStatusMemento"
+            endpointName="componentList" kind="Simple"/>
+    </Class>
+    <Class name="strategy.RedColorStrategy" x="-1431" y="525">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="view.DrawCanvas" x="388" y="646">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="components" kind="Simple"/>
+        <Association destinationClassName="mediator.ModelMediator"
+            endpointName="mMdtr" kind="Simple"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="vMdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+        <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="view.BorderPanel" x="717" y="338">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="strategy.ColorStrategy" x="-1218" y="401">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="view.ButtonSelect" x="1202" y="69">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="flyweight.ColorFactory" x="-1055" y="530">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ModelMediator"
+            endpointName="mMdtr" kind="Simple"/>
+        <Communication destinationClassName="strategy.ColorStrategy"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
+    </Class>
+    <Class name="observer.StateSubject" x="-186" y="314">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="observer.Subject"/>
+        <Communication destinationClassName="observer.Subject"/>
+    </Class>
+    <Class name="view.ButtonTransition" x="1126" y="-32">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="mediator.ViewMediator"
+            endpointName="mdtr" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+    </Class>
+    <Class name="state.ChosenTransition" x="1363" y="1784">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="state.MouseState"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="s1" kind="Simple"/>
+        <Association destinationClassName="statediagram.Component"
+            endpointName="s2" kind="Simple"/>
+        <Communication destinationClassName="mediator.ViewMediator"/>
+        <Communication destinationClassName="statediagram.Component"/>
+    </Class>
+    <Class name="strategy.MikuGreenColorStrategy" x="-1429" y="786">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+    <Class name="strategy.PinkColorStrategy" x="-1420" y="657">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="strategy.ColorStrategy"/>
+    </Class>
+</ClassDiagram>
