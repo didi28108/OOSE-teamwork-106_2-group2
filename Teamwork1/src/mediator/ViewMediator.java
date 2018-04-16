@@ -30,7 +30,6 @@ import view.SettingPanel;
 import view.StateDiagramEditor;
 import view.StatusPanel;
 
-// combining facade and mediator
 public class ViewMediator {
 
 	//Singleton with Eager initialization 

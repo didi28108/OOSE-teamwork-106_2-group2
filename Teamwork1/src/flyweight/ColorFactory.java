@@ -26,6 +26,7 @@ public class ColorFactory {
 		this.colorStringList.add("Orange");
 	}
 
+	private static ColorFactory instance = new ColorFactory();
 	public static ColorFactory getInstance() {
 		return instance;
 	}
