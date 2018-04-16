@@ -123,8 +123,13 @@ public abstract class Component implements Observer {
      * @param color =指定的顏色
      */
     public void changeColor(String color) {
-    	System.out.println("component.changeColor  :" + color);
-        this.setColor(mediator.getColorFromFactory(color));
+        System.out.println("component.changeColor  :" + color);
+        try {
+            this.setColor(mediator.getColorFromFactory(color));
+        } 
+        catch (Exception e) {
+            
+        }
     }
 
     /**

@@ -194,9 +194,7 @@ public class Controller {
     public void changeGroupColor(int groupNumber, String color) {
     	System.out.println("controller.changeGroupColor");
         Component group = mMdtr.getGroup(groupNumber);
-        for(Component c:group.getComponentList()) {
-        	c.changeColor(color);
-        }
+        group.changeColor(color);
     }
 
 	public void settingColor() {
