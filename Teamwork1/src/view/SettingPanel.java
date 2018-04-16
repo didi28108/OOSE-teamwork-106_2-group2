@@ -95,7 +95,13 @@ public class SettingPanel extends JPanel{
 
 				  public void warn() {
 			    	System.out.println("changed size: " + textFieldStateSize.getText());
-			    	int size = Integer.parseInt(textFieldStateSize.getText());
+			    	String text = textFieldStateSize.getText();
+			    	int size;
+			    	if(!text.equals("")) {
+				    	size = Integer.parseInt(text);
+			    	}else {
+			    		size = 0;
+			    	}
 			    	vMdtr.changeStateSize(size);
 				  }
 				});
