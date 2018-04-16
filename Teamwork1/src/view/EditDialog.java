@@ -120,8 +120,8 @@ public class EditDialog extends JDialog implements ActionListener{
 			closeDialog();
 		}else if(cmd == "OK") {
 			vMdtr.setComponentText(textFieldName.getText());
-			vMdtr.setComponentColor(cbColor.getSelectedItem());
 			vMdtr.setComponentGroup(cbGroup.getSelectedItem());
+			vMdtr.setComponentColor(cbColor.getSelectedItem());
 			closeDialog();
 		}
 	}
