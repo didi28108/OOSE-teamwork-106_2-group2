@@ -7,7 +7,7 @@ import mediator.ViewMediator;
 
 public class ChangeColorListener implements ActionListener{
 
-	ViewMediator vMdtr = ViewMediator.getInstance();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

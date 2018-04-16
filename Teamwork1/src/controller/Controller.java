@@ -189,8 +189,18 @@ public class Controller {
     }
 
 	public void settingColor() {
-		vMdtr.settingColor();
-    }
+		// TODO Auto-generated method stub
+		vMdtr.initSettingComboBox();
+	}
+
+	public void changeStateSize(int size) {
+		// TODO Auto-generated method stub
+		mMdtr.changeSize(size, vMdtr.getSelectedItemID());
+	}
+	
+	public void vMdtrRefresh() {
+		vMdtr.refresh();
+	}
     
     /**
      * get group list
