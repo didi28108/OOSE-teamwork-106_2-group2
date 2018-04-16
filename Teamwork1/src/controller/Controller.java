@@ -80,12 +80,14 @@ public class Controller {
     	System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
+        mMdtr.fixTransitionRelationship();
         vMdtr.repaintWithoutSave();
     }
     public void redoAction() {
         System.out.println("redoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.redo());
+        mMdtr.fixTransitionRelationship();
         vMdtr.repaintWithoutSave();
     }
 

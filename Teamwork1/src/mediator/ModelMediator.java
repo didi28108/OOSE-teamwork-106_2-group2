@@ -82,6 +82,9 @@ public class ModelMediator {
     public StateDiagram getStateDiagram() {
 		return this.stateDiagram;
 	}
+	public Component getComponent(int id) {
+		return this.stateDiagram.getComponent(id);
+	}
 	
 	public void setStateDiagram(StateDiagram stateDiagram) {
 		this.stateDiagram = stateDiagram;
@@ -97,6 +100,9 @@ public class ModelMediator {
 	}
 	public void restoreStateDiagram(ObjectStatusMemento previousMemento) {
 		this.stateDiagram.restore(previousMemento);
+	}
+	public void fixTransitionRelationship() {
+		this.stateDiagram.fixTransitionRelationship();
 	}
 
 	public void stateDiagramAttachSubject() {
