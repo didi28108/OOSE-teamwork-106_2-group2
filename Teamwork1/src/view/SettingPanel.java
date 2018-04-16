@@ -31,6 +31,7 @@ import mediator.ViewMediator;
 public class SettingPanel extends JPanel{
 
 	JLabel lblGroup = new JLabel("Group:");
+	JLabel lblGroupColor = new JLabel("Color");
 	JLabel lblStateColor = new JLabel("Color");
 	JLabel lblStateSize = new JLabel("Size");
 	JLabel lblTransitionColor = new JLabel("Color");
@@ -42,6 +43,7 @@ public class SettingPanel extends JPanel{
 	JPanel panelState = new JPanel();
 	
 	JComboBox comboComponentGroup = new JComboBox();
+	JComboBox comboGroupColor = new JComboBox();
 	JComboBox comboStateColor = new JComboBox();
 	JComboBox comboTransitionColor = new JComboBox();
 	
@@ -62,6 +64,8 @@ public class SettingPanel extends JPanel{
 		panelGroup.setBorder(new TitledBorder(null, "Group", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelGroup.add(lblGroup);
 		panelGroup.add(comboComponentGroup);
+		panelGroup.add(lblGroupColor);
+		panelGroup.add(comboGroupColor);
 		this.add(panelGroup);
 		comboComponentGroup.setEditable(true);
 		
@@ -116,16 +120,16 @@ public class SettingPanel extends JPanel{
 		    }
 		});
 
-		panelGroup.setLayout(new GridLayout(1,0));
-		panelState.setLayout(new GridLayout(2,0));
-		panelTransition.setLayout(new GridLayout(1,0));
+		panelGroup.setLayout(new GridLayout(2,1));
+		panelState.setLayout(new GridLayout(2,1));
+		panelTransition.setLayout(new GridLayout(1,1));
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		easyConstraints(c, gbl, panelGroup, 1, 1, 0, 0, 0.5, 1.0);
-		easyConstraints(c, gbl, panelState, 2, 1, 0, 1, 0.5, 1.0);
+		easyConstraints(c, gbl, panelState, 1, 1, 0, 1, 0.5, 1.0);
 		easyConstraints(c, gbl, panelTransition, 1, 1, 0, 2, 0.5, 1.0);
-		c.weighty = 0.5;
+		c.weighty = 1.0;
 		this.add(Box.createVerticalGlue(), c);
 		
 		vMdtr.registerSettingPanel(this);
