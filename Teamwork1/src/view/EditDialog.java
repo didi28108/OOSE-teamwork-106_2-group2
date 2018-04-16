@@ -84,7 +84,6 @@ public class EditDialog extends JDialog implements ActionListener{
 		contentPanel.add(lblColor);
 		
 		cbColor = new JComboBox();
-		cbColor.setSelectedIndex(0);
 		cbColor.setBounds(116, 77, 219, 21);
 		contentPanel.add(cbColor);
 		vMdtr.registerEditStateDialogComboColor(cbColor);
