@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import mediator.ModelMediator;
 import mediator.ViewMediator;
@@ -64,7 +65,6 @@ public class Controller {
 		// TODO Auto-generated method stub
 		return mMdtr.getStateDiagram();
 	}
-	
 
 
     public void saveAction() {
@@ -77,9 +77,10 @@ public class Controller {
         mMdtr.detachAllTransitionSubject();
     }
     public void undoAction() {
-        System.out.println("undoAction()");
+    	 System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
+        vMdtr.repaint();
     }
     public void redoAction() {
         this.detachAllSubject();
@@ -100,9 +101,13 @@ public class Controller {
 	}
 	public void setTransitionSubject(String color) {
 		mMdtr.setTransitionSubject(color);
+		vMdtr.repaint();
 	}
 
-
+	public ArrayList<String> getColorStringList() {
+		return mMdtr.getColorStringList();
+	}
+	
 	public Component getComponent(int id) {
         StateDiagram stateDiagram = mMdtr.getStateDiagram();
         return stateDiagram.getComponent(id);
@@ -148,7 +153,7 @@ public class Controller {
         Component group1 = mMdtr.getGroup(1);
         group1.add(newTransition);
         this.changeComponentToSameColor(newTransition, group1);
-        
+
         return newTransition.getId();
     }
 
@@ -180,4 +185,10 @@ public class Controller {
         Component group = mMdtr.getGroup(groupNumber);
         group.changeColor(color);
     }
+
+	public void settingColor() {
+		// TODO Auto-generated method stub
+		vMdtr.settingColor();
+	}
 }
+

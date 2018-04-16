@@ -25,7 +25,7 @@ public class Application {
         view.setLocationRelativeTo(null);
         Controller ctrl = new Controller();
         //view.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        ctrl.settingColor();
         view.setVisible(true);
     }
 }

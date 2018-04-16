@@ -17,7 +17,7 @@ public class ObjectStatusMemento{
     private Point point;
 
     public ObjectStatusMemento(String className, int id, int group,
-        Color color, float size, String text, int x, int y, Point p) {
+            Color color, float size, String text, int x, int y, Point p) {
         this.className = className;
         this.id = id;
         this.group = group;
@@ -64,7 +64,6 @@ public class ObjectStatusMemento{
     public Point getPoint() {
         return this.point;
     }
-
     public ArrayList<ObjectStatusMemento> getComponentList() {
         return null;
     }

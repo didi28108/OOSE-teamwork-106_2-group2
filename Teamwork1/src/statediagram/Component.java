@@ -157,7 +157,7 @@ public abstract class Component implements Observer {
     public ArrayList<Component> getComponentList() {
 		return null;
 	}
-
+    
     /**
      * do nothing
      */

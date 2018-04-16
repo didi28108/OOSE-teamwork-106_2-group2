@@ -56,8 +56,8 @@ public class StateDiagram extends Component {
 		}
 
 		return new StateDiagramStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
-			this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
-			saveList);
+				this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
+				saveList);
 	}
 	
 	@Override

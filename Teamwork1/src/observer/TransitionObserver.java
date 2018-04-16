@@ -1,6 +1,6 @@
 package observer;
 
-class TransitionObserver implements Observer { //�[��̪���@�覡���O�A�Ψӱ����ؼСA��s�ۤv�����A�H�O���M�ؼЪ��A�@�P
+public class TransitionObserver implements Observer{ //�[��̪���@�覡���O�A�Ψӱ����ؼСA��s�ۤv�����A�H�O���M�ؼЪ��A�@�P
 	private String color;
 	private String name;
 
