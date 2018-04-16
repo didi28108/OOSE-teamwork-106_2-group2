@@ -86,6 +86,24 @@ public class StateDiagram extends Component {
 			this.componentList.add(re);
 		}
 	}
+	@Override
+	public void fixTransitionRelationship() {
+		for (Component c: this.componentList) {
+			if (c instanceof Transition) {
+				Component s1 = c.getS1();
+				Component s2 = c.getS2();
+				Component newS1 = mediator.getComponent(s1.getId());
+				Component newS2 = mediator.getComponent(s2.getId());
+				if (newS1 != null && newS2 != null) {
+					c.setS1(newS1);
+					c.setS2(newS2);
+				}
+			}
+			else if (c instanceof StateDiagram) {
+				c.fixTransitionRelationship();
+			}
+		}
+	}
 
 	
 	@Override

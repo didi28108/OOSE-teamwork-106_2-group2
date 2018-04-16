@@ -105,7 +105,18 @@ public abstract class Component implements Observer {
 	
 	public void setPoint(Point p) {
 		this.point = p;
-	}
+    }
+    
+    public Component getS1() {
+        return null;
+    }
+    public Component getS2() {
+        return null;
+    }
+    public void setS1(Component s1) {
+    }
+    public void setS2(Component s2) {
+    }
     
     /**
      * 透過輸入指定顏色(ex: "red")來改變顏色
@@ -138,6 +149,8 @@ public abstract class Component implements Observer {
         this.x = previousMemento.getX();
         this.y = previousMemento.getY();
         this.point = previousMemento.getPoint();
+    }
+    public void fixTransitionRelationship() {
     }
 
     /**

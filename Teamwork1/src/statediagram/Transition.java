@@ -31,6 +31,23 @@ public class Transition extends Component implements Serializable{
 		this.s1 = s1;
 		this.s2 = s2;
 	}
+
+	@Override
+	public Component getS1() {
+		return this.s1;
+	}
+	@Override
+	public Component getS2() {
+		return this.s2;
+	}
+	@Override
+	public void setS1(Component s1) {
+		this.s1 = s1;
+	}
+	@Override
+	public void setS2(Component s2) {
+		this.s2 = s2;
+	}
 	
 	@Override
 	public void draw(Graphics g) {	
