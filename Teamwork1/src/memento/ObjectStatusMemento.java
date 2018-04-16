@@ -26,7 +26,6 @@ public class ObjectStatusMemento{
         this.text = text;
         this.x = x;
         this.y = y;
-
         this.point = p;
     }
 
@@ -65,7 +64,6 @@ public class ObjectStatusMemento{
     public Point getPoint() {
         return this.point;
     }
-    
     public ArrayList<ObjectStatusMemento> getComponentList() {
         return null;
     }

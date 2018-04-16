@@ -65,7 +65,6 @@ public class StateDiagram extends Component {
      * 使用Memento物件來恢復狀態
      * @param previousMemento =先前儲存的Memento
      */
-
 	public void restore(ObjectStatusMemento previousMemento) {
 		super.restore(previousMemento);
 

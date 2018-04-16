@@ -154,7 +154,6 @@ public abstract class Component implements Observer {
     public Component getComponent(int id) {
         return null;
     }
-
     public ArrayList<Component> getComponentList() {
 		return null;
 	}
