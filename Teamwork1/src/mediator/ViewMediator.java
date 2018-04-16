@@ -3,6 +3,7 @@ package mediator;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
@@ -353,14 +354,19 @@ public class ViewMediator {
 
 	//*********Draw Canvas****************//
 	public void repaint() {
-		// TODO Auto-generated method stub
 		drawCanvas.repaint();
 		controller.saveAction();
+	}
+	public void repaintWithoutSave() {
+		drawCanvas.repaint();
 	}
 
 	public void undoClick(ActionEvent e) {
 		// TODO Auto-generated method stub
 		controller.undoAction();
+	}
+	public void redoClick(ActionEvent e) {
+		controller.redoAction();
 	}
 
 	public void setComponentColor(Object selectedItem) {

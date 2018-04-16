@@ -9,6 +9,9 @@ import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
 import java.io.Serializable;
 
+import memento.TransitionStatusMemento;
+import memento.ObjectStatusMemento;
+
 
 public class Transition extends Component implements Serializable{
 	
@@ -153,4 +156,17 @@ public class Transition extends Component implements Serializable{
 		
 	}
 
+	@Override
+	public ObjectStatusMemento save() {
+        return new TransitionStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
+				this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
+				this.s1, this.s2, this.line);
+	}
+	@Override
+	public void restore(ObjectStatusMemento previousMemento) {
+		super.restore(previousMemento);
+		this.s1 = previousMemento.getS1();
+		this.s2 = previousMemento.getS2();
+		this.line = previousMemento.getLine2D();
+	}
 }

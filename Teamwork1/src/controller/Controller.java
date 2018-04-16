@@ -77,14 +77,16 @@ public class Controller {
         mMdtr.detachAllTransitionSubject();
     }
     public void undoAction() {
-    	 System.out.println("undoAction()");
+    	System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
-        vMdtr.repaint();
+        vMdtr.repaintWithoutSave();
     }
     public void redoAction() {
+        System.out.println("redoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.redo());
+        vMdtr.repaintWithoutSave();
     }
 
 	public void changeColor(String color) {

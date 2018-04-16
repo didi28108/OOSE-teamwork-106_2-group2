@@ -2,7 +2,11 @@ package memento;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 import java.util.*;
+
+import statediagram.Component;
 
 
 public class ObjectStatusMemento{
@@ -64,7 +68,24 @@ public class ObjectStatusMemento{
     public Point getPoint() {
         return this.point;
     }
+
+
     public ArrayList<ObjectStatusMemento> getComponentList() {
+        return null;
+    }
+    public Rectangle getB() {
+        return null;
+    }
+    public float getLine() {
+        return 0;
+    }
+    public Component getS1() {
+        return null;
+    }
+    public Component getS2() {
+        return null;
+    }
+    public Line2D getLine2D() {
         return null;
     }
 }
