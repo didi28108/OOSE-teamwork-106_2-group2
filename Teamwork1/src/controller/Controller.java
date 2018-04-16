@@ -80,7 +80,9 @@ public class Controller {
     	 System.out.println("undoAction()");
         this.detachAllSubject();
         mMdtr.restoreStateDiagram(mMdtr.undo());
-        vMdtr.repaint();
+        vMdtr.repaintWithoutSave();
+
+        
     }
     public void redoAction() {
         this.detachAllSubject();

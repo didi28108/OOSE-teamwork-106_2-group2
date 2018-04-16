@@ -33,6 +33,7 @@ public class DrawCanvas extends JPanel{
 		this.addMouseListener(new MyMouseListener());
 	}
 	public void paintComponent(Graphics g) {
+		System.out.println("DrawCanvas.paintComponent()");
 		components = mMdtr.getStateDiagram();
 		super.paintComponent(g);
 		g.setColor(Color.black);

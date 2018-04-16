@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.io.Serializable;
 
+import memento.ObjectStatusMemento;
+import memento.StateStatusMemento;;
+
 public class State extends Component implements Serializable{
 	private Rectangle b;
 	private float line;
@@ -88,5 +91,18 @@ public class State extends Component implements Serializable{
 		this.setX((int)p.getX());
 		this.setY((int)p.getY());
 		setBoundary();
+	}
+
+	@Override
+	public ObjectStatusMemento save() {
+        return new StateStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
+				this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
+				this.b, this.line);
+	}
+	@Override
+	public void restore(ObjectStatusMemento previousMemento) {
+		super.restore(previousMemento);
+		this.b = previousMemento.getB();
+		this.line = previousMemento.getLine();
 	}
 }

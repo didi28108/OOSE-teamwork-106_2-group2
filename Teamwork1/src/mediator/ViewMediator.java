@@ -350,6 +350,9 @@ public class ViewMediator {
 		drawCanvas.repaint();
 		controller.saveAction();
 	}
+	public void repaintWithoutSave() {
+		drawCanvas.repaint();
+	}
 
 	public void undoClick(ActionEvent e) {
 		// TODO Auto-generated method stub
