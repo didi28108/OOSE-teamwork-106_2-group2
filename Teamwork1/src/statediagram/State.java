@@ -19,6 +19,7 @@ public class State extends Component implements Serializable{
 	
 	public State() {
 		setBoundary();
+		this.attachSubject();
 	}
 	
 	public State(String text, Point p) {

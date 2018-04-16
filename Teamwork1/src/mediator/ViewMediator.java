@@ -368,6 +368,9 @@ public class ViewMediator {
 		// TODO Auto-generated method stub
 		controller.undoAction();
 	}
+	public void redoClick(ActionEvent e) {
+		controller.redoAction();
+	}
 
 	public void setComponentColor(Object selectedItem) {
 		// TODO Auto-generated method stub
