@@ -103,7 +103,13 @@ public class StateDiagram extends Component {
 	 * @param id =要移除的component的id
 	 */
 	public void remove(int id) {
-		this.componentList.remove(this.getComponent(id));
+		Component removeC = this.getComponent(id);
+		boolean success = this.componentList.remove(removeC);
+		if ((! success) && (removeC != null)) {
+			for (Component c: this.componentList) {
+				c.remove(id);
+			}
+		}
 	}
 
 	@Override
