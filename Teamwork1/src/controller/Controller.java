@@ -187,8 +187,21 @@ public class Controller {
     }
 
 	public void settingColor() {
-		// TODO Auto-generated method stub
 		vMdtr.settingColor();
-	}
+    }
+    
+    /**
+     * get group list
+     * @return a ArrayList<int> which have all group number
+     */
+    public ArrayList<int> getGroupList() {
+        ArrayList<int> list = new ArrayList<int>();
+        StateDiagram sd = mMdtr.getStateDiagram();
+        for (Component c: sd.getComponentList()) {
+            list.add(c.getGroup());
+        }
+
+        return list;
+    }
 }
 
