@@ -194,8 +194,8 @@ public class Controller {
      * get group list
      * @return a ArrayList<int> which have all group number
      */
-    public ArrayList<int> getGroupList() {
-        ArrayList<int> list = new ArrayList<int>();
+    public ArrayList<Integer> getGroupList() {
+        ArrayList<Integer> list = new ArrayList<Integer>();
         StateDiagram sd = mMdtr.getStateDiagram();
         for (Component c: sd.getComponentList()) {
             list.add(c.getGroup());
