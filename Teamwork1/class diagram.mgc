@@ -99,6 +99,7 @@
         <Association destinationClassName="statediagram.Component"
             endpointName="s2" kind="Simple"/>
         <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="memento.ObjectStatusMemento"/>
         <Communication destinationClassName="mediator.ModelMediator"/>
     </Class>
     <Class name="controller.Controller" x="188" y="321">
@@ -160,7 +161,7 @@
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
     </Class>
-    <Class name="observer.Subject" x="-113" y="166">
+    <Class name="observer.Subject" x="-110" y="146">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -208,7 +209,7 @@
             endpointName="vMdtr" kind="Simple"/>
         <Communication destinationClassName="mediator.ViewMediator"/>
     </Class>
-    <Class name="observer.Observer" x="-681" y="182">
+    <Class name="observer.Observer" x="-678" y="163">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -237,6 +238,7 @@
             accessors-accepted="false" constructors-accepted="false"/>
         <Extension destinationClassName="statediagram.Component"/>
         <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="memento.ObjectStatusMemento"/>
         <Communication destinationClassName="mediator.ModelMediator"/>
     </Class>
     <Class name="strategy.BlackColorStrategy" x="-1434" y="926">
@@ -273,7 +275,7 @@
             endpointName="mdtr" kind="Simple"/>
         <Communication destinationClassName="mediator.ViewMediator"/>
     </Class>
-    <Class name="observer.TransitionSubject" x="-6" y="315">
+    <Class name="observer.TransitionSubject" x="10" y="311">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -317,7 +319,7 @@
         <Extension destinationClassName="state.MouseState"/>
         <Communication destinationClassName="mediator.ViewMediator"/>
     </Class>
-    <Class name="mediator.ViewMediator" x="979" y="480">
+    <Class name="mediator.ViewMediator" x="943" y="477">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -454,7 +456,7 @@
             endpointName="vMdtr" kind="Simple"/>
         <Communication destinationClassName="mediator.ViewMediator"/>
     </Class>
-    <Class name="mediator.ModelMediator" x="-112" y="687">
+    <Class name="mediator.ModelMediator" x="-126" y="692">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -475,6 +477,7 @@
         <Association destinationClassName="flyweight.ColorFactory"
             endpointName="colorFactory" kind="Simple"/>
         <Communication destinationClassName="statediagram.Component"/>
+        <Communication destinationClassName="controller.Controller"/>
         <Communication destinationClassName="memento.MementoCaretaker"/>
         <Communication destinationClassName="observer.Subject"/>
         <Communication destinationClassName="flyweight.ColorFactory"/>
@@ -532,6 +535,7 @@
         <Communication destinationClassName="mediator.ViewMediator"/>
         <Communication destinationClassName="statediagram.Component"/>
         <Communication destinationClassName="memento.ObjectStatusMemento"/>
+        <Communication destinationClassName="mediator.ModelMediator"/>
     </Class>
     <Class name="view.ButtonState" x="1372" y="245">
         <AttributesDisplayFilter public-accepted="true"
@@ -659,7 +663,7 @@
         <Communication destinationClassName="strategy.ColorStrategy"/>
         <Communication destinationClassName="mediator.ModelMediator"/>
     </Class>
-    <Class name="observer.StateSubject" x="-186" y="314">
+    <Class name="observer.StateSubject" x="-201" y="314">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
