@@ -25,12 +25,15 @@ import mediator.ViewMediator;
 public class SettingPanel extends JPanel{
 
 	JLabel lblGroup = new JLabel("Group:");
-	JPanel panelState = new JPanel();
 	JLabel lblStateColor = new JLabel("Color");
 	JLabel lblStateSize = new JLabel("Size");
-	JTextField guiStateSize = new JTextField();
-	JPanel panelTransition = new JPanel();
 	JLabel lblTransitionColor = new JLabel("Color");
+
+	JTextField textFieldStateSize = new JTextField();
+	
+	JPanel panelGroup = new JPanel();
+	JPanel panelTransition = new JPanel();
+	JPanel panelState = new JPanel();
 	
 	JComboBox comboComponentGroup = new JComboBox();
 	JComboBox comboStateColor = new JComboBox();
@@ -45,57 +48,49 @@ public class SettingPanel extends JPanel{
 	
 	public SettingPanel() {
 		this.setLayout(gbl);
+		
 		Border bdr = BorderFactory.createEtchedBorder(Color.black,Color.black);
 		Border titlebdr = BorderFactory.createTitledBorder(bdr, "Setting");
 		this.setBorder(titlebdr);
-		
-		this.add(lblGroup);
-		this.add(comboComponentGroup);
+
+		panelGroup.setBorder(new TitledBorder(null, "Group", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelGroup.add(lblGroup);
+		panelGroup.add(comboComponentGroup);
+		this.add(panelGroup);
 		comboComponentGroup.setEditable(true);
 		
 		panelState.setBorder(new TitledBorder(null, "State", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		this.add(panelState);
 		panelState.add(lblStateColor);
-
 		panelState.add(comboStateColor);
+		panelState.add(lblStateSize);
+		panelState.add(textFieldStateSize);
+		textFieldStateSize.setColumns(10);
+		this.add(panelState);
 		comboStateColor.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        vMdtr.setStateSubject(getStateSelectedColorText());
 		    }
 		});
 		
-		
-		panelState.add(lblStateSize);
-		
-		panelState.add(guiStateSize);
-		guiStateSize.setColumns(10);
-		
 		panelTransition.setBorder(new TitledBorder(null, "Transition", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		this.add(panelTransition);
-		
 		panelTransition.add(lblTransitionColor);
-		
 		panelTransition.add(comboTransitionColor);
+		this.add(panelTransition);
 		comboTransitionColor.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        vMdtr.setTransitionSubject(getTransSelectedColorText());
 		    }
 		});
 
-		panelState.setLayout(new GridLayout(2,1));
-		panelTransition.setLayout(new GridLayout(1,1));
+		panelGroup.setLayout(new GridLayout(1,0));
+		panelState.setLayout(new GridLayout(2,0));
+		panelTransition.setLayout(new GridLayout(1,0));
 		
 		GridBagConstraints c = new GridBagConstraints();
-
-		c.insets.left = 5;
-		easyConstraints(c, gbl, lblGroup, 1, 1, 0, 0, 0.5, 1.0);
-
-		c.insets.left = 0;
-		easyConstraints(c, gbl, comboComponentGroup, 1, 1, 1, 0, 0.5, 1.0);
-		c.ipadx = 0;
 		
+		easyConstraints(c, gbl, panelGroup, 1, 1, 0, 0, 0.5, 1.0);
 		easyConstraints(c, gbl, panelState, 2, 1, 0, 1, 0.5, 1.0);
-		easyConstraints(c, gbl, panelTransition, 2, 1, 0, 2, 0.5, 1.0);
+		easyConstraints(c, gbl, panelTransition, 1, 1, 0, 2, 0.5, 1.0);
 		c.weighty = 0.5;
 		this.add(Box.createVerticalGlue(), c);
 		
@@ -115,18 +110,19 @@ public class SettingPanel extends JPanel{
 		gbl.setConstraints(Comp, constraints);
 		*/
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets.top = 3;
 		c.insets.bottom = 0;
 		c.gridwidth = w;
 		c.gridheight = h;
 		c.gridx = x;
 		c.gridy = y;
-		c.weightx = wx;
+		c.weightx = 0;
 		c.weighty = 0;
 		this.add(comp, c);
 	}
 	
-	public void settingColor() {
+	public void settingInit() {
 		ArrayList<String> ar = vMdtr.getColorStringList();
 		for(int i =0; i < ar.size();i++) {
 			comboStateColor.addItem(ar.get(i));
@@ -148,5 +144,13 @@ public class SettingPanel extends JPanel{
 	
 	public Object getTransSelectedColor() {
 		return this.comboTransitionColor.getSelectedItem();
+	}
+	
+	public int getSelectedGroupText() {
+		return Integer.parseInt(this.getSelectedGroup().toString());
+	}
+	
+	public Object getSelectedGroup() {
+		return this.comboComponentGroup.getSelectedItem();
 	}
 }
