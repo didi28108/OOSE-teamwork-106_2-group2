@@ -67,26 +67,25 @@ public class EditDialog extends JDialog implements ActionListener{
 		textFieldName.setBounds(116, 44, 219, 21);
 		contentPanel.add(textFieldName);
 		textFieldName.setColumns(10);
+		vMdtr.registerEditStateDialogTextFieldName(textFieldName);
 		
 		lblGroup = new JLabel("Group:");
 		lblGroup.setBounds(10, 111, 46, 15);
 		contentPanel.add(lblGroup);
 		
 		cbGroup = new JComboBox();
-		cbGroup.setEditable(true);
 		cbGroup.setBounds(116, 108, 219, 21);
 		contentPanel.add(cbGroup);
+		vMdtr.registerEditStateDialogComboGroup(cbGroup);
 		
 		lblColor = new JLabel("Color:");
 		lblColor.setBounds(10, 80, 147, 15);
 		contentPanel.add(lblColor);
 		
 		cbColor = new JComboBox();
-		cbColor.addItem("red");
-		cbColor.addItem("black");
-		cbColor.setSelectedIndex(0);
 		cbColor.setBounds(116, 77, 219, 21);
 		contentPanel.add(cbColor);
+		vMdtr.registerEditStateDialogComboColor(cbColor);
 		
 		buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -108,8 +107,6 @@ public class EditDialog extends JDialog implements ActionListener{
 	}
 	
 	public void showDialog() {
-		String compName = vMdtr.getSelectedItemText();
-		textFieldName.setText(compName);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
@@ -123,6 +120,7 @@ public class EditDialog extends JDialog implements ActionListener{
 			closeDialog();
 		}else if(cmd == "OK") {
 			vMdtr.setComponentText(textFieldName.getText());
+			vMdtr.setComponentGroup(cbGroup.getSelectedItem());
 			vMdtr.setComponentColor(cbColor.getSelectedItem());
 			closeDialog();
 		}

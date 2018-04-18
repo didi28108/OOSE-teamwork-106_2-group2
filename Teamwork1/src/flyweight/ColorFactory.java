@@ -9,13 +9,12 @@ import strategy.*;
 
 // Color Strategy is flyweight
 public class ColorFactory {
-	private static ColorFactory instance = null;
+	private static ColorFactory instance = new ColorFactory();
 	private HashMap<String, Color> ColorList = new HashMap<>();
 	private Color result = null;
 	private ArrayList<String> colorStringList = new ArrayList<String>();
 
 	private ModelMediator mMdtr = ModelMediator.getInstance();
-	
 
 	public ColorFactory() {
 		this.colorStringList.add("Black");
@@ -27,24 +26,20 @@ public class ColorFactory {
 		this.colorStringList.add("Orange");
 	}
 
+	public static ColorFactory getInstance() {
+		return instance;
+	}
+	
 	public ArrayList<String> getColorStringList() {
 		return this.colorStringList;
 	}
 	
-	public static ColorFactory getInstance() {
-		if(instance == null) {
-			instance = new ColorFactory();
-		}
-		
-		return instance;
-	}
 
 	public Color getColor(String color) {
 		result = null;
 		result = ColorList.get(color);
 
 		if (result == null) {
-			System.out.println( "asdasd");
 			result = createNewColor(color);
 			ColorList.put(color, result);
 		}

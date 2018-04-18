@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 import mediator.ViewMediator;
 
-public class ChangeColorListener implements ActionListener{
+public class ChangeGroupColorListener implements ActionListener{
 
-	ViewMediator vMdtr = ViewMediator.getInstance();
+	private ViewMediator vMdtr = ViewMediator.getInstance();
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-	}
+    	vMdtr.changeGroupColor();
+    }
 
 }

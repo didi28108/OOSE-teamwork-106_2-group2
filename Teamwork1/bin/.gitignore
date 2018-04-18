@@ -1,6 +1,14 @@
-/view/
+/Application$1.class
+/Application.class
 /controller/
+/document/
+/flyweight/
+/guiStrategy/
 /listeners/
 /mediator/
+/memento/
+/observer/
 /state/
 /statediagram/
+/strategy/
+/view/

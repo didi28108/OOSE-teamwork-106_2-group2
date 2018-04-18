@@ -1,4 +1,4 @@
-import java.awt.Dimension;
+
 
 import javax.swing.SwingUtilities;
 
@@ -24,8 +24,9 @@ public class Application {
         view.pack();
         view.setLocationRelativeTo(null);
         Controller ctrl = new Controller();
+        ctrl.vMdtrRefresh();
         //view.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        ctrl.settingColor();
         view.setVisible(true);
     }
 }

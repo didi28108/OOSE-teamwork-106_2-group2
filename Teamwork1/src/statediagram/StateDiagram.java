@@ -35,6 +35,7 @@ public class StateDiagram extends Component {
 
 	@Override
 	public void changeColor(String color) {
+		System.out.println("stateDiagram.changeColor  " + color);
 		super.changeColor(color);
 		for (Component c: this.componentList) {
 			c.changeColor(color);
@@ -56,8 +57,8 @@ public class StateDiagram extends Component {
 		}
 
 		return new StateDiagramStatusMemento(this.getClassName(), this.getId(), this.getGroup(), this.getColor(),
-			this.getSize(), this.getText(), this.getX(), this.getY(),
-			saveList);
+				this.getSize(), this.getText(), this.getX(), this.getY(), this.getPoint(),
+				saveList);
 	}
 	
 	@Override
@@ -66,21 +67,17 @@ public class StateDiagram extends Component {
      * @param previousMemento =先前儲存的Memento
      */
 	public void restore(ObjectStatusMemento previousMemento) {
-		this.setId(previousMemento.getId());
-		this.setGroup(previousMemento.getGroup());
-        this.setColor(previousMemento.getColor());
-        this.setSize(previousMemento.getSize());
-        this.setText(previousMemento.getText());
-        this.setX(previousMemento.getX());
-		this.setY(previousMemento.getY());
+		super.restore(previousMemento);
 
 		this.componentList = new ArrayList<Component>();
 		for (ObjectStatusMemento m: previousMemento.getComponentList()) {
 			Component re;
 			if (m.getClassName().equals("State")) {
+				System.out.println("restore State");
 				re = new State();
 			}
 			else if (m.getClassName().equals("Transition")) {
+				System.out.println("restore Transition");
 				re = new Transition();
 			}
 			else {
@@ -88,6 +85,24 @@ public class StateDiagram extends Component {
 			}
 			re.restore(m);
 			this.componentList.add(re);
+		}
+	}
+	@Override
+	public void fixTransitionRelationship() {
+		for (Component c: this.componentList) {
+			if (c instanceof Transition) {
+				Component s1 = c.getS1();
+				Component s2 = c.getS2();
+				Component newS1 = mediator.getComponent(s1.getId());
+				Component newS2 = mediator.getComponent(s2.getId());
+				if (newS1 != null && newS2 != null) {
+					c.setS1(newS1);
+					c.setS2(newS2);
+				}
+			}
+			else if (c instanceof StateDiagram) {
+				c.fixTransitionRelationship();
+			}
 		}
 	}
 
@@ -107,7 +122,13 @@ public class StateDiagram extends Component {
 	 * @param id =要移除的component的id
 	 */
 	public void remove(int id) {
-		this.componentList.remove(this.getComponent(id));
+		Component removeC = this.getComponent(id);
+		boolean success = this.componentList.remove(removeC);
+		if ((! success) && (removeC != null)) {
+			for (Component c: this.componentList) {
+				c.remove(id);
+			}
+		}
 	}
 
 	@Override
@@ -151,7 +172,7 @@ public class StateDiagram extends Component {
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		for(Component c:componentList) {
+		for(Component c: this.componentList) {
 			c.draw(g);
 		}
 	}

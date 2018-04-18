@@ -28,6 +28,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import guiStrategy.FlatUI;
+import guiStrategy.GuiStrategy;
 import mediator.ViewMediator;
 import net.miginfocom.swing.MigLayout;
 import java.awt.SystemColor;
@@ -35,7 +37,6 @@ import java.awt.SystemColor;
 public class StateDiagramEditor extends JFrame{
 	
 	private ViewMediator vMdtr = ViewMediator.getInstance();
-	
 	//private GridBagLayout gbl = new GridBagLayout();
     
 	/**
@@ -72,7 +73,7 @@ public class StateDiagramEditor extends JFrame{
 		//Menu Bar
 		MenuBar menuBar = new MenuBar();
 		this.setJMenuBar(menuBar);
-		
+
 		vMdtr.registerMainFrame(this);
 
 		/* GridBagLayout

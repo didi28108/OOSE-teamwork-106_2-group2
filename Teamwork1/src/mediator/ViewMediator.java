@@ -2,18 +2,23 @@ package mediator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
+import javax.swing.JTextField;
 
 import controller.Controller;
+import document.DocumentOperation;
+import document.SDEDocument;
+import guiStrategy.FlatUI;
+import guiStrategy.GuiStrategy;
 import state.ChosenSelect;
 import state.ChosenState;
 import state.ChosenTransition;
 import state.MouseState;
 import statediagram.Component;
-import statediagram.State;
 import statediagram.StateDiagram;
-import statediagram.Transition;
 import view.ButtonDelete;
 import view.ButtonEdit;
 import view.ButtonSelect;
@@ -21,17 +26,22 @@ import view.ButtonState;
 import view.ButtonTransition;
 import view.DrawCanvas;
 import view.EditDialog;
+import view.SettingPanel;
 import view.StateDiagramEditor;
 import view.StatusPanel;
 
-// combining facade and mediator
 public class ViewMediator {
 
 	//Singleton with Eager initialization 
 	private static ViewMediator vMdtr = new ViewMediator();
 	private Controller controller;
+	private GuiStrategy guiStrategy;
+	private SDEDocument dc;
 	
-	private ViewMediator() {}
+	private ViewMediator() {
+		guiStrategy = new FlatUI();
+		dc = new DocumentOperation();
+	}
 	
 	public static ViewMediator getInstance() {
 		return vMdtr;
@@ -52,7 +62,11 @@ public class ViewMediator {
 	private DrawCanvas drawCanvas;
 	private MouseState currentState = ChosenSelect.getInstance(); //singleton
 	private StatusPanel statusPanel;
+	
 	private EditDialog eDialog;
+	private JComboBox eDialogCbColor;
+	private JComboBox eDialogCbGroup;
+	private JTextField eDialogTextFieldName;
 
 	private JMenuItem menuOpen;
 	private JMenuItem menuSave;
@@ -63,6 +77,13 @@ public class ViewMediator {
 	private JMenuItem menuRedo;
 
 	private int selectedItemID = -1;
+	
+	private SettingPanel settingPanel;
+	private JComboBox settingCbStateColor;
+	private JComboBox settingCbTransColor;
+	private JComboBox settingCbGroupColor;
+	private JComboBox settingCbGroup;
+	private boolean pressedOK;
 	
 	
 	//**************Register****************//
@@ -145,6 +166,48 @@ public class ViewMediator {
 		this.menuRedo = menuItemRedo;
 	}
 	
+
+	public void registerSettingPanel(SettingPanel settingPanel) {
+		// TODO Auto-generated method stub
+		this.settingPanel = settingPanel;
+	}
+	
+
+	public void registerEditStateDialogComboColor(JComboBox cbColor) {
+		// TODO Auto-generated method stub
+		this.eDialogCbColor = cbColor;
+	}
+
+	public void registerEditStateDialogComboGroup(JComboBox cbGroup) {
+		// TODO Auto-generated method stub
+		this.eDialogCbGroup = cbGroup;
+	}
+
+	public void registerEditStateDialogTextFieldName(JTextField textFieldName) {
+		// TODO Auto-generated method stub
+		this.eDialogTextFieldName = textFieldName;
+	}
+	
+	public void registerComboStateColor(JComboBox comboStateColor) {
+		// TODO Auto-generated method stub
+		this.settingCbStateColor = comboStateColor;
+	}
+
+	public void registerComboTransColor(JComboBox comboTransitionColor) {
+		// TODO Auto-generated method stub
+		this.settingCbTransColor = comboTransitionColor;
+	}
+
+	public void registerComboGroupColor(JComboBox comboGroupColor) {
+		// TODO Auto-generated method stub
+		this.settingCbGroupColor = comboGroupColor;
+	}
+
+	public void registerComboComponentGroup(JComboBox comboComponentGroup) {
+		// TODO Auto-generated method stub
+		this.settingCbGroup = comboComponentGroup;
+	}
+	
 	/*****************/
 	/*  Action Event */
 	/*****************/
@@ -176,6 +239,20 @@ public class ViewMediator {
 		System.out.println("Delete btn clicked");
 		this.removeComponent();
 	}
+	
+	public void openFileBtnClicked() {
+		//delegate SDEDocument to open document
+		dc.openDocument(getStateDiagram(), this.drawCanvas);
+		repaint();
+
+	}
+
+	public void saveFileBtnClicked() {
+		//delegate SDEDocument to save document
+		dc.saveDocument(getStateDiagram());
+
+	}
+	
 	/*********/
 	
 	//Change mouse state and update status
@@ -236,6 +313,8 @@ public class ViewMediator {
 	public void setSelectedItemID(int id) {
 		this.selectedItemID = id;
 		setSelectedItemText();
+
+		buttonRefresh();
 	}
 	
 	//get selected(clicked) component ID
@@ -287,7 +366,11 @@ public class ViewMediator {
 	public void showDialog() {
 		if(eDialog == null) {
 			eDialog = new EditDialog();
+			this.refreshColorComboBoxItem(eDialogCbColor, getColorStringList());
 		}
+		this.eDialogTextFieldName.setText(getSelectedItemText());
+		this.refreshGroupComboBoxItem(eDialogCbGroup, getGroupList());
+		this.eDialogCbGroup.setSelectedItem((Integer)getGroupByID());
 		eDialog.showDialog();
 	}
 	
@@ -295,25 +378,21 @@ public class ViewMediator {
 		mainFrame.dispose();
 	}
 
-	//***************BUTTON****************//
-	public void setDeleteUnable() {
-		this.buttonDelete.setEnabled(false);
-	}
-	
-	public void setDeleteAble() {
-		this.buttonDelete.setEnabled(true);
-	}
-
 	//*********Draw Canvas****************//
 	public void repaint() {
-		// TODO Auto-generated method stub
 		drawCanvas.repaint();
 		controller.saveAction();
+	}
+	public void repaintWithoutSave() {
+		drawCanvas.repaint();
 	}
 
 	public void undoClick(ActionEvent e) {
 		// TODO Auto-generated method stub
 		controller.undoAction();
+	}
+	public void redoClick(ActionEvent e) {
+		controller.redoAction();
 	}
 
 	public void setComponentColor(Object selectedItem) {
@@ -328,5 +407,104 @@ public class ViewMediator {
 		controller.setTransitionSubject(color);
 	}
 
+	public ArrayList<String> getColorStringList() {
+		return controller.getColorStringList();
+	}
+
+	public void initSettingComboBox() {
+		// TODO Auto-generated method stub
+		refreshColorComboBoxItem(settingCbGroupColor, getColorStringList());
+		refreshColorComboBoxItem(settingCbStateColor, getColorStringList());
+		refreshColorComboBoxItem(settingCbTransColor, getColorStringList());
+		refreshGroupComboBoxItem(settingCbGroup, getGroupList());
+	}
+
+	public void changeStateSize(int size) {
+		// TODO Auto-generated method stub
+		controller.changeStateSize(size);
+		repaint();
+	}
+
+	public void buttonRefresh() {
+		// TODO Auto-generated method stub
+		if(this.selectedItemID != -1) {
+			this.buttonDelete.setEnabled(true);
+			this.buttonEdit.setEnabled(true);
+			this.menuDelete.setEnabled(true);
+			this.menuModify.setEnabled(true);
+		}
+		else {
+			this.buttonDelete.setEnabled(false);
+			this.buttonEdit.setEnabled(false);
+			this.menuDelete.setEnabled(false);
+			this.menuModify.setEnabled(false);
+		}
+	}
+
+	public ArrayList<Integer> getGroupList() {
+		// TODO Auto-generated method stub
+		return controller.getGroupList();
+	}
+
+	public void addNewGroup() {
+		// TODO Auto-generated method stub
+		controller.addNewGroup(getGroupList().size()+1);
+		refreshGroupComboBoxItem(settingCbGroup, getGroupList());
+	}
 	
+	public void refreshGroupComboBoxItem(JComboBox cb, ArrayList<Integer> list) {
+		cb.removeAllItems();
+		for(int i =0; i < list.size();i++) {
+			cb.addItem(list.get(i));
+		}
+	}
+	
+	public void refreshColorComboBoxItem(JComboBox cb, ArrayList<String> list) {
+		cb.removeAllItems();
+		for(int i =0; i < list.size();i++) {
+			cb.addItem(list.get(i));
+		}
+	}
+	
+	public int getGroupByID() {
+		System.out.println("Group ID: " +controller.getGroupByID());
+		return controller.getGroupByID();
+	}
+
+	public void setComponentGroup(Object selectedGroup) {
+		// TODO Auto-generated method stub
+		controller.changeGroup(getSelectedItemID(), Integer.parseInt(selectedGroup.toString()));
+	}
+	
+	public void changeGroupColor() {
+		// TODO Auto-generated method stub
+		int group = settingPanel.getSelectedGroupText();
+		String color = settingPanel.getGroupSelectedColorText();
+		System.out.println("vMdtr.changeGroupColor  " + group + color);
+		controller.changeGroupColor(group, color);
+		repaint();
+	}
+
+	public void changeGuiStrategy(GuiStrategy s) {
+		this.guiStrategy = s;
+		handleGuiStrategy();
+	}
+	
+	public void handleGuiStrategy() {
+		this.buttonDelete.setBackground(guiStrategy.changeButton());
+		this.buttonEdit.setBackground(guiStrategy.changeButton());
+		this.buttonSelect.setBackground(guiStrategy.changeButton());
+		this.buttonState.setBackground(guiStrategy.changeButton());
+		this.buttonTransition.setBackground(guiStrategy.changeButton());
+		
+		this.buttonDelete.setForeground(guiStrategy.changeButtonFont());
+		this.buttonEdit.setForeground(guiStrategy.changeButtonFont());
+		this.buttonSelect.setForeground(guiStrategy.changeButtonFont());
+		this.buttonState.setForeground(guiStrategy.changeButtonFont());
+		this.buttonTransition.setForeground(guiStrategy.changeButtonFont());
+		
+		this.settingPanel.setBackground(guiStrategy.changePanel());
+		
+	}
+
 }

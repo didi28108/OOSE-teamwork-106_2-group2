@@ -22,9 +22,9 @@ public class ModelMediator {
 	private static final ModelMediator instance = new ModelMediator();
 	private Controller controller;
 	private ModelMediator() {
-		this.stateDiagram = new StateDiagram(this.getColorFromFactory("black"));
+		this.stateDiagram = new StateDiagram(this.getColorFromFactory("Black"));
 		this.stateDiagram.setGroup(0);
-		this.addComponent(new StateDiagram(this.getColorFromFactory("black")));
+		this.addComponent(new StateDiagram(this.getColorFromFactory("Black")));
 	}
 	public static ModelMediator getInstance() {
 		return instance;
@@ -82,6 +82,9 @@ public class ModelMediator {
     public StateDiagram getStateDiagram() {
 		return this.stateDiagram;
 	}
+	public Component getComponent(int id) {
+		return this.stateDiagram.getComponent(id);
+	}
 	
 	public void setStateDiagram(StateDiagram stateDiagram) {
 		this.stateDiagram = stateDiagram;
@@ -97,6 +100,9 @@ public class ModelMediator {
 	}
 	public void restoreStateDiagram(ObjectStatusMemento previousMemento) {
 		this.stateDiagram.restore(previousMemento);
+	}
+	public void fixTransitionRelationship() {
+		this.stateDiagram.fixTransitionRelationship();
 	}
 
 	public void stateDiagramAttachSubject() {
@@ -165,6 +171,7 @@ public class ModelMediator {
 	public void changeColor(String color, int id) {
 		// TODO Auto-generated method stub
 		Component comp = stateDiagram.getComponent(id);
+		System.out.println("mMdtr.changeColor : " + color);
 		comp.changeColor(color);
 	}
 	
@@ -198,5 +205,21 @@ public class ModelMediator {
 	public void removeComponent(int selectedItemID) {
 		stateDiagram.remove(selectedItemID);
 		System.out.println("deleted item" + selectedItemID);
+	}
+
+
+	public void saveAction() {
+		this.controller.saveAction();
+	}
+	
+	public void changeSize(int size, int selectedItemID) {
+		// TODO Auto-generated method stub
+		Component comp = stateDiagram.getComponent(selectedItemID);
+		comp.setSize(size);
+	}
+	
+	public int getGroupByID(int selectedItemID) {
+		Component comp = stateDiagram.getComponent(selectedItemID);
+		return comp.getGroup();
 	}
 }

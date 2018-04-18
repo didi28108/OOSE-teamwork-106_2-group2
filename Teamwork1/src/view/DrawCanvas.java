@@ -19,23 +19,23 @@ import statediagram.Transition;
 
 public class DrawCanvas extends JPanel{
 	ViewMediator vMdtr = ViewMediator.getInstance();
-	ModelMediator mMdtr = ModelMediator.getInstance();
 	private Component components;
 	private float radius = 10;
 	
 	public DrawCanvas() {
-		components = mMdtr.getStateDiagram();
 		this.setBackground(Color.white);
 		vMdtr.registerDrawCanvas(this);
-		
 
 		this.addMouseMotionListener(new MousePositionsListener());
 		this.addMouseListener(new MyMouseListener());
 	}
 	public void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
+		System.out.println("DrawCanvas.paintComponent()");
+		components = vMdtr.getStateDiagram();
 		super.paintComponent(g);
-		g.setColor(Color.black);
+
+		System.out.println(components.getColor().toString());
+		
 		components.draw(g);
 	}
 	
